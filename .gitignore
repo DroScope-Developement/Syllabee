@@ -20,6 +20,9 @@ __pycache__/
 .venv/
 venv/
 
+# Crawler output
+sylabi/
+
 # Build / cache
 dist/
 build/
