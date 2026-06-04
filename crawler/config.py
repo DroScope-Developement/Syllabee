@@ -2,10 +2,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
-# User-requested output folder name
+# User-requested output folder name (subject subfolders inside)
 DEFAULT_OUTPUT_DIR = Path("sylabi")
 
-DEFAULT_MANIFEST = DEFAULT_OUTPUT_DIR / "manifest.jsonl"
+# Max successful PDFs stored per course/subject folder (no global cap by default)
+DEFAULT_MAX_PER_COURSE = 10
+
+DEFAULT_DB_PATH = Path("data") / "syllabee.db"
+DEFAULT_DATA_DIR = Path("data")
+DEFAULT_TAXONOMY_PATH = DEFAULT_DATA_DIR / "taxonomy.yaml"
 
 # Polite crawling defaults
 DEFAULT_REQUEST_DELAY_SEC = 1.0

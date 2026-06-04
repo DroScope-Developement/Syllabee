@@ -1,0 +1,112 @@
+# Keyword / course-code hints for classifying downloaded syllabi into course folders
+
+courses:
+  - slug: calculus-1
+    name: Calculus 1
+    codes: [MATH 141, MATH141, CALC 1, CALC I]
+    keywords: [calculus 1, calculus i, calc 1, first calculus]
+
+  - slug: calculus-2
+    name: Calculus 2
+    codes: [MATH 142, MATH142, CALC 2, CALC II]
+    keywords: [calculus 2, calculus ii, calc 2]
+
+  - slug: biochemistry
+    name: Biochemistry
+    codes: [CHEM 301, BCHM, BIOC]
+    keywords: [biochemistry, biochem]
+
+  - slug: intro-programming
+    name: Introduction to Programming
+    codes: [CS 101, CS101, COP 3503, COMP 110]
+    keywords: [intro to programming, introduction to programming, programming fundamentals, cs1]
+
+  - slug: data-structures
+    name: Data Structures
+    codes: [CS 201, CS201, CS 202]
+    keywords: [data structures, data structure]
+
+  - slug: algorithms
+    name: Algorithms
+    codes: [CS 301, CS301, CSE 331]
+    keywords: [algorithms, analysis of algorithms]
+
+  - slug: computer-architecture
+    name: Computer Architecture
+    codes: [CS 250, CS250]
+    keywords: [computer architecture, comp arch]
+
+  - slug: operating-systems
+    name: Operating Systems
+    codes: [CS 350, CS350]
+    keywords: [operating systems, operating system, os course]
+
+  - slug: databases
+    name: Database Systems
+    codes: [CS 340, CS340]
+    keywords: [database systems, databases, sql course]
+
+  - slug: software-engineering
+    name: Software Engineering
+    codes: [CS 360, CS360]
+    keywords: [software engineering, swe course]
+
+  - slug: discrete-math
+    name: Discrete Mathematics
+    codes: [MATH 205, MATH205]
+    keywords: [discrete math, discrete mathematics]
+
+  - slug: linear-algebra
+    name: Linear Algebra
+    codes: [MATH 220]
+    keywords: [linear algebra]
+
+  - slug: digital-logic
+    name: Digital Logic Design
+    codes: [CE 210]
+    keywords: [digital logic, digital design]
+
+  - slug: embedded-systems
+    name: Embedded Systems
+    codes: [CE 320]
+    keywords: [embedded systems, embedded system]
+
+  - slug: machine-learning
+    name: Machine Learning
+    codes: [CS 410, CS410]
+    keywords: [machine learning, ml course]
+
+  - slug: microeconomics
+    name: Microeconomics
+    codes: [ECON 101]
+    keywords: [microeconomics, principles of micro]
+
+  - slug: accounting-1
+    name: Financial Accounting
+    codes: [ACCT 201]
+    keywords: [financial accounting, accounting 1]
+
+  - slug: intro-psychology
+    name: Introduction to Psychology
+    codes: [PSY 101]
+    keywords: [introduction to psychology, intro psych]
+
+  - slug: general-biology-1
+    name: General Biology 1
+    codes: [BIOL 101]
+    keywords: [general biology, biology 1, introductory biology]
+
+  - slug: nursing-fundamentals
+    name: Nursing Fundamentals
+    codes: [NURS 201]
+    keywords: [nursing fundamentals, fundamentals of nursing]
+
+  - slug: thermodynamics
+    name: Thermodynamics
+    codes: [ME 300]
+    keywords: [thermodynamics, thermo]
+
+  - slug: organic-chemistry-1
+    name: Organic Chemistry 1
+    codes: [CHEM 221]
+    keywords: [organic chemistry, orgo 1]

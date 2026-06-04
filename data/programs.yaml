@@ -1,0 +1,457 @@
+# Top 10 degree curricula (4-year plans, reusable course slugs across overlapping majors)
+
+majors:
+  # 1 — Software Engineering
+  - slug: software-engineering
+    name: Software Engineering
+    description: Application design, development, and delivery for software careers.
+    required_courses:
+      - intro-programming
+      - data-structures
+      - algorithms
+      - discrete-math
+      - calculus-1
+      - calculus-2
+      - linear-algebra
+      - operating-systems
+      - databases
+      - software-engineering
+      - technical-writing
+      - ethics-computing
+      - capstone-se
+    curricula:
+      - slug: software-engineering-bs
+        name: Software Engineering (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, calculus-1, intro-programming]
+              - name: Spring
+                courses: [technical-writing, calculus-2, discrete-math, ethics-computing]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [data-structures, linear-algebra, physics-1]
+              - name: Spring
+                courses: [computer-architecture, algorithms, probability-statistics]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [operating-systems, databases, software-engineering]
+              - name: Spring
+                courses: [computer-networks, web-development]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [cybersecurity, machine-learning]
+              - name: Spring
+                courses: [capstone-se]
+
+  # 2 — Computer Science
+  - slug: computer-science
+    name: Computer Science
+    description: Theory and practice of computing; foundation for research and industry.
+    required_courses:
+      - intro-programming
+      - data-structures
+      - algorithms
+      - discrete-math
+      - calculus-1
+      - calculus-2
+      - calculus-3
+      - computer-architecture
+      - operating-systems
+      - databases
+      - linear-algebra
+      - probability-statistics
+      - capstone-cs
+    curricula:
+      - slug: computer-science-bs
+        name: Computer Science (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, calculus-1, intro-programming]
+              - name: Spring
+                courses: [calculus-2, discrete-math]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [data-structures, linear-algebra]
+              - name: Spring
+                courses: [computer-architecture, algorithms]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [operating-systems, probability-statistics, calculus-3]
+              - name: Spring
+                courses: [databases, computer-networks]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [machine-learning, ethics-computing]
+              - name: Spring
+                courses: [capstone-cs]
+
+  # 3 — Computer Engineering
+  - slug: computer-engineering
+    name: Computer Engineering
+    description: Integrated hardware and software systems engineering.
+    required_courses:
+      - intro-programming
+      - data-structures
+      - algorithms
+      - discrete-math
+      - calculus-1
+      - calculus-2
+      - physics-1
+      - physics-2
+      - digital-logic
+      - computer-architecture
+      - embedded-systems
+      - circuits-1
+      - operating-systems
+    curricula:
+      - slug: computer-engineering-bs
+        name: Computer Engineering (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [calculus-1, intro-programming, physics-1]
+              - name: Spring
+                courses: [calculus-2, discrete-math, physics-2]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [data-structures, digital-logic, circuits-1]
+              - name: Spring
+                courses: [computer-architecture, algorithms]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [embedded-systems, operating-systems, linear-algebra]
+              - name: Spring
+                courses: [computer-networks, probability-statistics]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [cybersecurity, thermodynamics]
+              - name: Spring
+                courses: [capstone-cs]
+
+  # 4 — Data Science
+  - slug: data-science
+    name: Data Science
+    description: Statistics, computing, and machine learning for data-driven roles.
+    required_courses:
+      - intro-programming
+      - data-structures
+      - calculus-1
+      - calculus-2
+      - linear-algebra
+      - probability-statistics
+      - databases
+      - machine-learning
+      - data-mining
+      - microeconomics
+    curricula:
+      - slug: data-science-bs
+        name: Data Science (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, calculus-1, intro-programming]
+              - name: Spring
+                courses: [calculus-2, microeconomics]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [data-structures, linear-algebra, probability-statistics]
+              - name: Spring
+                courses: [discrete-math, databases]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [machine-learning, algorithms]
+              - name: Spring
+                courses: [data-mining, business-statistics]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [econometrics, computer-networks]
+              - name: Spring
+                courses: [capstone-cs]
+
+  # 5 — Information Technology
+  - slug: information-technology
+    name: Information Technology
+    description: Enterprise systems, networking, and IT operations.
+    required_courses:
+      - intro-programming
+      - databases
+      - computer-networks
+      - cybersecurity
+      - systems-administration
+      - web-development
+      - technical-writing
+    curricula:
+      - slug: information-technology-bs
+        name: Information Technology (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, intro-programming, business-communications]
+              - name: Spring
+                courses: [technical-writing, web-development]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [data-structures, computer-networks]
+              - name: Spring
+                courses: [databases, systems-administration]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [cybersecurity, operating-systems]
+              - name: Spring
+                courses: [probability-statistics, software-engineering]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [machine-learning, ethics-computing]
+              - name: Spring
+                courses: [capstone-se]
+
+  # 6 — Business Administration
+  - slug: business-administration
+    name: Business Administration
+    description: Broad business foundation for management and entrepreneurship.
+    required_courses:
+      - microeconomics
+      - macroeconomics
+      - accounting-1
+      - accounting-2
+      - business-law
+      - marketing
+      - corporate-finance
+      - management
+      - business-statistics
+      - business-communications
+    curricula:
+      - slug: business-administration-bs
+        name: Business Administration (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, microeconomics, accounting-1]
+              - name: Spring
+                courses: [macroeconomics, accounting-2, business-communications]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [business-statistics, business-law, marketing]
+              - name: Spring
+                courses: [corporate-finance, management, calculus-1]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [intro-programming, probability-statistics]
+              - name: Spring
+                courses: [international-economics, technical-writing]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [data-mining, ethics-computing]
+              - name: Spring
+                courses: [capstone-se]
+
+  # 7 — Nursing
+  - slug: nursing
+    name: Nursing
+    description: B.S.N. pathway toward registered nursing practice.
+    required_courses:
+      - anatomy-physiology-1
+      - anatomy-physiology-2
+      - microbiology
+      - biochemistry
+      - pharmacology-nursing
+      - pathophysiology
+      - nursing-fundamentals
+      - health-assessment
+      - med-surg-nursing
+      - community-health-nursing
+    curricula:
+      - slug: nursing-bsn
+        name: Nursing (B.S.N.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, general-biology-1, microeconomics]
+              - name: Spring
+                courses: [general-biology-2, microbiology, intro-psychology]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [anatomy-physiology-1, organic-chemistry-1]
+              - name: Spring
+                courses: [anatomy-physiology-2, biochemistry, nursing-fundamentals]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [pathophysiology, pharmacology-nursing, health-assessment]
+              - name: Spring
+                courses: [med-surg-nursing, probability-statistics]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [community-health-nursing, ethics-computing]
+              - name: Spring
+                courses: [technical-writing, developmental-psychology]
+
+  # 8 — Psychology
+  - slug: psychology
+    name: Psychology
+    description: Scientific study of behavior and mental processes.
+    required_courses:
+      - intro-psychology
+      - research-methods-psych
+      - abnormal-psychology
+      - developmental-psychology
+      - cognitive-psychology
+      - social-psychology
+      - probability-statistics
+    curricula:
+      - slug: psychology-ba
+        name: Psychology (B.A.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, intro-psychology, microeconomics]
+              - name: Spring
+                courses: [developmental-psychology, general-biology-1]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [research-methods-psych, probability-statistics]
+              - name: Spring
+                courses: [social-psychology, cognitive-psychology]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [abnormal-psychology, business-statistics]
+              - name: Spring
+                courses: [cell-biology, technical-writing]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [machine-learning, ethics-computing]
+              - name: Spring
+                courses: [capstone-cs]
+
+  # 9 — Biology
+  - slug: biology
+    name: Biology
+    description: Life sciences foundation for research, health, and biotechnology.
+    required_courses:
+      - general-biology-1
+      - general-biology-2
+      - genetics
+      - cell-biology
+      - ecology
+      - organic-chemistry-1
+      - organic-chemistry-2
+      - biochemistry
+      - calculus-1
+    curricula:
+      - slug: biology-bs
+        name: Biology (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [english-composition, general-biology-1, calculus-1]
+              - name: Spring
+                courses: [general-biology-2, calculus-2]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [organic-chemistry-1, genetics]
+              - name: Spring
+                courses: [organic-chemistry-2, cell-biology]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [biochemistry, ecology, probability-statistics]
+              - name: Spring
+                courses: [microbiology, anatomy-physiology-1]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [machine-learning, technical-writing]
+              - name: Spring
+                courses: [capstone-cs]
+
+  # 10 — Mechanical Engineering
+  - slug: mechanical-engineering
+    name: Mechanical Engineering
+    description: Design and analysis of mechanical and thermal systems.
+    required_courses:
+      - calculus-1
+      - calculus-2
+      - calculus-3
+      - physics-1
+      - physics-2
+      - statics
+      - dynamics
+      - thermodynamics
+      - materials-science
+      - fluid-mechanics
+      - machine-design
+      - manufacturing-processes
+      - capstone-me
+    curricula:
+      - slug: mechanical-engineering-bs
+        name: Mechanical Engineering (B.S.)
+        years: 4
+        plan:
+          - year: 1
+            terms:
+              - name: Fall
+                courses: [calculus-1, physics-1, intro-programming]
+              - name: Spring
+                courses: [calculus-2, physics-2, technical-writing]
+          - year: 2
+            terms:
+              - name: Fall
+                courses: [calculus-3, statics, materials-science]
+              - name: Spring
+                courses: [dynamics, differential-equations, linear-algebra]
+          - year: 3
+            terms:
+              - name: Fall
+                courses: [thermodynamics, fluid-mechanics]
+              - name: Spring
+                courses: [machine-design, circuits-1]
+          - year: 4
+            terms:
+              - name: Fall
+                courses: [manufacturing-processes, probability-statistics]
+              - name: Spring
+                courses: [capstone-me]

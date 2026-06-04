@@ -1,0 +1,379 @@
+# Canonical reusable courses (shared across majors via slug references in programs.yaml)
+
+courses:
+  # --- Computing ---
+  - slug: intro-programming
+    name: Introduction to Programming
+    code: CS 101
+    category: cs
+
+  - slug: data-structures
+    name: Data Structures
+    code: CS 201
+    category: cs
+
+  - slug: algorithms
+    name: Algorithms
+    code: CS 301
+    category: cs
+
+  - slug: computer-architecture
+    name: Computer Architecture
+    code: CS 250
+    category: cs
+
+  - slug: operating-systems
+    name: Operating Systems
+    code: CS 350
+    category: cs
+
+  - slug: databases
+    name: Database Systems
+    code: CS 340
+    category: cs
+
+  - slug: software-engineering
+    name: Software Engineering
+    code: CS 360
+    category: cs
+
+  - slug: machine-learning
+    name: Machine Learning
+    code: CS 410
+    category: cs
+
+  - slug: data-mining
+    name: Data Mining
+    code: CS 415
+    category: cs
+
+  - slug: computer-networks
+    name: Computer Networks
+    code: CS 325
+    category: cs
+
+  - slug: cybersecurity
+    name: Cybersecurity
+    code: CS 365
+    category: cs
+
+  - slug: web-development
+    name: Web Development
+    code: CS 290
+    category: cs
+
+  - slug: systems-administration
+    name: Systems Administration
+    code: IT 340
+    category: cs
+
+  - slug: ethics-computing
+    name: Ethics in Computing
+    code: CS 380
+    category: general
+
+  - slug: capstone-se
+    name: Software Engineering Capstone
+    code: CS 495
+    category: cs
+
+  - slug: capstone-cs
+    name: Computer Science Capstone
+    code: CS 490
+    category: cs
+
+  - slug: digital-logic
+    name: Digital Logic Design
+    code: CE 210
+    category: ce
+
+  - slug: embedded-systems
+    name: Embedded Systems
+    code: CE 320
+    category: ce
+
+  - slug: circuits-1
+    name: Circuits 1
+    code: EE 201
+    category: ce
+
+  # --- Mathematics ---
+  - slug: discrete-math
+    name: Discrete Mathematics
+    code: MATH 205
+    category: math
+
+  - slug: calculus-1
+    name: Calculus 1
+    code: MATH 141
+    category: math
+
+  - slug: calculus-2
+    name: Calculus 2
+    code: MATH 142
+    category: math
+
+  - slug: calculus-3
+    name: Calculus 3
+    code: MATH 243
+    category: math
+
+  - slug: linear-algebra
+    name: Linear Algebra
+    code: MATH 220
+    category: math
+
+  - slug: probability-statistics
+    name: Probability and Statistics
+    code: MATH 318
+    category: math
+
+  - slug: differential-equations
+    name: Differential Equations
+    code: MATH 244
+    category: math
+
+  # --- Sciences ---
+  - slug: physics-1
+    name: Physics 1
+    code: PHYS 101
+    category: science
+
+  - slug: physics-2
+    name: Physics 2
+    code: PHYS 102
+    category: science
+
+  - slug: biochemistry
+    name: Biochemistry
+    code: CHEM 301
+    category: science
+
+  - slug: general-biology-1
+    name: General Biology 1
+    code: BIOL 101
+    category: science
+
+  - slug: general-biology-2
+    name: General Biology 2
+    code: BIOL 102
+    category: science
+
+  - slug: genetics
+    name: Genetics
+    code: BIOL 301
+    category: science
+
+  - slug: cell-biology
+    name: Cell Biology
+    code: BIOL 310
+    category: science
+
+  - slug: ecology
+    name: Ecology
+    code: BIOL 320
+    category: science
+
+  - slug: organic-chemistry-1
+    name: Organic Chemistry 1
+    code: CHEM 221
+    category: science
+
+  - slug: organic-chemistry-2
+    name: Organic Chemistry 2
+    code: CHEM 222
+    category: science
+
+  - slug: anatomy-physiology-1
+    name: Anatomy and Physiology 1
+    code: NURS 210
+    category: nursing
+
+  - slug: anatomy-physiology-2
+    name: Anatomy and Physiology 2
+    code: NURS 211
+    category: nursing
+
+  - slug: microbiology
+    name: Microbiology
+    code: BIOL 240
+    category: science
+
+  - slug: pharmacology-nursing
+    name: Pharmacology for Nursing
+    code: NURS 320
+    category: nursing
+
+  - slug: pathophysiology
+    name: Pathophysiology
+    code: NURS 330
+    category: nursing
+
+  - slug: nursing-fundamentals
+    name: Nursing Fundamentals
+    code: NURS 201
+    category: nursing
+
+  - slug: health-assessment
+    name: Health Assessment
+    code: NURS 220
+    category: nursing
+
+  - slug: med-surg-nursing
+    name: Medical-Surgical Nursing
+    code: NURS 410
+    category: nursing
+
+  - slug: community-health-nursing
+    name: Community Health Nursing
+    code: NURS 420
+    category: nursing
+
+  # --- Engineering (Mechanical) ---
+  - slug: statics
+    name: Engineering Statics
+    code: ME 220
+    category: engineering
+
+  - slug: dynamics
+    name: Engineering Dynamics
+    code: ME 221
+    category: engineering
+
+  - slug: thermodynamics
+    name: Thermodynamics
+    code: ME 300
+    category: engineering
+
+  - slug: materials-science
+    name: Materials Science
+    code: ME 310
+    category: engineering
+
+  - slug: fluid-mechanics
+    name: Fluid Mechanics
+    code: ME 320
+    category: engineering
+
+  - slug: machine-design
+    name: Machine Design
+    code: ME 410
+    category: engineering
+
+  - slug: manufacturing-processes
+    name: Manufacturing Processes
+    code: ME 420
+    category: engineering
+
+  - slug: capstone-me
+    name: Mechanical Engineering Capstone
+    code: ME 495
+    category: engineering
+
+  # --- Business & Economics ---
+  - slug: microeconomics
+    name: Microeconomics
+    code: ECON 101
+    category: business
+
+  - slug: macroeconomics
+    name: Macroeconomics
+    code: ECON 102
+    category: business
+
+  - slug: accounting-1
+    name: Financial Accounting
+    code: ACCT 201
+    category: business
+
+  - slug: accounting-2
+    name: Managerial Accounting
+    code: ACCT 202
+    category: business
+
+  - slug: business-law
+    name: Business Law
+    code: BUS 310
+    category: business
+
+  - slug: marketing
+    name: Marketing
+    code: MKT 301
+    category: business
+
+  - slug: corporate-finance
+    name: Corporate Finance
+    code: FIN 301
+    category: business
+
+  - slug: management
+    name: Principles of Management
+    code: MGMT 301
+    category: business
+
+  - slug: business-statistics
+    name: Business Statistics
+    code: BUS 230
+    category: business
+
+  - slug: business-communications
+    name: Business Communications
+    code: BUS 210
+    category: business
+
+  - slug: econometrics
+    name: Econometrics
+    code: ECON 350
+    category: business
+
+  - slug: international-economics
+    name: International Economics
+    code: ECON 340
+    category: business
+
+  - slug: public-finance
+    name: Public Finance
+    code: ECON 360
+    category: business
+
+  # --- Psychology ---
+  - slug: intro-psychology
+    name: Introduction to Psychology
+    code: PSY 101
+    category: psychology
+
+  - slug: research-methods-psych
+    name: Research Methods in Psychology
+    code: PSY 250
+    category: psychology
+
+  - slug: abnormal-psychology
+    name: Abnormal Psychology
+    code: PSY 340
+    category: psychology
+
+  - slug: developmental-psychology
+    name: Developmental Psychology
+    code: PSY 320
+    category: psychology
+
+  - slug: cognitive-psychology
+    name: Cognitive Psychology
+    code: PSY 330
+    category: psychology
+
+  - slug: social-psychology
+    name: Social Psychology
+    code: PSY 310
+    category: psychology
+
+  # --- General ---
+  - slug: technical-writing
+    name: Technical Writing
+    code: ENG 210
+    category: general
+
+  - slug: english-composition
+    name: English Composition
+    code: ENG 101
+    category: general

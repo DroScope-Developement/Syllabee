@@ -23,6 +23,9 @@ venv/
 # Crawler output
 sylabi/
 
+# Local catalog DB (optional: commit an empty DB template separately)
+data/syllabee.db
+
 # Build / cache
 dist/
 build/
