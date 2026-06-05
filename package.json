@@ -10,10 +10,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "generate:pdf-fixture": "node scripts/generate-cs101-pdf.mjs",
-    "cache:handouts": "node scripts/cache-handouts.mjs"
+    "cache:handouts": "node scripts/cache-handouts.mjs",
+    "catalog:sylabi": "node scripts/generate-sylabi-catalog.mjs",
+    "cache:sylabi-outlines": "vite-node scripts/cache-sylabi-catalog.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",
+    "compromise": "^14.15.1",
     "pdfjs-dist": "^6.0.227",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

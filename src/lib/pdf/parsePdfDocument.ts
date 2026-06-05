@@ -1,4 +1,4 @@
-import { inferInstitutionFromLines } from "../inferCourseInstitution";
+import { extractSyllabusMetadata } from "./extractSyllabusMetadata";
 import { SyllabusParseError } from "../syllabusErrors";
 import type { SyllabusOutlineData, SyllabusSection } from "../../types/syllabus";
 import { LINE_GAP_LARGE } from "./types";
@@ -26,21 +26,6 @@ function percentile(values: number[], p: number): number {
     Math.max(0, Math.floor(p * sorted.length)),
   );
   return sorted[index];
-}
-
-function toTitleCase(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/\b[a-z]/g, (char) => char.toUpperCase());
-}
-
-function isAllCapsTitle(text: string): boolean {
-  return (
-    text.length >= 8 &&
-    text === text.toUpperCase() &&
-    /[A-Z]/.test(text) &&
-    text.split(/\s+/).length >= 2
-  );
 }
 
 function samePageGaps(lines: ClassifiedLine[]): number[] {
@@ -224,48 +209,6 @@ function stripListMarker(text: string): string {
   return text.replace(/^[\s•\-*◦▪–—]+/, "").replace(/^\d+[.)]\s*/, "").trim();
 }
 
-function inferTitle(lines: ClassifiedLine[], fileName?: string): string {
-  const header = lines
-    .slice(0, 25)
-    .filter((line) => !line.isProse && !EMAIL.test(line.text));
-
-  const allCaps = header.find(
-    (line) =>
-      isAllCapsTitle(line.text) &&
-      !/^(SYLLABUS|MATERIAL|INSTRUCTORS)$/i.test(line.text.trim()),
-  );
-  if (allCaps) return toTitleCase(allCaps.text);
-
-  const skipHeading =
-    /^(syllabus|material|instructors|class meetings|exams|homework|grading)/i;
-
-  const titleLine =
-    header.find(
-      (line) =>
-        !skipHeading.test(line.text) &&
-        line.tier === "title" &&
-        !line.text.includes(":"),
-    ) ??
-    header.find(
-      (line) =>
-        !skipHeading.test(line.text) &&
-        line.wordCount >= 3 &&
-        line.wordCount <= 12 &&
-        !line.text.includes(":"),
-    ) ??
-    header.find(
-      (line) => line.tier === "heading" && line.wordCount <= 8,
-    );
-
-  if (titleLine) return stripListMarker(titleLine.text);
-
-  if (fileName) {
-    return fileName.replace(/\.pdf$/i, "").replace(/[-_]/g, " ");
-  }
-
-  return "Uploaded course";
-}
-
 function inferMetadata(lines: ClassifiedLine[]): {
   courseCode?: string;
   term?: string;
@@ -353,7 +296,7 @@ function selectOutlineBlock(lines: ClassifiedLine[]): ClassifiedLine[] | null {
  */
 export function parsePdfLines(
   lines: PdfLine[],
-  options?: { fileName?: string },
+  options?: { fileName?: string; catalogSubject?: string; catalogTitle?: string },
 ): SyllabusOutlineData {
   if (lines.length === 0) {
     throw new SyllabusParseError(
@@ -363,7 +306,10 @@ export function parsePdfLines(
 
   const classified = classifyLines(lines);
   const { courseCode, term } = inferMetadata(classified);
-  const courseTitle = inferTitle(classified, options?.fileName);
+  const { courseTitle, university, professor } = extractSyllabusMetadata(
+    lines,
+    options,
+  );
 
   const outlineRun = selectOutlineBlock(classified);
   let sections: SyllabusSection[] = [];
@@ -385,8 +331,6 @@ export function parsePdfLines(
       "Could not infer a course outline from this PDF's text and layout.",
     );
   }
-
-  const { university, professor } = inferInstitutionFromLines(lines);
 
   return {
     courseTitle,
@@ -441,7 +385,7 @@ export function plainTextToLines(text: string): PdfLine[] {
 
 export function parseSyllabusText(
   text: string,
-  options?: { fileName?: string },
+  options?: { fileName?: string; catalogSubject?: string; catalogTitle?: string },
 ): SyllabusOutlineData {
   return parsePdfLines(plainTextToLines(text), options);
 }

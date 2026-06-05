@@ -1,87 +1,34 @@
-import { useState } from "react";
-import { prebuiltTests } from "../../data/prebuilt/prebuiltTests";
+import { useMemo, useState } from "react";
 import { SyllabusParseError } from "../../lib/syllabusErrors";
 import { loadPrebuiltTest, prebuiltLoadMessage } from "../../services/loadPrebuiltTest";
-import type { Course, ProfessorInfo, UniversityInfo } from "../../types/course";
+import {
+  buildCourseListEntries,
+  filterCourseListEntries,
+  type CourseListEntry,
+} from "../../services/groupCoursesBySubject";
+import type { Course } from "../../types/course";
 import { countTopics } from "../../types/course";
 import type { PrebuiltTestDefinition } from "../../types/prebuiltTest";
-import {
-  CourseInstitutionMeta,
-  ProfessorAvatar,
-} from "./CourseInstitutionMeta";
+import { CourseRow } from "./CourseList.shared";
 
 interface CourseListProps {
   courses: Course[];
   isAuthenticated: boolean;
   onSelectCourse: (courseId: string) => void;
   onPrebuiltLoaded?: (course: Course) => void;
+  onSelectCatalogCourse: (course: Course) => void;
   onRequireSignIn?: () => void;
-}
-
-interface CourseRowProps {
-  title: string;
-  subtitle?: string;
-  meta: string;
-  university?: UniversityInfo;
-  professor?: ProfessorInfo;
-  onClick: () => void;
-  disabled?: boolean;
-  loadingLabel?: string;
-}
-
-function CourseRow({
-  title,
-  subtitle,
-  meta,
-  university,
-  professor,
-  onClick,
-  disabled,
-  loadingLabel,
-}: CourseRowProps) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className="group flex w-full items-start gap-4 rounded-2xl border border-stone-200 bg-white p-4 text-left transition-all hover:border-honey-300 hover:shadow-sm disabled:cursor-wait disabled:opacity-70"
-    >
-      <ProfessorAvatar professor={professor} />
-
-      <div className="min-w-0 flex-1">
-        <p className="truncate font-medium text-stone-900 group-hover:text-honey-900">
-          {loadingLabel ?? title}
-        </p>
-        {!loadingLabel && subtitle && (
-          <p className="mt-0.5 truncate text-sm text-stone-500">{subtitle}</p>
-        )}
-        {!loadingLabel && (
-          <CourseInstitutionMeta university={university} professor={professor} />
-        )}
-        <p className="mt-2 text-xs text-stone-400">{meta}</p>
-      </div>
-
-      <svg
-        className="mt-1 h-5 w-5 shrink-0 text-stone-300 transition-transform group-hover:translate-x-0.5 group-hover:text-honey-600"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-        aria-hidden
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
-  );
 }
 
 function PrebuiltCourseRow({
   test,
+  subject,
   canLoad,
   onLoaded,
   onRequireSignIn,
 }: {
   test: PrebuiltTestDefinition;
+  subject: string;
   canLoad: boolean;
   onLoaded: (course: Course) => void;
   onRequireSignIn?: () => void;
@@ -123,6 +70,7 @@ function PrebuiltCourseRow({
       <CourseRow
         title={test.title}
         subtitle={test.description}
+        subjectTag={subject}
         meta={meta}
         university={test.university}
         professor={test.professor}
@@ -139,22 +87,71 @@ function PrebuiltCourseRow({
   );
 }
 
+function CourseListRow({
+  entry,
+  savedCourseIds,
+  onSelectCourse,
+  onSelectCatalogCourse,
+}: {
+  entry: Extract<CourseListEntry, { type: "course" }>;
+  savedCourseIds: Set<string>;
+  onSelectCourse: (courseId: string) => void;
+  onSelectCatalogCourse: (course: Course) => void;
+}) {
+  const { course, subject } = entry;
+  const { syllabus } = course;
+  const sectionCount = syllabus.sections.length;
+  const topicCount = countTopics(syllabus);
+  const subtitle = [syllabus.courseCode, syllabus.term]
+    .filter(Boolean)
+    .join(" · ");
+  const university = course.university ?? syllabus.university;
+  const professor = course.professor ?? syllabus.professor;
+
+  const handleClick = () => {
+    if (savedCourseIds.has(course.id)) {
+      onSelectCourse(course.id);
+      return;
+    }
+    onSelectCatalogCourse(course);
+  };
+
+  return (
+    <li>
+      <CourseRow
+        title={syllabus.courseTitle}
+        subtitle={subtitle || undefined}
+        subjectTag={subject}
+        meta={`${sectionCount} sections · ${topicCount} topics`}
+        university={university}
+        professor={professor}
+        onClick={handleClick}
+      />
+    </li>
+  );
+}
+
 export function CourseList({
   courses,
   isAuthenticated,
   onSelectCourse,
   onPrebuiltLoaded,
+  onSelectCatalogCourse,
   onRequireSignIn,
 }: CourseListProps) {
-  const loadedPrebuiltIds = new Set(
-    courses.map((c) => c.prebuiltTestId).filter(Boolean),
-  );
-  const availablePrebuilt = prebuiltTests.filter(
-    (test) => !loadedPrebuiltIds.has(test.id),
-  );
-  const isEmpty = courses.length === 0 && availablePrebuilt.length === 0;
+  const [query, setQuery] = useState("");
 
-  if (isEmpty) {
+  const allEntries = useMemo(() => buildCourseListEntries(courses), [courses]);
+  const savedCourseIds = useMemo(
+    () => new Set(courses.map((course) => course.id)),
+    [courses],
+  );
+  const filteredEntries = useMemo(
+    () => filterCourseListEntries(allEntries, query),
+    [allEntries, query],
+  );
+
+  if (allEntries.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-stone-200 bg-white px-5 py-10 text-center">
         <p className="text-sm text-stone-500">
@@ -165,40 +162,46 @@ export function CourseList({
   }
 
   return (
-    <ul className="space-y-3">
-      {availablePrebuilt.map((test) => (
-        <PrebuiltCourseRow
-          key={test.id}
-          test={test}
-          canLoad={isAuthenticated && Boolean(onPrebuiltLoaded)}
-          onLoaded={onPrebuiltLoaded ?? (() => {})}
-          onRequireSignIn={onRequireSignIn}
+    <section className="space-y-4">
+      <label className="block">
+        <span className="sr-only">Search courses</span>
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search by subject or course…"
+          className="w-full rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-900 outline-none ring-honey-300 transition-shadow placeholder:text-stone-400 focus:ring-2"
         />
-      ))}
+      </label>
 
-      {courses.map((course) => {
-        const { syllabus } = course;
-        const sectionCount = syllabus.sections.length;
-        const topicCount = countTopics(syllabus);
-        const subtitle = [syllabus.courseCode, syllabus.term]
-          .filter(Boolean)
-          .join(" · ");
-        const university = course.university ?? syllabus.university;
-        const professor = course.professor ?? syllabus.professor;
-
-        return (
-          <li key={course.id}>
-            <CourseRow
-              title={syllabus.courseTitle}
-              subtitle={subtitle || undefined}
-              meta={`${sectionCount} sections · ${topicCount} topics`}
-              university={university}
-              professor={professor}
-              onClick={() => onSelectCourse(course.id)}
-            />
-          </li>
-        );
-      })}
-    </ul>
+      {filteredEntries.length === 0 ? (
+        <p className="rounded-2xl border border-dashed border-stone-200 bg-white px-5 py-8 text-center text-sm text-stone-500">
+          No courses match your search.
+        </p>
+      ) : (
+        <ul className="space-y-3">
+          {filteredEntries.map((entry) =>
+            entry.type === "prebuilt" ? (
+              <PrebuiltCourseRow
+                key={entry.test.id}
+                test={entry.test}
+                subject={entry.subject}
+                canLoad={isAuthenticated && Boolean(onPrebuiltLoaded)}
+                onLoaded={onPrebuiltLoaded ?? (() => {})}
+                onRequireSignIn={onRequireSignIn}
+              />
+            ) : (
+              <CourseListRow
+                key={entry.course.id}
+                entry={entry}
+                savedCourseIds={savedCourseIds}
+                onSelectCourse={onSelectCourse}
+                onSelectCatalogCourse={onSelectCatalogCourse}
+              />
+            ),
+          )}
+        </ul>
+      )}
+    </section>
   );
 }

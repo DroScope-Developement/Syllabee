@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
-import { itemsToLines } from "./extractPdfLines";
+import { itemsToLines } from "./pdfLineLayout";
 import { parseHandoutLines } from "./parseHandoutContent";
 
 async function loadPdfLinesFromFile(path: string) {

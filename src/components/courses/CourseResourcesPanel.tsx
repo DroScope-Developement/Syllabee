@@ -60,19 +60,25 @@ function ResourceCard({
 
 export function CourseResourcesPanel({ resources }: CourseResourcesPanelProps) {
   const { syllabus, textbook, coursePage } = resources;
+  const isPrebuilt = Boolean(textbook && coursePage);
 
   return (
     <section className="mb-8 rounded-2xl border border-honey-200/60 bg-gradient-to-b from-white to-honey-50/40 p-5">
       <p className="text-xs font-medium uppercase tracking-wider text-stone-400">
         Course materials
       </p>
-      <h2 className="mt-1 font-serif text-lg text-stone-900">Three-source test</h2>
+      <h2 className="mt-1 font-serif text-lg text-stone-900">
+        {isPrebuilt ? "Three-source test" : "Syllabus PDF"}
+      </h2>
       <p className="mt-1 text-sm text-stone-500">
-        This prebuilt course combines a syllabus PDF, textbook PDF, and the
-        Harvard course webpage.
+        {isPrebuilt
+          ? "This prebuilt course combines a syllabus PDF, textbook PDF, and the Harvard course webpage."
+          : "Open the original syllabus PDF used to build this outline."}
       </p>
 
-      <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+      <ul
+        className={`mt-4 grid gap-3 ${isPrebuilt ? "sm:grid-cols-3" : "sm:grid-cols-1"}`}
+      >
         <li>
           <ResourceCard
             badge="Syllabus"
@@ -82,29 +88,33 @@ export function CourseResourcesPanel({ resources }: CourseResourcesPanelProps) {
             href={syllabus.path}
           />
         </li>
-        <li>
-          <ResourceCard
-            badge="Textbook"
-            badgeClass="bg-indigo-50 text-indigo-800 ring-indigo-200"
-            title={textbook.title}
-            description={
-              textbook.pageCount
-                ? `${textbook.pageCount} pages · full course handouts compilation.`
-                : "Full course handouts compilation."
-            }
-            href={textbook.path}
-          />
-        </li>
-        <li>
-          <ResourceCard
-            badge="Webpage"
-            badgeClass="bg-emerald-50 text-emerald-800 ring-emerald-200"
-            title={coursePage.title}
-            description="Unit 00–35 structure, exams, and external links."
-            href={coursePage.url}
-            external
-          />
-        </li>
+        {textbook && (
+          <li>
+            <ResourceCard
+              badge="Textbook"
+              badgeClass="bg-indigo-50 text-indigo-800 ring-indigo-200"
+              title={textbook.title}
+              description={
+                textbook.pageCount
+                  ? `${textbook.pageCount} pages · full course handouts compilation.`
+                  : "Full course handouts compilation."
+              }
+              href={textbook.path}
+            />
+          </li>
+        )}
+        {coursePage && (
+          <li>
+            <ResourceCard
+              badge="Webpage"
+              badgeClass="bg-emerald-50 text-emerald-800 ring-emerald-200"
+              title={coursePage.title}
+              description="Unit 00–35 structure, exams, and external links."
+              href={coursePage.url}
+              external
+            />
+          </li>
+        )}
       </ul>
     </section>
   );

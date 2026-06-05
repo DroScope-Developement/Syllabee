@@ -6,6 +6,7 @@ export const math1aHarvardPrebuiltTest: PrebuiltTestDefinition = {
   title: "Math 1a Harvard",
   description:
     "Introduction to Calculus — syllabus, 337-page course text, and live course page structure.",
+  subject: "Calculus",
   syllabusPath: "/syllabus.pdf",
   syllabusFileName: "syllabus.pdf",
   textbook: {

@@ -10,7 +10,7 @@ export interface ProfessorInfo {
   photoUrl?: string;
 }
 
-export type SyllabusSource = "default" | "upload" | "example" | "prebuilt";
+export type SyllabusSource = "default" | "upload" | "example" | "prebuilt" | "catalog";
 
 export interface TextbookResource {
   title: string;
@@ -32,8 +32,8 @@ export interface SyllabusFileResource {
 
 export interface CourseResources {
   syllabus: SyllabusFileResource;
-  textbook: TextbookResource;
-  coursePage: CoursePageResource;
+  textbook?: TextbookResource;
+  coursePage?: CoursePageResource;
 }
 
 export interface Course {
@@ -43,6 +43,8 @@ export interface Course {
   fileName?: string;
   addedAt: number;
   prebuiltTestId?: string;
+  catalogId?: string;
+  catalogSubject?: string;
   resources?: CourseResources;
   university?: UniversityInfo;
   professor?: ProfessorInfo;
@@ -50,6 +52,11 @@ export interface Course {
 
 export function courseSourceLabel(course: Course): string | undefined {
   if (course.source === "prebuilt") return "Prebuilt test";
+  if (course.source === "catalog") {
+    return course.catalogSubject
+      ? `Syllabus library · ${course.catalogSubject}`
+      : "Syllabus library";
+  }
   if (course.source === "default") return undefined;
   if (course.source === "example") return "Example test syllabus";
   return course.fileName ? `Uploaded · ${course.fileName}` : "Uploaded syllabus";

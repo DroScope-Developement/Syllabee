@@ -1,4 +1,4 @@
-export type NavTab = "courses" | "explore" | "saved" | "profile";
+export type NavTab = "courses" | "profile";
 
 export interface NavItem {
   id: NavTab;
@@ -7,7 +7,5 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { id: "courses", label: "Courses" },
-  { id: "explore", label: "Explore" },
-  { id: "saved", label: "Saved" },
   { id: "profile", label: "Profile" },
 ];

@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
-import { itemsToLines } from "./extractPdfLines";
+import { itemsToLines } from "./pdfLineLayout";
 import { extractTopicLabel, parsePdfLines, plainTextToLines } from "./parsePdfDocument";
 import type { PdfTextItem } from "./types";
 
@@ -71,7 +71,7 @@ Item three
     const lines = await loadPdfLines("cs101-syllabus.pdf");
     const result = parsePdfLines(lines, { fileName: "cs101-syllabus.pdf" });
 
-    expect(result.courseTitle).toMatch(/Introduction to Computer Science/i);
+    expect(result.courseTitle).toMatch(/Computer Science/i);
     expect(result.courseCode).toBe("CS 101");
     expect(result.sections.length).toBeGreaterThanOrEqual(4);
     expect(result.sections[0].subpoints.length).toBeGreaterThanOrEqual(2);

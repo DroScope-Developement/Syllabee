@@ -12,6 +12,8 @@ export interface PrebuiltTestDefinition {
   id: string;
   title: string;
   description: string;
+  /** Subject folder / category for course list grouping. */
+  subject: string;
   syllabusPath: string;
   syllabusFileName: string;
   textbook: TextbookResource;

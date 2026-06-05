@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { CoursesView } from "./components/courses/CoursesView";
 import { AppShell } from "./components/layout/AppShell";
 import type { NavTab } from "./components/layout/navItems";
-import { PlaceholderView } from "./components/layout/PlaceholderView";
 import { ProfileView } from "./components/profile/ProfileView";
 import { useAuth } from "./context/AuthContext";
 import { fetchUserCourses, saveCourse } from "./services/coursesRepository";
@@ -27,7 +26,7 @@ function TabContent({
   selectedCourseId: string | null;
   isAuthenticated: boolean;
   onSelectCourse: (courseId: string | null) => void;
-  onCourseAdded: (course: Course) => Promise<void>;
+  onCourseAdded: (course: Course, options?: { save?: boolean }) => Promise<void>;
   onRequireSignIn: () => void;
 }) {
   switch (tab) {
@@ -44,29 +43,13 @@ function TabContent({
           onRequireSignIn={onRequireSignIn}
         />
       );
-    case "explore":
-      return (
-        <PlaceholderView
-          icon="explore"
-          title="Explore topics"
-          description="Search open-source resources across Wikipedia, Khan Academy, OpenStax, and more."
-        />
-      );
-    case "saved":
-      return (
-        <PlaceholderView
-          icon="saved"
-          title="Saved resources"
-          description="Bookmark summaries and articles to revisit while you study."
-        />
-      );
     case "profile":
       return <ProfileView />;
   }
 }
 
 export default function App() {
-  const { user, loading: authLoading, isConfigured } = useAuth();
+  const { user, isConfigured } = useAuth();
   const [activeTab, setActiveTab] = useState<NavTab>("courses");
   const [courses, setCourses] = useState<Course[]>([]);
   const [coursesLoading, setCoursesLoading] = useState(false);
@@ -120,8 +103,10 @@ export default function App() {
   }, []);
 
   const handleCourseAdded = useCallback(
-    async (course: Course) => {
-      if (!user) {
+    async (course: Course, options?: { save?: boolean }) => {
+      const shouldSave = options?.save ?? Boolean(user);
+
+      if (shouldSave && !user) {
         handleRequireSignIn();
         return;
       }
@@ -132,11 +117,17 @@ export default function App() {
       setCourses((prev) => {
         const withoutDuplicate = course.prebuiltTestId
           ? prev.filter((c) => c.prebuiltTestId !== course.prebuiltTestId)
-          : prev;
+          : course.catalogId
+            ? prev.filter((c) => c.catalogId !== course.catalogId)
+            : prev;
         return [normalizeCourseForDisplay(course), ...withoutDuplicate];
       });
       setSelectedCourseId(course.id);
       setSaveError(null);
+
+      if (!shouldSave) {
+        return;
+      }
 
       try {
         await saveCourse(normalizeCourseForDisplay(course));
@@ -154,13 +145,7 @@ export default function App() {
   const displayError = saveError ?? coursesError;
 
   return (
-    <AppShell
-      activeTab={activeTab}
-      onTabChange={handleTabChange}
-      userEmail={user?.email ?? null}
-      authLoading={authLoading}
-      onProfileClick={() => handleTabChange("profile")}
-    >
+    <AppShell activeTab={activeTab} onTabChange={handleTabChange}>
       {displayError && (
         <div className="mx-auto mb-4 max-w-3xl rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {displayError}

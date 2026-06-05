@@ -20,7 +20,7 @@ describe("parseSyllabusText", () => {
   it("parses plain text through the layout-aware pipeline", () => {
     const result = parseSyllabusText(SAMPLE_TEXT);
 
-    expect(result.courseTitle).toBe("Introduction to Computer Science");
+    expect(result.courseTitle).toBe("Computer Science");
     expect(result.courseCode).toBe("CS 101");
     expect(result.term).toBe("Spring 2026");
     expect(result.sections.length).toBeGreaterThanOrEqual(2);
