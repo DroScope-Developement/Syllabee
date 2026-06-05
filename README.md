@@ -35,6 +35,28 @@ The outline viewer lives in `src/components/syllabus/`:
 - Mock summaries: `src/data/mockTopicSummaries.ts`
 - **Fetch layer:** `src/services/topicSummaries.ts` — replace the mock lookup inside `fetchTopicSummaries()` with live API calls when ready.
 
+### Prebuilt test (Math 1a Harvard)
+
+The app ships with a three-source prebuilt test on the **Courses** tab:
+
+| Source | File / URL |
+|--------|------------|
+| Syllabus | `public/cs101-syllabus.pdf` |
+| Textbook | `public/1a_2024.pdf` (337-page course compilation) |
+| Webpage | [Math 1a Spring 2024](https://people.math.harvard.edu/~knill/teaching/math1a2024/) |
+
+1. Open **Courses** → **Load test course**
+2. Tap the course to see the **Three-source test** materials panel and Unit 00–35 outline
+
+- Config: `src/data/prebuilt/prebuiltTests.ts`
+- Webpage snapshot: `src/data/prebuilt/math1aHarvardWebpage.ts`
+- Loader: `src/services/loadPrebuiltTest.ts`
+
+### Manual upload
+
+Use **Add course** to upload any PDF or JSON syllabus.
+- Unit tests: `npm test` (validates the example fixture and error cases)
+
 ## Scripts
 
 | Command | Description |
@@ -42,3 +64,4 @@ The outline viewer lives in `src/components/syllabus/`:
 | `npm run dev` | Start Vite dev server |
 | `npm run build` | Production build |
 | `npm run preview` | Preview production build |
+| `npm test` | Run syllabus parser unit tests |

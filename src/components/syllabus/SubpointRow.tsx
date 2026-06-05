@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useId, useState } from "react";
-import type { SyllabusSubpoint, TopicSummary } from "../../types/syllabus";
+import type { HandoutKind, UnitHandoutContent } from "../../lib/pdf/parseHandoutContent";
+import { loadUnitHandout, peekUnitHandout } from "../../services/loadUnitHandout";
 import { fetchTopicSummaries } from "../../services/topicSummaries";
+import type { SyllabusSubpoint, TopicSummary } from "../../types/syllabus";
 import { TopicSummaryPanel } from "./TopicSummaryPanel";
+import { UnitHandoutPanel } from "./UnitHandoutPanel";
 
 interface SubpointRowProps {
   subpoint: SyllabusSubpoint;
@@ -33,11 +36,17 @@ export function SubpointRow({
 }: SubpointRowProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const [summaries, setSummaries] = useState<TopicSummary[]>([]);
+  const [handout, setHandout] = useState<UnitHandoutContent | null>(() =>
+    subpoint.resource
+      ? peekUnitHandout(subpoint.resource.fetchPath) ?? null
+      : null,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [hasFetched, setHasFetched] = useState(false);
+  const [hasFetched, setHasFetched] = useState(Boolean(handout));
   const panelId = useId();
   const hasChildren = (subpoint.children?.length ?? 0) > 0;
+  const hasResource = Boolean(subpoint.resource);
 
   const loadSummaries = useCallback(async () => {
     setIsLoading(true);
@@ -53,15 +62,37 @@ export function SubpointRow({
     }
   }, [subpoint.title]);
 
+  const loadHandout = useCallback(async () => {
+    if (!subpoint.resource) return;
+    setIsLoading(true);
+    setError(null);
+    try {
+      const content = await loadUnitHandout(
+        subpoint.resource.fetchPath,
+        subpoint.resource.kind,
+      );
+      setHandout(content);
+      setHasFetched(true);
+    } catch {
+      setError("Could not load this handout. Try opening the PDF directly.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, [subpoint.resource]);
+
   useEffect(() => {
-    if (expanded && !hasFetched && !hasChildren) {
+    if (!expanded || hasFetched || hasChildren) return;
+    if (hasResource) {
+      void loadHandout();
+    } else {
       void loadSummaries();
     }
-  }, [expanded, hasFetched, hasChildren, loadSummaries]);
+  }, [expanded, hasFetched, hasChildren, hasResource, loadHandout, loadSummaries]);
 
   const toggle = () => setExpanded((prev) => !prev);
 
   const paddingLeft = depth === 0 ? "pl-4" : depth === 1 ? "pl-8" : "pl-12";
+  const resourceKind: HandoutKind = subpoint.resource?.kind ?? "lecture";
 
   return (
     <li className="list-none">
@@ -90,7 +121,18 @@ export function SubpointRow({
         style={{ gridTemplateRows: expanded ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">
-          {!hasChildren && (
+          {!hasChildren && hasResource && (
+            <div className={`pb-2 ${paddingLeft} pr-3`}>
+              <UnitHandoutPanel
+                content={handout}
+                kind={resourceKind}
+                isLoading={isLoading}
+                error={error}
+              />
+            </div>
+          )}
+
+          {!hasChildren && !hasResource && (
             <div className={`pb-2 ${paddingLeft} pr-3`}>
               <TopicSummaryPanel
                 topic={subpoint.title}

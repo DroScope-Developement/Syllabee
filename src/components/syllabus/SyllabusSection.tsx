@@ -8,6 +8,12 @@ interface SyllabusSectionProps {
   defaultExpanded?: boolean;
 }
 
+function sectionUnitLabel(section: SyllabusSectionData, index: number): string {
+  const match = section.id.match(/unit-(\d+)/i);
+  if (match) return String(parseInt(match[1], 10));
+  return String(index + 1);
+}
+
 export function SyllabusSection({
   section,
   index,
@@ -15,6 +21,7 @@ export function SyllabusSection({
 }: SyllabusSectionProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const contentId = useId();
+  const unitLabel = sectionUnitLabel(section, index);
 
   return (
     <section className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-sm">
@@ -26,13 +33,15 @@ export function SyllabusSection({
         className="flex w-full items-start gap-4 px-5 py-4 text-left transition-colors hover:bg-honey-50/40"
       >
         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-honey-100 text-sm font-bold text-honey-800">
-          {index + 1}
+          {unitLabel}
         </span>
 
         <div className="min-w-0 flex-1">
           <h3 className="font-serif text-lg text-stone-900">{section.title}</h3>
-          {section.description && (
-            <p className="mt-0.5 text-sm text-stone-500">{section.description}</p>
+          {!expanded && section.description && (
+            <p className="mt-0.5 line-clamp-2 text-sm leading-relaxed text-stone-500">
+              {section.description}
+            </p>
           )}
         </div>
 
@@ -58,8 +67,17 @@ export function SyllabusSection({
         id={contentId}
         className="grid border-t border-stone-100 transition-[grid-template-rows] duration-300 ease-out"
         style={{ gridTemplateRows: expanded ? "1fr" : "0fr" }}
+        aria-hidden={!expanded}
       >
         <div className="overflow-hidden">
+          {section.description && (
+            <div className="border-b border-stone-100 px-5 py-4">
+              <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-stone-500">
+                {section.description}
+              </p>
+            </div>
+          )}
+
           <ul className="space-y-0.5 px-2 py-3">
             {section.subpoints.map((subpoint) => (
               <SubpointRow key={subpoint.id} subpoint={subpoint} />

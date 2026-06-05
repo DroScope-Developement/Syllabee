@@ -3,15 +3,30 @@ import { SyllabusSection } from "./SyllabusSection";
 
 interface SyllabusOutlineProps {
   data: SyllabusOutlineData;
+  /** Shown when syllabus was loaded via upload or example fixture. */
+  sourceLabel?: string;
+  /** Prebuilt courses show parsed lecture/worksheet content instead of open-source links. */
+  showHandoutContent?: boolean;
 }
 
-export function SyllabusOutline({ data }: SyllabusOutlineProps) {
+export function SyllabusOutline({
+  data,
+  sourceLabel,
+  showHandoutContent = false,
+}: SyllabusOutlineProps) {
   return (
     <div className="mx-auto w-full max-w-3xl">
       <header className="mb-8">
-        <p className="mb-1 text-sm font-medium uppercase tracking-widest text-honey-600">
-          Course outline
-        </p>
+        <div className="mb-1 flex flex-wrap items-center gap-2">
+          <p className="text-sm font-medium uppercase tracking-widest text-honey-600">
+            Course outline
+          </p>
+          {sourceLabel && (
+            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-emerald-200 ring-inset">
+              {sourceLabel}
+            </span>
+          )}
+        </div>
         <h1 className="font-serif text-3xl text-stone-900 sm:text-4xl">
           {data.courseTitle}
         </h1>
@@ -21,8 +36,9 @@ export function SyllabusOutline({ data }: SyllabusOutlineProps) {
           </p>
         )}
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-stone-500">
-          Expand any section or topic to explore summaries from Wikipedia, Khan
-          Academy, OpenStax, and MIT OpenCourseWare.
+          {showHandoutContent
+            ? "Expand a unit to read parsed lecture notes, practice problems, and key topics from each handout."
+            : "Expand any section or topic to explore summaries from Wikipedia, Khan Academy, OpenStax, and MIT OpenCourseWare."}
         </p>
       </header>
 
@@ -32,7 +48,7 @@ export function SyllabusOutline({ data }: SyllabusOutlineProps) {
             key={section.id}
             section={section}
             index={index}
-            defaultExpanded={index === 0}
+            defaultExpanded={false}
           />
         ))}
       </div>

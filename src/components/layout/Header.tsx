@@ -1,8 +1,20 @@
 interface HeaderProps {
   title?: string;
+  userEmail?: string | null;
+  authLoading?: boolean;
+  onProfileClick?: () => void;
 }
 
-export function Header({ title = "Syllabee" }: HeaderProps) {
+export function Header({
+  title = "Syllabee",
+  userEmail,
+  authLoading,
+  onProfileClick,
+}: HeaderProps) {
+  const initials = userEmail
+    ? userEmail.slice(0, 2).toUpperCase()
+    : null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200/80 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4 sm:px-6">
@@ -33,26 +45,26 @@ export function Header({ title = "Syllabee" }: HeaderProps) {
           </div>
         </div>
 
-        <button
-          type="button"
-          aria-label="Notifications"
-          className="flex h-9 w-9 items-center justify-center rounded-full text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700"
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.75}
-            aria-hidden
+        {authLoading ? (
+          <div className="h-9 w-9 animate-pulse rounded-full bg-stone-100" />
+        ) : userEmail && initials ? (
+          <button
+            type="button"
+            onClick={onProfileClick}
+            aria-label="Open profile"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-honey-100 text-xs font-bold text-honey-800 transition-colors hover:bg-honey-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-            />
-          </svg>
-        </button>
+            {initials}
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={onProfileClick}
+            className="rounded-lg px-3 py-1.5 text-sm font-medium text-honey-800 transition-colors hover:bg-honey-50"
+          >
+            Sign in
+          </button>
+        )}
       </div>
     </header>
   );

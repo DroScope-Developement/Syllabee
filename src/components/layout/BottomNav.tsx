@@ -10,12 +10,6 @@ function NavIcon({ tab, active }: { tab: NavTab; active: boolean }) {
   const className = `h-5 w-5 ${active ? "text-honey-700" : "text-stone-400"}`;
 
   switch (tab) {
-    case "outline":
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={active ? 2.25 : 1.75} aria-hidden>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6" />
-        </svg>
-      );
     case "courses":
       return (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={active ? 2.25 : 1.75} aria-hidden>

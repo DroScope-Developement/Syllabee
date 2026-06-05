@@ -4,6 +4,12 @@ export interface SyllabusSubpoint {
   title: string;
   /** Optional nested subtopics for deeper outlines. */
   children?: SyllabusSubpoint[];
+  /** Linked PDF handout for prebuilt courses (lecture / worksheet). */
+  resource?: {
+    fetchPath: string;
+    sourceUrl: string;
+    kind: "lecture" | "worksheet";
+  };
 }
 
 /** A top-level syllabus section (e.g. "Unit 1: Limits"). */
@@ -19,6 +25,14 @@ export interface SyllabusOutlineData {
   courseTitle: string;
   courseCode?: string;
   term?: string;
+  university?: {
+    name: string;
+    logoUrl?: string;
+  };
+  professor?: {
+    name: string;
+    photoUrl?: string;
+  };
   sections: SyllabusSection[];
 }
 
