@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-05T01:45:40.811819+00:00",
+  "generatedAt": "2026-06-05T01:47:01.479586+00:00",
   "stats": {
     "majors": 10,
     "courses": 74,
@@ -2264,7 +2264,7 @@
           "title": "Models, Data and Inference for Socio-Technical Systems",
           "institution": "MIT",
           "term": "Spring 2007",
-          "file": "/syllabi/data-mining/.pdf_8f193f7b.pdf",
+          "file": "/syllabi/data-mining/data-mining-1761.pdf",
           "source": "https://ocw.mit.edu/courses/esd-86-models-data-and-inference-for-socio-technical-systems-spring-2007/pages/syllabus/"
         }
       ]
@@ -2946,7 +2946,7 @@
           "title": "Biochemistry Laboratory",
           "institution": "MIT",
           "term": "Spring 2009",
-          "file": "/syllabi/biochemistry/.pdf_b0af8844.pdf",
+          "file": "/syllabi/biochemistry/biochemistry-1588.pdf",
           "source": "https://ocw.mit.edu/courses/5-36-biochemistry-laboratory-spring-2009/pages/syllabus/"
         },
         {
@@ -2977,7 +2977,7 @@
           "title": "Introductory Biology",
           "institution": "MIT",
           "term": "Fall 2018",
-          "file": "/syllabi/general-biology-1/.pdf_9993b06a.pdf",
+          "file": "/syllabi/general-biology-1/general-biology-1-1695.pdf",
           "source": "https://ocw.mit.edu/courses/7-016-introductory-biology-fall-2018/pages/syllabus/"
         }
       ]

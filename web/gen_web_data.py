@@ -232,9 +232,10 @@ def attach_syllabi(courses: dict) -> tuple[int, int, int]:
 
         src_name = Path(row["file_path"]).name
         # Some PDFs come from URLs ending in "/syllabus/" and land on disk with an
-        # empty stem (".pdf"). Those are hidden dot-files that static hosts may not
-        # serve, so give them a real, servable filename derived from the course.
-        if Path(src_name).suffix == "":
+        # empty stem (".pdf" or a deduped ".pdf_<hash>.pdf"). Those are hidden
+        # dot-files that static hosts may not serve, so give them a real, servable
+        # filename derived from the course.
+        if Path(src_name).suffix == "" or src_name.startswith("."):
             src_name = f"{course_slug}-{row['syllabus_id']}.pdf"
         basename = safe_segment(src_name)
         # de-dupe identical filenames within a course folder
