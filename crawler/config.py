@@ -51,6 +51,33 @@ DEFAULT_SEED_URLS: list[str] = [
     "https://www.weber.edu/academic-affairs/syllabus-checklist.html",
 ]
 
+# Top-university and aggregator index pages (used by university-seeds source)
+UNIVERSITY_SEED_URLS: list[str] = [
+    *DEFAULT_SEED_URLS,
+    "https://ocw.mit.edu/courses/",
+    "https://cs50.harvard.edu/x/syllabus/",
+    "https://pll.harvard.edu/catalog",
+    "https://online.stanford.edu/free-courses",
+    "https://www.openculture.com/freeonlinecourses",
+    "https://academicearth.org/",
+    "https://teaching.cornell.edu/resource/course-design/syllabus-design/",
+]
+
+# Site-specific search filters for university discovery (DDG site: operator)
+UNIVERSITY_SITE_QUERIES: list[tuple[str, str]] = [
+    ("site:ocw.mit.edu", "mit_ocw"),
+    ("site:cs50.harvard.edu", "harvard_cs50"),
+    ("site:pll.harvard.edu", "harvard_pll"),
+    ("site:online.stanford.edu", "stanford"),
+    ("site:berkeley.edu", "berkeley"),
+    ("site:cmu.edu", "cmu"),
+    ("site:openculture.com", "openculture"),
+    ("site:academicearth.org", "academicearth"),
+]
+
+# Default university sources for gap-fill (comma-separated names in CLI)
+DEFAULT_UNIVERSITY_SOURCES: tuple[str, ...] = ("mit-ocw", "university-search")
+
 # URL path / query hints for syllabus PDFs
 SYLLABUS_URL_HINTS: tuple[str, ...] = (
     "syllabus",

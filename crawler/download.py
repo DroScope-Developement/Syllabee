@@ -21,6 +21,7 @@ from crawler.config import (
     USER_AGENT,
 )
 from crawler.db.catalog import Catalog
+from crawler.html_pdf import html_to_pdf_bytes
 from crawler.metadata import extract_pdf_metadata
 from crawler.models import PdfCandidate
 from crawler.paths import course_storage_dir, unclassified_dir
@@ -172,10 +173,19 @@ class SyllabusDownloader:
         time.sleep(self.delay_sec)
 
         try:
-            with self.client.stream("GET", url) as resp:
+            if candidate.content_type == "html":
+                resp = self.client.get(url, follow_redirects=True)
                 resp.raise_for_status()
-                headers = resp.headers
-                data = resp.read()
+                headers = httpx.Headers({"content-type": "text/html"})
+                data = html_to_pdf_bytes(
+                    resp.text,
+                    title=candidate.link_text,
+                )
+            else:
+                with self.client.stream("GET", url) as resp:
+                    resp.raise_for_status()
+                    headers = resp.headers
+                    data = resp.read()
         except Exception:
             self.catalog.upsert_syllabus(
                 source_url=url,
@@ -217,6 +227,9 @@ class SyllabusDownloader:
             return DownloadResult(url, "skipped", reason="duplicate_hash")
 
         filename = _filename_from_headers(url, headers)
+        if candidate.content_type == "html" and not filename.lower().endswith(".pdf"):
+            stem = Path(filename).stem or "syllabus"
+            filename = _safe_filename(f"{stem}.pdf")
         pdf_meta = extract_pdf_metadata(data)
         classification = classify_syllabus(
             url=url,

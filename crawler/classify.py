@@ -45,8 +45,8 @@ def _blob_variants(text: str) -> tuple[str, str]:
     return lower, compact
 
 
-def _keyword_matches(keyword: str, lower: str, compact: str) -> bool:
-    kw = keyword.lower().strip()
+def _keyword_matches(keyword: str | int | float, lower: str, compact: str) -> bool:
+    kw = str(keyword).lower().strip()
     if not kw:
         return False
     kw_compact = re.sub(r"[^a-z0-9]", "", kw)

@@ -22,6 +22,7 @@ from crawler.config import (
     DEFAULT_OUTPUT_DIR,
     DEFAULT_SEARCH_QUERIES,
     DEFAULT_SEED_URLS,
+    DEFAULT_UNIVERSITY_SOURCES,
     USER_AGENT,
 )
 from crawler.curriculum_loader import load_seed_data
@@ -32,6 +33,7 @@ from crawler.queue import fill_curriculum_gaps
 from crawler.log import PhaseTimer, vprint
 from crawler.models import PdfCandidate
 from crawler.reorganize import reorganize_sylabi
+from crawler.sources.registry import discover_university_wide, list_source_names
 
 
 def _load_lines(path: Path | None) -> list[str]:
@@ -97,6 +99,20 @@ def main() -> int:
     parser.add_argument("--delay", type=float, default=1.0)
     parser.add_argument("--ignore-robots", action="store_true")
     parser.add_argument("--no-init-data", action="store_true")
+    parser.add_argument(
+        "--sources",
+        type=str,
+        default=",".join(DEFAULT_UNIVERSITY_SOURCES),
+        help=(
+            "Comma-separated university sources for gap-fill "
+            f"({', '.join(list_source_names())}). Use 'none' to disable."
+        ),
+    )
+    parser.add_argument(
+        "--no-university-sources",
+        action="store_true",
+        help="Skip MIT OCW / university search during gap fill",
+    )
     parser.add_argument("--quiet", action="store_true")
     parser.add_argument(
         "--reorganize-first",
@@ -107,6 +123,12 @@ def main() -> int:
     args = parser.parse_args()
     verbose = not args.quiet
     max_per_course = args.max_per_course if args.max_per_course > 0 else None
+    if args.no_university_sources or args.sources.strip().lower() == "none":
+        university_sources: list[str] | None = None
+        use_university_sources = False
+    else:
+        university_sources = [s.strip() for s in args.sources.split(",") if s.strip()]
+        use_university_sources = True
 
     print("SyllaBee syllabus crawler")
     print(f"PDF root:  {args.output_dir.resolve()}")
@@ -183,6 +205,13 @@ def main() -> int:
                             candidates |= found
                         _record_pages(catalog, fetched_pages)
 
+                    with PhaseTimer("University index crawl", verbose=verbose):
+                        candidates |= discover_university_wide(
+                            client,
+                            source_names=["university-seeds"],
+                            verbose=verbose,
+                        )
+
                     vprint(f"\nBroad discovery: {len(candidates)} candidates", verbose=verbose)
                     for candidate in sorted(candidates, key=lambda c: c.url):
                         if args.max_downloads is not None and ok >= args.max_downloads:
@@ -204,6 +233,8 @@ def main() -> int:
                         client,
                         max_per_course=max_per_course,
                         max_results_per_query=args.max_results_per_query,
+                        university_sources=university_sources,
+                        use_university_sources=use_university_sources,
                         verbose=verbose,
                     )
                     ok += gap_stats.get("saved", 0)

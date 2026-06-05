@@ -78,7 +78,20 @@ python syllabee.py overlap computer-science data-science
 ```bash
 python crawl_syllabi.py --ignore-robots
 python crawl_syllabi.py --max-downloads 50 --ignore-robots
+python crawl_syllabi.py --broad-discovery --ignore-robots   # + university index seeds
+python crawl_syllabi.py --sources mit-ocw,university-search --ignore-robots
+python crawl_syllabi.py --no-university-sources --ignore-robots  # DuckDuckGo only
 ```
+
+**University sources** (enabled by default during gap-fill):
+
+| Source | What it does |
+|--------|----------------|
+| `mit-ocw` | MIT Learn API (2,500+ OCW courses) → syllabus pages; HTML syllabi saved as PDF |
+| `university-search` | Site-specific search on ocw.mit.edu, cs50.harvard.edu, pll.harvard.edu, Stanford, Berkeley, OpenCulture, Academic Earth |
+| `university-seeds` | Shallow crawl of university syllabus index pages (used with `--broad-discovery`) |
+
+MIT OCW course catalog is cached at `data/mit_ocw_courses.json` for one week.
 
 PDFs are stored as:
 

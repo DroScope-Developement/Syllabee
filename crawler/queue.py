@@ -5,12 +5,14 @@ import sqlite3
 from crawler.config import (
     DEFAULT_MAX_DOWNLOAD_ATTEMPTS,
     DEFAULT_MIN_QUEUE_BEFORE_SEARCH,
+    DEFAULT_UNIVERSITY_SOURCES,
 )
 from crawler.db.catalog import Catalog
 from crawler.discover import discover_via_duckduckgo
 from crawler.download import SyllabusDownloader
 from crawler.log import vprint
-from crawler.models import PdfCandidate
+from crawler.models import PdfCandidate, infer_content_type
+from crawler.sources.registry import discover_for_course
 
 
 def _queries_for_course(course: sqlite3.Row) -> list[str]:
@@ -117,6 +119,7 @@ def process_course_queue(
                 link_text=row["link_text"],
                 target_course_id=course_id,
                 queue_id=queue_id,
+                content_type=infer_content_type(url, row["discovery_source"]),
             )
             result = downloader.download_candidate(candidate)
             if result.status == "ok":
@@ -140,12 +143,25 @@ def discover_and_enqueue(
     client,
     *,
     max_results_per_query: int = 25,
+    university_sources: list[str] | None = None,
+    use_university_sources: bool = True,
     verbose: bool = True,
 ) -> int:
-    """Search and add new candidates to the per-course queue."""
+    """Search university sources and DuckDuckGo; add candidates to the per-course queue."""
     course_id = int(course["id"])
+    found: set[PdfCandidate] = set()
+
+    if use_university_sources:
+        vprint("       university sources...", verbose=verbose)
+        found |= discover_for_course(
+            course,
+            client,
+            source_names=university_sources or list(DEFAULT_UNIVERSITY_SOURCES),
+            verbose=verbose,
+        )
+
     queries = _queries_for_course(course)
-    found = discover_via_duckduckgo(
+    found |= discover_via_duckduckgo(
         queries,
         max_results_per_query=max_results_per_query,
         client=client,
@@ -170,6 +186,8 @@ def fill_curriculum_gaps(
     max_results_per_query: int = 25,
     max_attempts: int = DEFAULT_MAX_DOWNLOAD_ATTEMPTS,
     min_queue_before_search: int = DEFAULT_MIN_QUEUE_BEFORE_SEARCH,
+    university_sources: list[str] | None = None,
+    use_university_sources: bool = True,
     verbose: bool = True,
 ) -> dict[str, int]:
     """
@@ -261,6 +279,8 @@ def fill_curriculum_gaps(
                 course,
                 client,
                 max_results_per_query=max_results_per_query,
+                university_sources=university_sources,
+                use_university_sources=use_university_sources,
                 verbose=verbose,
             )
             totals["queued_new"] += added

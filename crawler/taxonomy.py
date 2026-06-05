@@ -43,7 +43,7 @@ def load_merged_taxonomy(
             by_slug[slug] = {
                 "slug": slug,
                 "name": row["name"],
-                "codes": [code] if code else [],
+                "codes": [str(code)] if code else [],
                 "keywords": _auto_keywords(slug, row["name"], code),
             }
 
@@ -55,14 +55,15 @@ def load_merged_taxonomy(
                 by_slug[slug] = {
                     "slug": slug,
                     "name": row["name"],
-                    "codes": list(row.get("codes") or []),
+                    "codes": [str(c) for c in (row.get("codes") or [])],
                     "keywords": list(row.get("keywords") or []),
                 }
             else:
                 entry = by_slug[slug]
                 for code in row.get("codes") or []:
-                    if code not in entry["codes"]:
-                        entry["codes"].append(code)
+                    code_str = str(code)
+                    if code_str not in entry["codes"]:
+                        entry["codes"].append(code_str)
                 for kw in row.get("keywords") or []:
                     if kw.lower() not in {k.lower() for k in entry["keywords"]}:
                         entry["keywords"].append(kw)

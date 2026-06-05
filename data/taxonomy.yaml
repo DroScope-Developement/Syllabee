@@ -21,20 +21,30 @@ courses:
     codes: [CHEM 301, BCHM, BIOC]
     keywords: [biochemistry, biochem]
 
-  - slug: intro-programming
-    name: Introduction to Programming
-    codes: [CS 101, CS101, COP 3503, COMP 110]
-    keywords: [intro to programming, introduction to programming, programming fundamentals, cs1]
+  - slug: algorithms
+    name: Algorithms
+    codes: [CS 301, CS301, CSE 331, 6.006, 6.046]
+    keywords: [algorithms, analysis of algorithms, introduction to algorithms]
 
   - slug: data-structures
     name: Data Structures
-    codes: [CS 201, CS201, CS 202]
+    codes: [CS 201, CS201, CS 202, 6.006]
     keywords: [data structures, data structure]
 
-  - slug: algorithms
-    name: Algorithms
-    codes: [CS 301, CS301, CSE 331]
-    keywords: [algorithms, analysis of algorithms]
+  - slug: intro-programming
+    name: Introduction to Programming
+    codes: [CS 101, CS101, COP 3503, COMP 110, CS 50, CS50]
+    keywords: [intro to programming, introduction to programming, programming fundamentals, cs1, cs50]
+
+  - slug: linear-algebra
+    name: Linear Algebra
+    codes: [MATH 220, 18.06]
+    keywords: [linear algebra]
+
+  - slug: machine-learning
+    name: Machine Learning
+    codes: [CS 410, 6.036, 6.867]
+    keywords: [machine learning, ml course]
 
   - slug: computer-architecture
     name: Computer Architecture
@@ -61,11 +71,6 @@ courses:
     codes: [MATH 205, MATH205]
     keywords: [discrete math, discrete mathematics]
 
-  - slug: linear-algebra
-    name: Linear Algebra
-    codes: [MATH 220]
-    keywords: [linear algebra]
-
   - slug: digital-logic
     name: Digital Logic Design
     codes: [CE 210]
@@ -75,11 +80,6 @@ courses:
     name: Embedded Systems
     codes: [CE 320]
     keywords: [embedded systems, embedded system]
-
-  - slug: machine-learning
-    name: Machine Learning
-    codes: [CS 410, CS410]
-    keywords: [machine learning, ml course]
 
   - slug: microeconomics
     name: Microeconomics

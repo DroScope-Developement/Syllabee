@@ -1,3 +1,9 @@
 # Add university syllabus index pages (one URL per line)
 https://www.cmu.edu/teaching/designteach/syllabus/samples/index.html
 https://teaching.cornell.edu/resource/course-design/syllabus-design/
+https://ocw.mit.edu/courses/
+https://cs50.harvard.edu/x/syllabus/
+https://pll.harvard.edu/catalog
+https://online.stanford.edu/free-courses
+https://www.openculture.com/freeonlinecourses
+https://academicearth.org/
