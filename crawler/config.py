@@ -16,6 +16,12 @@ DEFAULT_COURSES_PATH = DEFAULT_DATA_DIR / "courses.yaml"
 # Loose PDFs that could not be matched still get a small bucket (not 10 slots blocking real courses)
 DEFAULT_MAX_UNCLASSIFIED = 15
 
+# Per-course URL queue: retry failed downloads up to this many times
+DEFAULT_MAX_DOWNLOAD_ATTEMPTS = 3
+
+# Only run new DuckDuckGo search when pending queue for a course drops below this
+DEFAULT_MIN_QUEUE_BEFORE_SEARCH = 1
+
 # Polite crawling defaults
 DEFAULT_REQUEST_DELAY_SEC = 1.0
 DEFAULT_TIMEOUT_SEC = 30.0

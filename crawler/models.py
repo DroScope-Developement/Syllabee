@@ -9,3 +9,5 @@ class PdfCandidate:
     discovery_source: str = "search"
     referrer_url: str | None = None
     link_text: str | None = None
+    target_course_id: int | None = None
+    queue_id: int | None = None

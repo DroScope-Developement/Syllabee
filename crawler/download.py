@@ -121,17 +121,25 @@ class SyllabusDownloader:
         url = candidate.url
         domain = _domain_from_url(url)
         self.catalog.touch_domain(domain, pdfs_found_delta=1)
+        target_id = candidate.target_course_id
+        queue_id = candidate.queue_id
+        target_course = None
+        if target_id is not None:
+            target_course = self.catalog.get_course_by_id(target_id)
 
-        if self.catalog.has_syllabus_url(url):
-            self._log_result(url, "skipped", "already saved")
-            return DownloadResult(url, "skipped", reason="duplicate_url")
-
-        if self.catalog.has_attempted_url(url):
-            self._log_result(url, "skipped", "already attempted")
-            return DownloadResult(url, "skipped", reason="already_attempted")
+        if target_id is None:
+            if self.catalog.has_syllabus_url(url):
+                self._log_result(url, "skipped", "already saved")
+                return DownloadResult(url, "skipped", reason="duplicate_url")
+            if self.catalog.has_attempted_url(url):
+                self._log_result(url, "skipped", "already attempted")
+                return DownloadResult(url, "skipped", reason="already_attempted")
+        elif self.catalog.has_syllabus_url(url):
+            return self._fulfill_queue_from_ok(url, candidate, target_id, queue_id)
 
         if self.respect_robots and not self.robots.allowed(url):
             self._record_skip(url, candidate, reason="robots_txt")
+            self._mark_queue(queue_id, "skipped", "robots_txt")
             self._log_result(url, "skipped", "robots.txt")
             return DownloadResult(url, "skipped", reason="robots_txt")
 
@@ -142,14 +150,23 @@ class SyllabusDownloader:
             taxonomy_path=self.taxonomy_path,
             courses_path=self.courses_path,
         )
-        if self._at_course_cap(preview.course_slug):
+
+        if target_id is not None:
+            if self._at_target_cap(target_id):
+                self._mark_queue(queue_id, "skipped", "course_full")
+                self._log_result(url, "skipped", "target course full")
+                return DownloadResult(url, "skipped", reason="course_cap")
+        elif self._at_course_cap(preview.course_slug):
             self._record_skip(url, candidate, reason="course_cap")
             label = preview.course_name or "_unclassified"
             self._log_result(url, "skipped", f"cap reached for {label}")
             return DownloadResult(url, "skipped", reason=f"course_cap:{label}")
 
         if self.verbose:
-            label = preview.course_name or "unclassified"
+            if target_course:
+                label = target_course["name"]
+            else:
+                label = preview.course_name or "unclassified"
             vprint(f"  GET [{label}] {url}", verbose=True)
 
         time.sleep(self.delay_sec)
@@ -167,6 +184,7 @@ class SyllabusDownloader:
                 referrer_url=candidate.referrer_url,
                 crawl_session_id=self.crawl_session_id,
             )
+            self._mark_queue(queue_id, "failed", "http_error", increment_attempt=True)
             self._log_result(url, "failed", "HTTP error")
             return DownloadResult(url, "failed")
 
@@ -179,6 +197,7 @@ class SyllabusDownloader:
                     referrer_url=candidate.referrer_url,
                     crawl_session_id=self.crawl_session_id,
                 )
+                self._mark_queue(queue_id, "failed", "not_pdf", increment_attempt=True)
                 self._log_result(url, "failed", "not a PDF")
                 return DownloadResult(url, "failed", reason="not_pdf")
 
@@ -193,6 +212,7 @@ class SyllabusDownloader:
                 referrer_url=candidate.referrer_url,
                 crawl_session_id=self.crawl_session_id,
             )
+            self._mark_queue(queue_id, "skipped", "duplicate_hash")
             self._log_result(url, "skipped", "duplicate file hash")
             return DownloadResult(url, "skipped", reason="duplicate_hash")
 
@@ -208,14 +228,21 @@ class SyllabusDownloader:
             courses_path=self.courses_path,
         )
 
-        storage_dir = self._resolve_storage_dir(classification)
+        if target_course:
+            storage_dir = course_storage_dir(self.output_dir, target_course["name"])
+        else:
+            storage_dir = self._resolve_storage_dir(classification)
         storage_dir.mkdir(parents=True, exist_ok=True)
         path = _unique_path(storage_dir, filename, sha)
         path.write_bytes(data)
 
         rel_path = str(path.relative_to(self.output_dir))
-        course_id = self._resolve_course_ids(classification)
-        primary_course_id = course_id[0] if course_id else None
+        course_ids = self._resolve_course_ids(classification)
+        if target_id is not None and target_id not in course_ids:
+            course_ids = [target_id, *course_ids]
+        elif target_id is not None:
+            course_ids = [target_id] + [c for c in course_ids if c != target_id]
+        primary_course_id = course_ids[0] if course_ids else None
 
         release_date = pdf_meta.release_date
         term_label = classification.term_label or extract_term_from_classification(
@@ -245,17 +272,23 @@ class SyllabusDownloader:
             },
         )
 
-        if course_id:
+        if course_ids:
             self.catalog.link_syllabus_courses(
                 syllabus_id,
-                course_id,
+                course_ids,
                 confidence=classification.confidence,
                 match_reason=classification.match_reason,
             )
 
         self.catalog.touch_domain(domain, pdfs_downloaded_delta=1)
-        self._record_session_ok(classification.course_slug)
-        course_name = classification.course_name or "_unclassified"
+        if target_id is not None:
+            if target_course:
+                self._record_session_ok(target_course["slug"])
+            self._mark_queue(queue_id, "fulfilled", syllabus_id=syllabus_id)
+            course_name = target_course["name"] if target_course else "course"
+        else:
+            self._record_session_ok(classification.course_slug)
+            course_name = classification.course_name or "_unclassified"
         self._log_result(url, "saved", f"{course_name} -> {rel_path}")
         return DownloadResult(url, "ok", file_path=rel_path, course_name=course_name)
 
@@ -264,6 +297,52 @@ class SyllabusDownloader:
             return
         short = url if len(url) <= 70 else url[:67] + "..."
         vprint(f"       {status}: {detail}  ({short})", verbose=True)
+
+    def _at_target_cap(self, course_id: int) -> bool:
+        if self.max_per_course is None:
+            return False
+        return (
+            self.catalog.count_ok_syllabi_for_course(course_id) >= self.max_per_course
+        )
+
+    def _mark_queue(
+        self,
+        queue_id: int | None,
+        status: str,
+        reason: str | None = None,
+        *,
+        syllabus_id: int | None = None,
+        increment_attempt: bool = False,
+    ) -> None:
+        if queue_id is None:
+            return
+        self.catalog.update_candidate(
+            queue_id,
+            status=status,
+            skip_reason=reason,
+            syllabus_id=syllabus_id,
+            increment_attempt=increment_attempt,
+        )
+
+    def _fulfill_queue_from_ok(
+        self,
+        url: str,
+        candidate: PdfCandidate,
+        target_id: int,
+        queue_id: int | None,
+    ) -> DownloadResult:
+        row = self.catalog.get_syllabus_row_by_url(url)
+        if not row:
+            return DownloadResult(url, "skipped", reason="duplicate_url")
+        syllabus_id = int(row["id"])
+        self.catalog.link_syllabus_courses(
+            syllabus_id, [target_id], match_reason="existing_ok"
+        )
+        self._mark_queue(queue_id, "fulfilled", syllabus_id=syllabus_id)
+        course = self.catalog.get_course_by_id(target_id)
+        name = course["name"] if course else "course"
+        self._log_result(url, "skipped", f"already OK, linked to {name}")
+        return DownloadResult(url, "ok", course_name=name)
 
     def _cap_key(self, course_slug: str | None) -> str:
         return course_slug if course_slug else "__unclassified__"

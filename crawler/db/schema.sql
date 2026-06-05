@@ -111,3 +111,23 @@ CREATE INDEX IF NOT EXISTS idx_syllabi_course ON syllabi(course_id);
 CREATE INDEX IF NOT EXISTS idx_syllabi_sha ON syllabi(sha256);
 CREATE INDEX IF NOT EXISTS idx_syllabi_status ON syllabi(status);
 CREATE INDEX IF NOT EXISTS idx_curriculum_terms_order ON curriculum_terms(curriculum_id, term_order);
+
+-- Per-course discovery queue (all found URLs kept for reuse / alternates)
+CREATE TABLE IF NOT EXISTS syllabus_candidates (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_url      TEXT NOT NULL,
+    course_id       INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
+    status          TEXT NOT NULL DEFAULT 'discovered',
+    discovery_source TEXT,
+    referrer_url    TEXT,
+    link_text       TEXT,
+    discovered_at   TEXT NOT NULL,
+    last_attempt_at TEXT,
+    attempt_count   INTEGER NOT NULL DEFAULT 0,
+    skip_reason     TEXT,
+    syllabus_id     INTEGER REFERENCES syllabi(id),
+    UNIQUE (source_url, course_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_candidates_course_status
+    ON syllabus_candidates(course_id, status);

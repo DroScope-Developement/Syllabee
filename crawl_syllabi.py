@@ -28,7 +28,7 @@ from crawler.curriculum_loader import load_seed_data
 from crawler.db import Catalog
 from crawler.discover import discover_from_seed_pages, discover_via_duckduckgo
 from crawler.download import SyllabusDownloader
-from crawler.gap_fill import fill_curriculum_gaps
+from crawler.queue import fill_curriculum_gaps
 from crawler.log import PhaseTimer, vprint
 from crawler.models import PdfCandidate
 from crawler.reorganize import reorganize_sylabi
@@ -206,9 +206,14 @@ def main() -> int:
                         max_results_per_query=args.max_results_per_query,
                         verbose=verbose,
                     )
-                    ok += gap_stats["saved"]
-                    skipped += gap_stats["skipped"]
-                    failed += gap_stats["failed"]
+                    ok += gap_stats.get("saved", 0)
+                    skipped += gap_stats.get("skipped", 0)
+                    failed += gap_stats.get("failed", 0)
+                    vprint(
+                        f"  Gap fill: +{gap_stats.get('queued_new', 0)} URLs queued, "
+                        f"{gap_stats.get('search_rounds', 0)} search rounds",
+                        verbose=verbose,
+                    )
 
         finally:
             downloader.close()
@@ -225,6 +230,10 @@ def main() -> int:
     print(f"  Skipped:        {skipped}")
     print(f"  Failed:         {failed}")
     print(f"  Catalog OK:     {stats['syllabi_ok']} syllabi across {stats['courses']} courses")
+    print(
+        f"  URL queue:      {stats.get('candidates_pending', 0)} pending / "
+        f"{stats.get('candidates_total', 0)} total discovered"
+    )
     return 0
 
 

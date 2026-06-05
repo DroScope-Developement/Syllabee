@@ -24,9 +24,11 @@ Discover public syllabi, organize them by **course/subject**, and map them onto 
 **Default:** **gap-fill mode** — searches **each of the 74 catalog courses** until it has up to **10 PDFs** (not one giant search that fills `_unclassified` first). Override: `MAX_PER_COURSE=20 ./run.sh`
 
 ```bash
-python syllabee.py gaps          # courses still missing syllabi
+python syllabee.py gaps          # have / need / queued URLs per course
 python syllabee.py reorganize    # sort loose PDFs into course folders
 ```
+
+**Queue behavior:** Every discovered PDF URL is stored in `syllabus_candidates` per course. The crawler works the queue first (retries failures up to 3×), then searches only when the queue is empty—so failed URLs do not block other alternatives.
 
 If double-clicking `run.sh` opens **Xcode**, that is normal on Mac; use the `.command` files instead.
 

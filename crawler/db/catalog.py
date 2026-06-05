@@ -142,6 +142,11 @@ class Catalog:
     def get_course_by_slug(self, slug: str) -> sqlite3.Row | None:
         return self._conn.execute("SELECT * FROM courses WHERE slug = ?", (slug,)).fetchone()
 
+    def get_course_by_id(self, course_id: int) -> sqlite3.Row | None:
+        return self._conn.execute(
+            "SELECT * FROM courses WHERE id = ?", (course_id,)
+        ).fetchone()
+
     def count_ok_syllabi_for_course(self, course_id: int) -> int:
         row = self._conn.execute(
             """
@@ -296,6 +301,121 @@ class Catalog:
             ).fetchall()
         )
 
+    # --- per-course discovery queue ---
+
+    def register_candidates(
+        self,
+        course_id: int,
+        candidates: list,
+        *,
+        discovery_source: str = "search",
+    ) -> int:
+        """Insert discovered URLs for a course. Returns count of newly added rows."""
+        now = _utc_now()
+        added = 0
+        for c in candidates:
+            url = c.url if hasattr(c, "url") else str(c)
+            src = getattr(c, "discovery_source", None) or discovery_source
+            ref = getattr(c, "referrer_url", None)
+            link = getattr(c, "link_text", None)
+            cur = self._conn.execute(
+                """
+                INSERT INTO syllabus_candidates (
+                    source_url, course_id, status, discovery_source,
+                    referrer_url, link_text, discovered_at
+                ) VALUES (?, ?, 'discovered', ?, ?, ?, ?)
+                ON CONFLICT(source_url, course_id) DO NOTHING
+                """,
+                (url, course_id, src, ref, link, now),
+            )
+            if cur.rowcount > 0:
+                added += 1
+        self._conn.commit()
+        return added
+
+    def count_pending_candidates(
+        self, course_id: int, *, max_attempts: int = 3
+    ) -> int:
+        row = self._conn.execute(
+            """
+            SELECT COUNT(*) FROM syllabus_candidates
+            WHERE course_id = ?
+              AND (
+                status = 'discovered'
+                OR (status = 'failed' AND attempt_count < ?)
+              )
+            """,
+            (course_id, max_attempts),
+        ).fetchone()
+        return int(row[0]) if row else 0
+
+    def list_pending_candidates(
+        self, course_id: int, *, max_attempts: int = 3
+    ) -> list[sqlite3.Row]:
+        return list(
+            self._conn.execute(
+                """
+                SELECT * FROM syllabus_candidates
+                WHERE course_id = ?
+                  AND (
+                    status = 'discovered'
+                    OR (status = 'failed' AND attempt_count < ?)
+                  )
+                ORDER BY discovered_at, id
+                """,
+                (course_id, max_attempts),
+            ).fetchall()
+        )
+
+    def get_candidate(self, queue_id: int) -> sqlite3.Row | None:
+        return self._conn.execute(
+            "SELECT * FROM syllabus_candidates WHERE id = ?", (queue_id,)
+        ).fetchone()
+
+    def update_candidate(
+        self,
+        queue_id: int,
+        *,
+        status: str,
+        skip_reason: str | None = None,
+        syllabus_id: int | None = None,
+        increment_attempt: bool = False,
+    ) -> None:
+        now = _utc_now()
+        if increment_attempt:
+            self._conn.execute(
+                """
+                UPDATE syllabus_candidates
+                SET status = ?, skip_reason = ?, syllabus_id = COALESCE(?, syllabus_id),
+                    attempt_count = attempt_count + 1, last_attempt_at = ?
+                WHERE id = ?
+                """,
+                (status, skip_reason, syllabus_id, now, queue_id),
+            )
+        else:
+            self._conn.execute(
+                """
+                UPDATE syllabus_candidates
+                SET status = ?, skip_reason = ?, syllabus_id = COALESCE(?, syllabus_id),
+                    last_attempt_at = ?
+                WHERE id = ?
+                """,
+                (status, skip_reason, syllabus_id, now, queue_id),
+            )
+        self._conn.commit()
+
+    def get_syllabus_row_by_url(self, url: str) -> sqlite3.Row | None:
+        return self._conn.execute(
+            "SELECT * FROM syllabi WHERE source_url = ?", (url,)
+        ).fetchone()
+
+    def count_candidates_for_course(self, course_id: int) -> int:
+        row = self._conn.execute(
+            "SELECT COUNT(*) FROM syllabus_candidates WHERE course_id = ?",
+            (course_id,),
+        ).fetchone()
+        return int(row[0]) if row else 0
+
     # --- syllabi ---
 
     def has_syllabus_url(self, url: str) -> bool:
@@ -315,19 +435,29 @@ class Catalog:
             return False
         return True
 
-    def coverage_report(self, max_per_course: int) -> list[sqlite3.Row]:
+    def coverage_report(
+        self, max_per_course: int, *, max_attempts: int = 3
+    ) -> list[sqlite3.Row]:
         return list(
             self._conn.execute(
                 """
                 SELECT c.slug, c.name, c.course_code,
-                       COUNT(s.id) AS have,
-                       MAX(0, ? - COUNT(s.id)) AS need
+                       COUNT(DISTINCT s.id) AS have,
+                       MAX(0, ? - COUNT(DISTINCT s.id)) AS need,
+                       COALESCE(q.pending, 0) AS queued
                 FROM courses c
                 LEFT JOIN syllabi s ON s.course_id = c.id AND s.status = 'ok'
+                LEFT JOIN (
+                    SELECT course_id, COUNT(*) AS pending
+                    FROM syllabus_candidates
+                    WHERE status = 'discovered'
+                       OR (status = 'failed' AND attempt_count < ?)
+                    GROUP BY course_id
+                ) q ON q.course_id = c.id
                 GROUP BY c.id
                 ORDER BY have ASC, c.name
                 """,
-                (max_per_course,),
+                (max_per_course, max_attempts),
             ).fetchall()
         )
 
@@ -551,4 +681,12 @@ class Catalog:
             "syllabi_ok": count("SELECT COUNT(*) FROM syllabi WHERE status = 'ok'"),
             "syllabi_total": count("SELECT COUNT(*) FROM syllabi"),
             "domains": count("SELECT COUNT(*) FROM crawled_domains"),
+            "candidates_total": count("SELECT COUNT(*) FROM syllabus_candidates"),
+            "candidates_pending": count(
+                """
+                SELECT COUNT(*) FROM syllabus_candidates
+                WHERE status = 'discovered'
+                   OR (status = 'failed' AND attempt_count < 3)
+                """
+            ),
         }

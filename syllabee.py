@@ -110,14 +110,14 @@ def cmd_gaps(args: argparse.Namespace) -> int:
         print("No courses in catalog. Run: python syllabee.py init")
         return 1
     print(f"Target: {target} syllabi per course\n")
-    print(f"{'Have':>4}  {'Need':>4}  Course")
-    print("-" * 50)
+    print(f"{'Have':>4}  {'Need':>4}  {'Queue':>5}  Course")
+    print("-" * 58)
     for r in rows:
         if args.empty_only and r["have"] > 0:
             continue
         if args.incomplete_only and r["need"] == 0:
             continue
-        print(f"{r['have']:4}  {r['need']:4}  {r['name']}")
+        print(f"{r['have']:4}  {r['need']:4}  {r['queued']:5}  {r['name']}")
     full = sum(1 for r in rows if r["need"] == 0)
     print(f"\n{full}/{len(rows)} courses at target")
     return 0
