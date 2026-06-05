@@ -1,6 +1,45 @@
-# Syllabee
+# SyllaBee
 
 Discover public syllabi, organize them by **course/subject**, and map them onto **multi-year degree curricula** where courses are reused across overlapping majors (e.g. Computer Science and Computer Engineering).
+
+**Status:** 10 degree programs · 74 courses · 172 syllabi collected across 40 courses (and growing).
+
+## What I built
+
+A two-part system:
+
+1. **A polite, resumable syllabus crawler** (Python) that discovers public
+   syllabus PDFs from `.edu` sites, MIT OpenCourseWare, and university index
+   pages, classifies each one to a canonical course, and stores everything in a
+   SQLite catalog. It fills **each course up to a target of 3 quality syllabi**,
+   working a per-course retry queue and only searching when the queue runs dry.
+2. **A fast static website** (React + Vite + Tailwind + shadcn/ui) that lets you
+   browse the 10 degree curricula year-by-year, see which courses are shared
+   across majors, and open the collected syllabus PDFs — with **no backend**.
+
+## How I built it
+
+- **Crawler:** `httpx` + `ddgs` (DuckDuckGo) + `BeautifulSoup` for discovery,
+  `pypdf`/`fpdf2` for PDFs, a `robots.txt` cache, and pluggable sources
+  (`mit-ocw`, `university-search`, `university-seeds`). A boundary-aware
+  classifier keeps a syllabus from landing under the wrong course.
+- **Catalog:** SQLite (`data/syllabee.db`) with courses, majors, curricula, a
+  per-course URL queue, and crawl sessions. Curricula are defined in editable
+  YAML (`data/programs.yaml`, `data/courses.yaml`, `data/taxonomy.yaml`).
+- **Website:** `web/gen_web_data.py` bakes the DB into a static `catalog.json`
+  and copies the PDFs into `web/public/`, so the React app ships as plain static
+  files to any free host (Cloudflare Pages / Netlify).
+- **Tooling:** built end-to-end with Cursor's Agent (see `.cursorrules`),
+  one-click `*.command` launchers for macOS, and a `syllabee.py` CLI.
+
+## What's next
+
+- Finish coverage: 34 of 74 courses still have zero syllabi — re-run
+  `finish-crawl.command` to keep filling gaps to 3/course.
+- Clean empty-name PDFs at the **source** (`sylabi/`), not just in the web build.
+- Add full-text extraction + search across syllabus contents.
+- Move PDFs to object storage (e.g. Cloudflare R2) so the repo stays lean.
+- Schedule periodic re-crawls to refresh terms (Spring/Fall) automatically.
 
 ## Concepts
 

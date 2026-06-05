@@ -1,0 +1,52 @@
+# How SyllaBee was built with Cursor
+
+SyllaBee was built end-to-end inside Cursor using the Agent, working in tight
+prompt -> review -> run loops rather than hand-writing each file. Below is an
+honest account of how Cursor was used at each stage.
+
+## What Cursor did
+
+- **Scaffolded the Python crawler.** Prompted the Agent to design a polite,
+  resumable syllabus crawler: `httpx` for fetching, `ddgs` (DuckDuckGo) +
+  `BeautifulSoup` for discovery, `pypdf`/`fpdf2` for PDF handling, and a
+  `robots.txt` cache. The Agent split the work into focused modules
+  (`discover`, `download`, `classify`, `queue`, `gap_fill`, `sources/`) instead
+  of one monolith.
+
+- **Designed the SQLite catalog.** The Agent authored `crawler/db/schema.sql`
+  and the `Catalog` data layer (courses, majors, curricula, syllabi, per-course
+  URL queue, crawl sessions, domain stats) and wired the `syllabee.py` CLI
+  around it (`init`, `stats`, `gaps`, `curriculum`, `overlap`, `reclassify`).
+
+- **Built the curriculum model from YAML.** Majors, shared `required_courses`,
+  and 4-year plans live in `data/programs.yaml` + `data/courses.yaml`; the Agent
+  wrote the loader and the overlap logic so one syllabus can map to multiple
+  majors that share a course.
+
+- **Fixed classification false-positives.** Used the Agent to iterate on a
+  boundary-aware classifier so "Calculus 2" no longer matches a Calculus 3 or
+  Thermodynamics PDF, and added a `reclassify` pass to repair existing rows.
+
+- **Generated the React frontend.** The Agent built the static site
+  (Vite + React 19 + TypeScript + Tailwind v4 + shadcn/ui) and the
+  `gen_web_data.py` pipeline that bakes the DB into a static `catalog.json`
+  and copies PDFs into `public/` — no backend at runtime.
+
+- **Ran and supervised long jobs.** Cursor ran the crawler inside the project
+  venv, monitored multi-minute crawl sessions, and — when the per-course
+  site-specific search proved slow — switched to the faster cached MIT OCW +
+  broad `.edu` sources to cut a ~2 hour run down to minutes.
+
+- **Caught quality bugs before shipping.** While preparing a release, the Agent
+  noticed MIT OCW `/syllabus/` PDFs were saving as hidden `.pdf` dot-files that
+  static hosts skip, and fixed `gen_web_data.py` to give them real servable
+  filenames before committing.
+
+## How the loop worked
+
+1. Describe the next capability in plain language.
+2. Let the Agent draft the change across the relevant files.
+3. Review the diff, run it (crawler in the venv, `npm run build` for the site).
+4. Iterate on real output until correct, then commit.
+
+Each commit in the history maps to one of these Agent-driven steps.
