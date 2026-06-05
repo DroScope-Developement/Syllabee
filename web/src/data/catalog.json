@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-05T01:09:43.881815+00:00",
+  "generatedAt": "2026-06-05T01:45:40.811819+00:00",
   "stats": {
     "majors": 10,
     "courses": 74,
-    "syllabi": 143
+    "syllabi": 172
   },
   "majors": [
     {
@@ -1954,6 +1954,13 @@
           "term": null,
           "file": "/syllabi/intro-programming/Carnatic_Melodic_Sec_2024-25.pdf",
           "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Introduction to Programming/Carnatic_Melodic_Sec_2024-25.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": "Harvard University",
+          "term": "2024",
+          "file": "/syllabi/intro-programming/intro-programming-1756.pdf",
+          "source": "https://cs50.harvard.edu/extension/cybersecurity/2024/spring/syllabus/"
         }
       ]
     },
@@ -2026,6 +2033,13 @@
           "source": "https://economia.uniroma2.it/public/gobalGov/files/Syllabus_Algorithms.pdf"
         },
         {
+          "title": "CS 340 - Analysis of Algorithms",
+          "institution": "Cs (.edu)",
+          "term": "Spring 2026",
+          "file": "/syllabi/algorithms/syllabus.pdf",
+          "source": "https://cs.brynmawr.edu/cs340/syllabus.pdf"
+        },
+        {
           "title": "Introduction to Computing",
           "institution": "MIT",
           "term": null,
@@ -2071,7 +2085,7 @@
           "title": "EE-381V-Advanced-Algorithms-Syllabus-Nikolova 2",
           "institution": "Users (.edu)",
           "term": null,
-          "file": "/syllabi/algorithms/syllabus.pdf",
+          "file": "/syllabi/algorithms/syllabus_918.pdf",
           "source": "https://users.ece.utexas.edu/~nikolova/Teaching/S15-Advanced-Algorithms/syllabus.pdf"
         }
       ]
@@ -2091,7 +2105,29 @@
         "computer-science",
         "software-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "Cs250 Syllabus",
+          "institution": "Online (.edu)",
+          "term": null,
+          "file": "/syllabi/computer-architecture/CS250_Syllabus.pdf",
+          "source": "https://online.colostate.edu/global/docs/syllabi/CS250_Syllabus.pdf"
+        },
+        {
+          "title": "Computer Architecture > Syllabus | Concourse",
+          "institution": "Sjsu (.edu)",
+          "term": "Spring 2026",
+          "file": "/syllabi/computer-architecture/Computer_Architecture_CS_147-02-03_Spring_2026_Tsao.pdf",
+          "source": "https://www.sjsu.edu/cs/docs/syllabi/spring26/Computer_Architecture_CS_147-02-03_Spring_2026_Tsao.pdf"
+        },
+        {
+          "title": "Florida International University",
+          "institution": "Visa (.edu)",
+          "term": "2015",
+          "file": "/syllabi/computer-architecture/syllabus-adv-comp-architecture.pdf",
+          "source": "https://visa.lab.asu.edu/web/wp-content/uploads/2015/12/syllabus-adv-comp-architecture.pdf"
+        }
+      ]
     },
     "operating-systems": {
       "slug": "operating-systems",
@@ -2138,7 +2174,29 @@
         "information-technology",
         "software-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "IT-OLDSYLLABUS",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/databases/IT-OLDSYLLABUS.pdf",
+          "source": "https://hbtu.ac.in/wp-content/uploads/2024/10/IT-OLDSYLLABUS.pdf"
+        },
+        {
+          "title": "CS 340 - Analysis of Algorithms",
+          "institution": "Cs (.edu)",
+          "term": "Spring 2026",
+          "file": "/syllabi/databases/syllabus.pdf",
+          "source": "https://cs.brynmawr.edu/cs340/syllabus.pdf"
+        },
+        {
+          "title": "Database Systems",
+          "institution": "MIT",
+          "term": "Fall 2010",
+          "file": "/syllabi/databases/databases-1762.pdf",
+          "source": "https://ocw.mit.edu/courses/6-830-database-systems-fall-2010/pages/syllabus/"
+        }
+      ]
     },
     "software-engineering": {
       "slug": "software-engineering",
@@ -2187,7 +2245,29 @@
         "business-administration",
         "data-science"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "DATA MINING",
+          "institution": null,
+          "term": "2006",
+          "file": "/syllabi/data-mining/DM_Syllabus.pdf",
+          "source": "https://www.nrcmec.org/pdf/Course-Content/CSE-DS/III_ISem/DM/DM_Syllabus.pdf"
+        },
+        {
+          "title": "Data Mining",
+          "institution": "MIT",
+          "term": "Spring 2003",
+          "file": "/syllabi/data-mining/data-mining-1759.pdf",
+          "source": "https://ocw.mit.edu/courses/15-062-data-mining-spring-2003/pages/syllabus/"
+        },
+        {
+          "title": "Models, Data and Inference for Socio-Technical Systems",
+          "institution": "MIT",
+          "term": "Spring 2007",
+          "file": "/syllabi/data-mining/.pdf_8f193f7b.pdf",
+          "source": "https://ocw.mit.edu/courses/esd-86-models-data-and-inference-for-socio-technical-systems-spring-2007/pages/syllabus/"
+        }
+      ]
     },
     "computer-networks": {
       "slug": "computer-networks",
@@ -2205,7 +2285,22 @@
         "information-technology",
         "software-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "Sizing Router Buffers",
+          "institution": "Stanford University",
+          "term": "2016",
+          "file": "/syllabi/computer-networks/buffer-sizing.pdf",
+          "source": "https://people.eecs.berkeley.edu/~sylvia/cs268-2016/papers/buffer-sizing.pdf"
+        },
+        {
+          "title": "Stable internet routing without global coordination - Networking, IEEE/ACM Transactions on",
+          "institution": "UC Berkeley",
+          "term": "2016",
+          "file": "/syllabi/computer-networks/gao-rexford.pdf",
+          "source": "https://people.eecs.berkeley.edu/~sylvia/cs268-2016/papers/gao-rexford.pdf"
+        }
+      ]
     },
     "cybersecurity": {
       "slug": "cybersecurity",
@@ -2221,7 +2316,22 @@
         "information-technology",
         "software-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "Programming Language Concepts",
+          "institution": "Cs (.edu)",
+          "term": "Spring 2014",
+          "file": "/syllabi/cybersecurity/syllabus.pdf",
+          "source": "https://cs.wheaton.edu/~tvandrun/previous/spring14/cs365/syllabus.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": "Harvard University",
+          "term": "2024",
+          "file": "/syllabi/cybersecurity/cybersecurity-1756.pdf",
+          "source": "https://cs50.harvard.edu/extension/cybersecurity/2024/spring/syllabus/"
+        }
+      ]
     },
     "web-development": {
       "slug": "web-development",
@@ -2303,7 +2413,22 @@
         "data-science",
         "psychology"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "SyllabusNew",
+          "institution": "Eli (.edu)",
+          "term": "Spring 2014",
+          "file": "/syllabi/capstone-cs/Syllabus.pdf",
+          "source": "https://eli.sdsu.edu/courses/spring14/cs490/Syllabus.pdf"
+        },
+        {
+          "title": "Nuclear Systems Design Project",
+          "institution": "MIT",
+          "term": "Fall 2011",
+          "file": "/syllabi/capstone-cs/capstone-cs-1749.pdf",
+          "source": "https://ocw.mit.edu/courses/22-033-nuclear-systems-design-project-fall-2011/pages/syllabus/"
+        }
+      ]
     },
     "digital-logic": {
       "slug": "digital-logic",
@@ -2317,7 +2442,15 @@
       "sharedIn": [
         "computer-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "Tedu Ee222 Syllabus 2016 01 31",
+          "institution": "Tedu (.edu)",
+          "term": null,
+          "file": "/syllabi/digital-logic/tedu_ee222_syllabus_2016_01_31.pdf",
+          "source": "https://www.tedu.edu.tr/sites/default/files/tedu_ee222_syllabus_2016_01_31.pdf"
+        }
+      ]
     },
     "embedded-systems": {
       "slug": "embedded-systems",
@@ -2429,7 +2562,29 @@
         "data-science",
         "software-engineering"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "MTH 220 - Fall 2023",
+          "institution": null,
+          "term": "Fall 2023",
+          "file": "/syllabi/discrete-math/CSU-MTH220.pdf",
+          "source": "https://math.galetto.org/files/syllabi/CSU-MTH220.pdf"
+        },
+        {
+          "title": "Math 3336 – 17684 (Fall 2020)",
+          "institution": "Math (.edu)",
+          "term": "Fall 2020",
+          "file": "/syllabi/discrete-math/3336SyllabusAsynchronousFall20.pdf",
+          "source": "https://math.uh.edu/~irina/MATH3336/3336MAIN/3336SyllabusAsynchronousFall20.pdf"
+        },
+        {
+          "title": "Math 0205 Syllabus Page 1 of 2",
+          "institution": "Mathematics (.edu)",
+          "term": null,
+          "file": "/syllabi/discrete-math/0205_Syllabus.pdf",
+          "source": "https://www.mathematics.pitt.edu/sites/default/files/Courses_syllabi_schedules/Fall/0205_Syllabus.pdf"
+        }
+      ]
     },
     "calculus-1": {
       "slug": "calculus-1",
@@ -2577,7 +2732,7 @@
           "title": "Multivariable Calculus",
           "institution": "MIT",
           "term": "Fall 2010",
-          "file": "/syllabi/calculus-3/.pdf",
+          "file": "/syllabi/calculus-3/calculus-3-1671.pdf",
           "source": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/syllabus/"
         },
         {
@@ -2673,6 +2828,13 @@
           "term": "Fall 2025",
           "file": "/syllabi/differential-equations/syllabus.pdf",
           "source": "https://bclins.github.io/fall25/math243/syllabus.pdf"
+        },
+        {
+          "title": "MAP 6505 Mathematical Methods in Physics and Engineering I: Syllabus | Sergei Shabanov",
+          "institution": "Syllabus (.edu)",
+          "term": "2024",
+          "file": "/syllabi/differential-equations/MAP-6505-Shabanov-2.pdf",
+          "source": "https://syllabus.math.ufl.edu/wp-content/uploads/sites/133/MAP-6505-Shabanov-2.pdf"
         }
       ]
     },
@@ -2791,7 +2953,7 @@
           "title": "Biochemistry and Pharmacology of Synaptic Transmission",
           "institution": "MIT",
           "term": "Fall 2007",
-          "file": "/syllabi/biochemistry/.pdf",
+          "file": "/syllabi/biochemistry/biochemistry-1585.pdf",
           "source": "https://ocw.mit.edu/courses/9-15-biochemistry-and-pharmacology-of-synaptic-transmission-fall-2007/pages/syllabus/"
         }
       ]
@@ -2924,7 +3086,7 @@
           "title": "Biomaterials-Tissue Interactions",
           "institution": "MIT",
           "term": "Fall 2009",
-          "file": "/syllabi/cell-biology/.pdf",
+          "file": "/syllabi/cell-biology/cell-biology-1685.pdf",
           "source": "https://ocw.mit.edu/courses/20-441j-biomaterials-tissue-interactions-fall-2009/pages/syllabus/"
         }
       ]
@@ -3586,7 +3748,7 @@
           "title": "Innovative Businesses and Breakthrough Technologies - The Legal Issues",
           "institution": "MIT",
           "term": "Fall 2004",
-          "file": "/syllabi/business-law/.pdf",
+          "file": "/syllabi/business-law/business-law-1637.pdf",
           "source": "https://ocw.mit.edu/courses/15-616-innovative-businesses-and-breakthrough-technologies-the-legal-issues-fall-2004/pages/syllabus/"
         },
         {
@@ -3632,7 +3794,29 @@
       "sharedIn": [
         "business-administration"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "FIN 4020B : CORPORATE FINANCE – COURSE SYLLABUS",
+          "institution": null,
+          "term": "2005",
+          "file": "/syllabi/corporate-finance/FIN4020.pdf",
+          "source": "https://www.keiabroad.org/documents/kenya/syllabus/FIN4020.pdf"
+        },
+        {
+          "title": "FINC 450B (001)- Online:",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/corporate-finance/FinanceforaSustainableWorld-CourseSyllabus.pdf",
+          "source": "https://www.aspeninstitute.org/wp-content/uploads/2024/07/FinanceforaSustainableWorld-CourseSyllabus.pdf"
+        },
+        {
+          "title": "Syllabus: FINA 7A30 – Advanced Corporate Finance",
+          "institution": "Bauer (.edu)",
+          "term": "Fall 2021",
+          "file": "/syllabi/corporate-finance/FINA-7A30-Advanced-Corporate-Finance_Fall-2021_Povel.pdf",
+          "source": "https://www.bauer.uh.edu/departments/finance/documents/syllabi/2021/FINA-7A30-Advanced-Corporate-Finance_Fall-2021_Povel.pdf"
+        }
+      ]
     },
     "management": {
       "slug": "management",
@@ -3646,7 +3830,15 @@
       "sharedIn": [
         "business-administration"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "University  of Engineering  and  Management",
+          "institution": "Media (.edu)",
+          "term": "2025",
+          "file": "/syllabi/management/EEE-4th-year-7th-sem-full-syllabus-ODD-2025.pdf",
+          "source": "https://media.iem.edu.in/uploads/2025/07/EEE-4th-year-7th-sem-full-syllabus-ODD-2025.pdf"
+        }
+      ]
     },
     "business-statistics": {
       "slug": "business-statistics",
@@ -3982,7 +4174,29 @@
         "nursing",
         "psychology"
       ],
-      "syllabi": []
+      "syllabi": [
+        {
+          "title": "PSYC 204, Developmental Psychology, Syllabus",
+          "institution": null,
+          "term": "2017",
+          "file": "/syllabi/developmental-psychology/PSYC_204_Syllabus.pdf",
+          "source": "https://d36jn619e2o9pu.cloudfront.net/Point+University/PSYC+204+Syllabus.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": null,
+          "term": "2006",
+          "file": "/syllabi/developmental-psychology/PSY320_Syllabus.pdf",
+          "source": "https://www.tuonlineresources.com/syllabi/undergraduate/PSY320_Syllabus.pdf"
+        },
+        {
+          "title": "Marc Gellman Psy 320 Syllabus",
+          "institution": "People (.edu)",
+          "term": "Spring 2018",
+          "file": "/syllabi/developmental-psychology/marc-gellman-psy-320-syllabus.pdf",
+          "source": "https://people.miami.edu/_assets-profiles/acad-as/pdf/marc-gellman-psy-320-syllabus.pdf"
+        }
+      ]
     },
     "cognitive-psychology": {
       "slug": "cognitive-psychology",

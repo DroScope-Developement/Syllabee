@@ -18,10 +18,11 @@ Discover public syllabi, organize them by **course/subject**, and map them onto 
 
 | File | What it does |
 |------|----------------|
+| **`finish-crawl.command`** | Fill gaps to 3/course, focuses on missing courses (double-click this) |
 | **`run.command`** | Full crawl (double-click this) |
 | **`run-quick.command`** | Same limits; alias for one-click |
 
-**Default:** **gap-fill mode** — searches **each of the 74 catalog courses** until it has up to **10 PDFs** (not one giant search that fills `_unclassified` first). Override: `MAX_PER_COURSE=20 ./run.sh`
+**Default:** **gap-fill mode** — searches **each of the 74 catalog courses** until it has up to **3 PDFs** (not one giant search that fills `_unclassified` first). Override: `MAX_PER_COURSE=20 ./run.sh`
 
 ```bash
 python syllabee.py gaps          # have / need / queued URLs per course
@@ -137,7 +138,7 @@ Edit YAML (then re-run `python syllabee.py init`):
 |------|-------------|
 | `--output-dir sylabi` | PDF root |
 | `--db data/syllabee.db` | SQLite catalog |
-| `--max-per-course N` | Max PDFs per subject folder (default: **10**) |
+| `--max-per-course N` | Max PDFs per subject folder (default: **3**) |
 | `--max-downloads N` | Optional global cap (usually leave unset) |
 | `--queries-file` / `--seeds-file` | Extra discovery inputs |
 | `--ignore-robots` | Needed for many `.edu` hosts |

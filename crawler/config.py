@@ -6,7 +6,7 @@ from pathlib import Path
 DEFAULT_OUTPUT_DIR = Path("sylabi")
 
 # Max successful PDFs stored per course/subject folder (no global cap by default)
-DEFAULT_MAX_PER_COURSE = 10
+DEFAULT_MAX_PER_COURSE = 3
 
 DEFAULT_DB_PATH = Path("data") / "syllabee.db"
 DEFAULT_DATA_DIR = Path("data")

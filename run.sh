@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SyllaBee: fill each catalog course up to MAX_PER_COURSE syllabi (default 10).
+# SyllaBee: fill each catalog course up to MAX_PER_COURSE syllabi (default 3).
 
 set -euo pipefail
 
@@ -8,7 +8,7 @@ cd "$ROOT"
 
 PYTHON="${PYTHON:-python3}"
 VENV_DIR="$ROOT/.venv"
-MAX_PER_COURSE="${MAX_PER_COURSE:-10}"
+MAX_PER_COURSE="${MAX_PER_COURSE:-3}"
 
 if [[ ! -d "$VENV_DIR" ]]; then
   echo "==> Creating virtual environment..."

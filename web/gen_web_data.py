@@ -230,7 +230,13 @@ def attach_syllabi(courses: dict) -> tuple[int, int, int]:
                 filtered += 1
                 continue
 
-        basename = safe_segment(Path(row["file_path"]).name)
+        src_name = Path(row["file_path"]).name
+        # Some PDFs come from URLs ending in "/syllabus/" and land on disk with an
+        # empty stem (".pdf"). Those are hidden dot-files that static hosts may not
+        # serve, so give them a real, servable filename derived from the course.
+        if Path(src_name).suffix == "":
+            src_name = f"{course_slug}-{row['syllabus_id']}.pdf"
+        basename = safe_segment(src_name)
         # de-dupe identical filenames within a course folder
         if basename in seen_per_course[course_slug]:
             stem = Path(basename).stem
@@ -246,7 +252,8 @@ def attach_syllabi(courses: dict) -> tuple[int, int, int]:
             copied += 1
 
         web_path = f"/syllabi/{course_slug}/{basename}"
-        title = (row["title"] or "").strip() or Path(row["file_path"]).stem.replace("_", " ")
+        stem_title = Path(src_name).stem.replace("_", " ").strip()
+        title = (row["title"] or "").strip() or stem_title or f"{courses[course_slug]['name']} Syllabus"
         courses[course_slug]["syllabi"].append({
             "title": title,
             "institution": (row["institution"] or "").strip() or None,

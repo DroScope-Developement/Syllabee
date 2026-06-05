@@ -3,7 +3,7 @@
 Discover and download public syllabus PDFs into subject folders under sylabi/
 and record everything in the SQLite catalog (data/syllabee.db).
 
-Default mode fills each of the 74 catalog courses up to --max-per-course (10).
+Default mode fills each of the 74 catalog courses up to --max-per-course (3).
 """
 
 from __future__ import annotations
@@ -71,7 +71,7 @@ def main() -> int:
         "--max-per-course",
         type=int,
         default=DEFAULT_MAX_PER_COURSE,
-        help="Target PDFs per catalog course (default: 10). Use 0 for no limit.",
+        help="Target PDFs per catalog course (default: 3). Use 0 for no limit.",
     )
     parser.add_argument("--max-downloads", type=int, default=None)
     parser.add_argument(
