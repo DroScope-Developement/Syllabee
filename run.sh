@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# SyllaBee one-click setup + crawl + catalog import
-# Default: up to 10 PDFs per subject/course (no global cap).
-# Override: MAX_PER_COURSE=20 ./run.sh
+# SyllaBee: fill each catalog course up to MAX_PER_COURSE syllabi (default 10).
 
 set -euo pipefail
 
@@ -23,27 +21,24 @@ source "$VENV_DIR/bin/activate"
 echo "==> Installing dependencies..."
 pip install -q -r requirements.txt
 
-echo "==> Initializing catalog (10 curricula)..."
+echo "==> Initializing catalog (10 curricula, 74 courses)..."
 python syllabee.py init
 
 echo ""
-echo "==> Degree programs loaded:"
-python syllabee.py curricula
+python syllabee.py gaps --max-per-course "$MAX_PER_COURSE" | head -20
+echo "   ... (run: python syllabee.py gaps)"
 
 echo ""
-echo "==> Crawling (up to $MAX_PER_COURSE PDFs per subject/course)..."
-python crawl_syllabi.py --ignore-robots --no-init-data --max-per-course "$MAX_PER_COURSE"
+echo "==> Reorganize loose PDFs + fill gaps ($MAX_PER_COURSE per course)..."
+python crawl_syllabi.py --ignore-robots --no-init-data --max-per-course "$MAX_PER_COURSE" --fill-gaps
 
 echo ""
 echo "==> Importing any PDFs on disk into catalog..."
 python syllabee.py import --no-init-data
 
 echo ""
-echo "==> Catalog summary:"
+python syllabee.py gaps --max-per-course "$MAX_PER_COURSE" | tail -5
 python syllabee.py stats
 
 echo ""
-echo "Done. PDFs: $ROOT/sylabi/  |  Database: $ROOT/data/syllabee.db"
-echo "Examples:"
-echo "  python syllabee.py curriculum software-engineering-bs"
-echo "  python syllabee.py overlap computer-science data-science"
+echo "Done. PDFs: $ROOT/sylabi/  |  python syllabee.py gaps"

@@ -21,7 +21,12 @@ Discover public syllabi, organize them by **course/subject**, and map them onto 
 | **`run.command`** | Full crawl (double-click this) |
 | **`run-quick.command`** | Same limits; alias for one-click |
 
-**Default limit:** up to **10 PDFs per subject/course** (e.g. `sylabi/Calculus 1/`), not a global cap. Override: `MAX_PER_COURSE=20 ./run.sh`
+**Default:** **gap-fill mode** — searches **each of the 74 catalog courses** until it has up to **10 PDFs** (not one giant search that fills `_unclassified` first). Override: `MAX_PER_COURSE=20 ./run.sh`
+
+```bash
+python syllabee.py gaps          # courses still missing syllabi
+python syllabee.py reorganize    # sort loose PDFs into course folders
+```
 
 If double-clicking `run.sh` opens **Xcode**, that is normal on Mac; use the `.command` files instead.
 

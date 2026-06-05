@@ -304,11 +304,58 @@ class Catalog:
         ).fetchone()
         return row is not None
 
+    def has_attempted_url(self, url: str, *, retry_failed: bool = True) -> bool:
+        """True if we already tried this URL (skip re-download). Failed URLs may retry."""
+        row = self._conn.execute(
+            "SELECT status FROM syllabi WHERE source_url = ?", (url,)
+        ).fetchone()
+        if row is None:
+            return False
+        if row["status"] == "failed" and retry_failed:
+            return False
+        return True
+
+    def coverage_report(self, max_per_course: int) -> list[sqlite3.Row]:
+        return list(
+            self._conn.execute(
+                """
+                SELECT c.slug, c.name, c.course_code,
+                       COUNT(s.id) AS have,
+                       MAX(0, ? - COUNT(s.id)) AS need
+                FROM courses c
+                LEFT JOIN syllabi s ON s.course_id = c.id AND s.status = 'ok'
+                GROUP BY c.id
+                ORDER BY have ASC, c.name
+                """,
+                (max_per_course,),
+            ).fetchall()
+        )
+
     def has_syllabus_hash(self, sha256: str) -> bool:
         row = self._conn.execute(
             "SELECT 1 FROM syllabi WHERE sha256 = ? AND status = 'ok'", (sha256,)
         ).fetchone()
         return row is not None
+
+    def update_syllabus_file(
+        self,
+        sha256: str,
+        *,
+        file_path: str,
+        course_id: int | None,
+        source_url: str | None = None,
+    ) -> None:
+        self._conn.execute(
+            """
+            UPDATE syllabi
+            SET file_path = ?, course_id = ?,
+                source_url = COALESCE(?, source_url),
+                updated_at = datetime('now')
+            WHERE sha256 = ?
+            """,
+            (file_path, course_id, source_url, sha256),
+        )
+        self._conn.commit()
 
     def upsert_syllabus(
         self,

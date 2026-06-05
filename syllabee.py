@@ -8,10 +8,16 @@ import json
 import sys
 from pathlib import Path
 
-from crawler.config import DEFAULT_DATA_DIR, DEFAULT_DB_PATH, DEFAULT_OUTPUT_DIR
+from crawler.config import (
+    DEFAULT_DATA_DIR,
+    DEFAULT_DB_PATH,
+    DEFAULT_MAX_PER_COURSE,
+    DEFAULT_OUTPUT_DIR,
+)
 from crawler.curriculum_loader import load_seed_data
 from crawler.db import Catalog
 from crawler.migrate import import_existing_pdfs
+from crawler.reorganize import reorganize_sylabi
 
 
 def cmd_init(args: argparse.Namespace) -> int:
@@ -96,6 +102,34 @@ def cmd_overlap(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_gaps(args: argparse.Namespace) -> int:
+    target = args.max_per_course
+    with Catalog(Path(args.db)) as catalog:
+        rows = catalog.coverage_report(target)
+    if not rows:
+        print("No courses in catalog. Run: python syllabee.py init")
+        return 1
+    print(f"Target: {target} syllabi per course\n")
+    print(f"{'Have':>4}  {'Need':>4}  Course")
+    print("-" * 50)
+    for r in rows:
+        if args.empty_only and r["have"] > 0:
+            continue
+        if args.incomplete_only and r["need"] == 0:
+            continue
+        print(f"{r['have']:4}  {r['need']:4}  {r['name']}")
+    full = sum(1 for r in rows if r["need"] == 0)
+    print(f"\n{full}/{len(rows)} courses at target")
+    return 0
+
+
+def cmd_reorganize(args: argparse.Namespace) -> int:
+    with Catalog(Path(args.db)) as catalog:
+        moved, updated = reorganize_sylabi(catalog, Path(args.output_dir))
+    print(f"Moved {moved} file(s), updated {updated} catalog row(s).")
+    return 0
+
+
 def cmd_import(args: argparse.Namespace) -> int:
     out = Path(args.output_dir)
     with Catalog(Path(args.db)) as catalog:
@@ -175,6 +209,20 @@ def main() -> int:
     p_imp.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
     p_imp.add_argument("--no-init-data", action="store_true")
     p_imp.set_defaults(func=cmd_import)
+
+    p_gaps = sub.add_parser("gaps", help="Show courses missing syllabi")
+    p_gaps.add_argument(
+        "--max-per-course",
+        type=int,
+        default=DEFAULT_MAX_PER_COURSE,
+    )
+    p_gaps.add_argument("--empty-only", action="store_true")
+    p_gaps.add_argument("--incomplete-only", action="store_true", default=True)
+    p_gaps.set_defaults(func=cmd_gaps)
+
+    p_reorg = sub.add_parser("reorganize", help="Move loose PDFs into course folders")
+    p_reorg.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    p_reorg.set_defaults(func=cmd_reorganize)
 
     args = parser.parse_args()
     return args.func(args)

@@ -4,7 +4,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-import yaml
+from crawler.config import DEFAULT_COURSES_PATH, DEFAULT_TAXONOMY_PATH
+from crawler.taxonomy import load_merged_taxonomy
 
 _TERM_RE = re.compile(
     r"\b(fall|spring|summer|winter)\s*['']?\s*(\d{2,4})\b",
@@ -17,6 +18,12 @@ _INSTITUTION_HINTS = (
     (r"\bberkeley\b", "UC Berkeley"),
     (r"\bcmu\b", "Carnegie Mellon University"),
     (r"\bharvard\b", "Harvard University"),
+)
+
+# Common URL/course-number patterns (biol1406, cs201, math141, nur-345)
+_COURSE_NUM_RE = re.compile(
+    r"\b([a-z]{2,6})[\s\-_/]?(\d{3,4}[a-z]?)\b",
+    re.IGNORECASE,
 )
 
 
@@ -32,15 +39,22 @@ class ClassificationResult:
     institution: str | None
 
 
-def _load_taxonomy(path: Path) -> list[dict]:
-    if not path.is_file():
-        return []
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    return list(data.get("courses", []))
+def _blob_variants(text: str) -> tuple[str, str]:
+    lower = text.lower()
+    compact = re.sub(r"[^a-z0-9]", "", lower)
+    return lower, compact
 
 
-def _text_blob(*parts: str | None) -> str:
-    return " ".join(p for p in parts if p).lower()
+def _keyword_matches(keyword: str, lower: str, compact: str) -> bool:
+    kw = keyword.lower().strip()
+    if not kw:
+        return False
+    kw_compact = re.sub(r"[^a-z0-9]", "", kw)
+    if kw in lower:
+        return True
+    if kw_compact and kw_compact in compact:
+        return True
+    return False
 
 
 def classify_syllabus(
@@ -50,10 +64,14 @@ def classify_syllabus(
     pdf_title: str | None = None,
     pdf_text_sample: str | None = None,
     link_text: str | None = None,
-    taxonomy_path: Path,
+    taxonomy_path: Path = DEFAULT_TAXONOMY_PATH,
+    courses_path: Path = DEFAULT_COURSES_PATH,
 ) -> ClassificationResult:
-    taxonomy = _load_taxonomy(taxonomy_path)
-    blob = _text_blob(url, filename, pdf_title, pdf_text_sample, link_text)
+    taxonomy = load_merged_taxonomy(
+        taxonomy_path=taxonomy_path, courses_path=courses_path
+    )
+    blob = " ".join(p for p in (url, filename, pdf_title, pdf_text_sample, link_text) if p)
+    lower, compact = _blob_variants(blob)
 
     best_slug: str | None = None
     best_name: str | None = None
@@ -68,20 +86,20 @@ def classify_syllabus(
         reasons: list[str] = []
 
         for code in entry.get("codes", []) or []:
-            if code.lower() in blob:
-                score += 3.0
+            if _keyword_matches(code, lower, compact):
+                score += 3.5
                 reasons.append(f"code:{code}")
 
         for kw in entry.get("keywords", []) or []:
-            kw_l = kw.lower()
-            if kw_l in blob:
-                weight = 2.0 if " " in kw_l else 1.2
+            if _keyword_matches(kw, lower, compact):
+                weight = 2.5 if " " in kw else 1.8
                 score += weight
                 reasons.append(f"kw:{kw}")
 
-        if slug.replace("-", " ") in blob or name.lower() in blob:
+        slug_compact = slug.replace("-", "")
+        if slug.replace("-", " ") in lower or slug_compact in compact:
             score += 2.5
-            reasons.append("name")
+            reasons.append("slug")
 
         if score > best_score:
             best_score = score
@@ -91,15 +109,15 @@ def classify_syllabus(
         if score >= 2.0:
             matched_slugs.append(slug)
 
-    confidence = min(1.0, best_score / 6.0) if best_slug else 0.0
-    if confidence < 0.35:
+    # Accept a single strong signal (e.g. math141 in URL)
+    confidence = min(1.0, best_score / 5.0) if best_slug else 0.0
+    if best_score < 1.8:
         best_slug = None
         best_name = None
 
     term = extract_term_label(blob)
     title = pdf_title or _guess_title_from_filename(filename)
     institution = infer_institution(blob, url)
-
     extra = [s for s in dict.fromkeys(matched_slugs) if s != best_slug]
 
     return ClassificationResult(

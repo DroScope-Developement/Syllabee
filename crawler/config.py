@@ -11,6 +11,10 @@ DEFAULT_MAX_PER_COURSE = 10
 DEFAULT_DB_PATH = Path("data") / "syllabee.db"
 DEFAULT_DATA_DIR = Path("data")
 DEFAULT_TAXONOMY_PATH = DEFAULT_DATA_DIR / "taxonomy.yaml"
+DEFAULT_COURSES_PATH = DEFAULT_DATA_DIR / "courses.yaml"
+
+# Loose PDFs that could not be matched still get a small bucket (not 10 slots blocking real courses)
+DEFAULT_MAX_UNCLASSIFIED = 15
 
 # Polite crawling defaults
 DEFAULT_REQUEST_DELAY_SEC = 1.0

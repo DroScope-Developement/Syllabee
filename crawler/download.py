@@ -11,7 +11,9 @@ import httpx
 
 from crawler.classify import ClassificationResult, classify_syllabus
 from crawler.config import (
+    DEFAULT_COURSES_PATH,
     DEFAULT_MAX_PER_COURSE,
+    DEFAULT_MAX_UNCLASSIFIED,
     DEFAULT_OUTPUT_DIR,
     DEFAULT_REQUEST_DELAY_SEC,
     DEFAULT_TAXONOMY_PATH,
@@ -82,22 +84,26 @@ class SyllabusDownloader:
         output_dir: Path = DEFAULT_OUTPUT_DIR,
         *,
         taxonomy_path: Path = DEFAULT_TAXONOMY_PATH,
+        courses_path: Path = DEFAULT_COURSES_PATH,
         user_agent: str = USER_AGENT,
         delay_sec: float = DEFAULT_REQUEST_DELAY_SEC,
         timeout_sec: float = DEFAULT_TIMEOUT_SEC,
         respect_robots: bool = True,
         crawl_session_id: int | None = None,
         max_per_course: int | None = DEFAULT_MAX_PER_COURSE,
+        max_unclassified: int | None = DEFAULT_MAX_UNCLASSIFIED,
         verbose: bool = True,
     ) -> None:
         self.catalog = catalog
         self.output_dir = output_dir
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.taxonomy_path = taxonomy_path
+        self.courses_path = courses_path
         self.delay_sec = delay_sec
         self.respect_robots = respect_robots
         self.crawl_session_id = crawl_session_id
         self.max_per_course = max_per_course
+        self.max_unclassified = max_unclassified
         self.verbose = verbose
         self._session_ok_by_course: dict[str, int] = {}
         self.robots = RobotsCache(user_agent)
@@ -117,9 +123,12 @@ class SyllabusDownloader:
         self.catalog.touch_domain(domain, pdfs_found_delta=1)
 
         if self.catalog.has_syllabus_url(url):
-            self._record_skip(url, candidate, reason="duplicate_url")
-            self._log_result(url, "skipped", "duplicate URL")
+            self._log_result(url, "skipped", "already saved")
             return DownloadResult(url, "skipped", reason="duplicate_url")
+
+        if self.catalog.has_attempted_url(url):
+            self._log_result(url, "skipped", "already attempted")
+            return DownloadResult(url, "skipped", reason="already_attempted")
 
         if self.respect_robots and not self.robots.allowed(url):
             self._record_skip(url, candidate, reason="robots_txt")
@@ -131,6 +140,7 @@ class SyllabusDownloader:
             filename=_filename_from_url(url),
             link_text=candidate.link_text,
             taxonomy_path=self.taxonomy_path,
+            courses_path=self.courses_path,
         )
         if self._at_course_cap(preview.course_slug):
             self._record_skip(url, candidate, reason="course_cap")
@@ -195,9 +205,11 @@ class SyllabusDownloader:
             pdf_text_sample=pdf_meta.text_sample,
             link_text=candidate.link_text,
             taxonomy_path=self.taxonomy_path,
+            courses_path=self.courses_path,
         )
 
         storage_dir = self._resolve_storage_dir(classification)
+        storage_dir.mkdir(parents=True, exist_ok=True)
         path = _unique_path(storage_dir, filename, sha)
         path.write_bytes(data)
 
@@ -257,12 +269,17 @@ class SyllabusDownloader:
         return course_slug if course_slug else "__unclassified__"
 
     def _at_course_cap(self, course_slug: str | None) -> bool:
-        if self.max_per_course is None:
-            return False
         key = self._cap_key(course_slug)
         in_db = self.catalog.count_ok_syllabi_for_course_slug(course_slug)
         in_session = self._session_ok_by_course.get(key, 0)
-        return (in_db + in_session) >= self.max_per_course
+        have = in_db + in_session
+        if not course_slug:
+            limit = self.max_unclassified
+        else:
+            limit = self.max_per_course
+        if limit is None:
+            return False
+        return have >= limit
 
     def _record_session_ok(self, course_slug: str | None) -> None:
         key = self._cap_key(course_slug)

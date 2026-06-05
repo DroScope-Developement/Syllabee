@@ -3,9 +3,7 @@
 Discover and download public syllabus PDFs into subject folders under sylabi/
 and record everything in the SQLite catalog (data/syllabee.db).
 
-Usage:
-  python syllabee.py init
-  python crawl_syllabi.py --ignore-robots
+Default mode fills each of the 74 catalog courses up to --max-per-course (10).
 """
 
 from __future__ import annotations
@@ -16,7 +14,6 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import httpx
-from tqdm import tqdm
 
 from crawler.config import (
     DEFAULT_DATA_DIR,
@@ -31,8 +28,10 @@ from crawler.curriculum_loader import load_seed_data
 from crawler.db import Catalog
 from crawler.discover import discover_from_seed_pages, discover_via_duckduckgo
 from crawler.download import SyllabusDownloader
+from crawler.gap_fill import fill_curriculum_gaps
 from crawler.log import PhaseTimer, vprint
 from crawler.models import PdfCandidate
+from crawler.reorganize import reorganize_sylabi
 
 
 def _load_lines(path: Path | None) -> list[str]:
@@ -52,6 +51,13 @@ def _record_pages(catalog: Catalog, pages: list[str]) -> None:
             catalog.touch_domain(domain, pages_delta=1)
 
 
+def _print_coverage(catalog: Catalog, max_per_course: int) -> None:
+    rows = catalog.coverage_report(max_per_course)
+    full = sum(1 for r in rows if r["have"] >= max_per_course)
+    empty = sum(1 for r in rows if r["have"] == 0)
+    print(f"\nCoverage: {full}/{len(rows)} courses at {max_per_course}+ syllabi, {empty} empty")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Crawl public syllabus PDFs into subject folders + SQLite catalog",
@@ -63,127 +69,70 @@ def main() -> int:
         "--max-per-course",
         type=int,
         default=DEFAULT_MAX_PER_COURSE,
-        help="Max PDFs per subject/course folder (default: 10). Use 0 for no per-course limit.",
+        help="Target PDFs per catalog course (default: 10). Use 0 for no limit.",
+    )
+    parser.add_argument("--max-downloads", type=int, default=None)
+    parser.add_argument(
+        "--fill-gaps",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Search per course that is below the cap (default: on)",
     )
     parser.add_argument(
-        "--max-downloads",
-        type=int,
-        default=None,
-        help="Optional global cap (normally unused; prefer --max-per-course)",
+        "--broad-discovery",
+        action="store_true",
+        help="Also run generic + all-course DuckDuckGo queries before gap fill",
     )
     parser.add_argument(
         "--no-course-queries",
         action="store_true",
-        help="Skip auto-generated per-course DuckDuckGo queries",
+        help="With --broad-discovery, skip auto per-course query expansion",
     )
-    parser.add_argument("--max-results-per-query", type=int, default=40)
+    parser.add_argument("--max-results-per-query", type=int, default=25)
     parser.add_argument("--max-seed-pages", type=int, default=30)
     parser.add_argument("--queries-file", type=Path)
     parser.add_argument("--seeds-file", type=Path)
     parser.add_argument("--skip-search", action="store_true")
     parser.add_argument("--skip-seeds", action="store_true")
     parser.add_argument("--delay", type=float, default=1.0)
+    parser.add_argument("--ignore-robots", action="store_true")
+    parser.add_argument("--no-init-data", action="store_true")
+    parser.add_argument("--quiet", action="store_true")
     parser.add_argument(
-        "--ignore-robots",
-        action="store_true",
-        help="Download even when robots.txt disallows (permitted sources only)",
-    )
-    parser.add_argument(
-        "--no-init-data",
-        action="store_true",
-        help="Skip loading courses/majors YAML into DB on startup",
-    )
-    parser.add_argument(
-        "--quiet",
-        action="store_true",
-        help="Less console output (progress bars only where applicable)",
+        "--reorganize-first",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Move loose PDFs in sylabi/ into course folders before crawling",
     )
     args = parser.parse_args()
     verbose = not args.quiet
-
-    queries = list(DEFAULT_SEARCH_QUERIES) + _load_lines(args.queries_file)
-    seeds = list(DEFAULT_SEED_URLS) + _load_lines(args.seeds_file)
     max_per_course = args.max_per_course if args.max_per_course > 0 else None
-
-    candidates: set[PdfCandidate] = set()
-    fetched_pages: list[str] = []
 
     print("SyllaBee syllabus crawler")
     print(f"PDF root:  {args.output_dir.resolve()}")
     print(f"Database:  {args.db.resolve()}")
     if max_per_course:
-        print(f"Limit:     up to {max_per_course} PDFs per subject/course")
+        print(f"Target:    {max_per_course} PDFs per catalog course (gap-fill mode)")
     print()
+
+    ok = skipped = failed = cap_skips = 0
 
     with Catalog(args.db) as catalog:
         if not args.no_init_data:
             load_seed_data(catalog, args.data_dir)
 
-        if not args.no_course_queries:
-            course_rows = catalog.list_courses()
-            vprint(
-                f"Added {len(course_rows) * 2} per-course search queries "
-                f"({len(course_rows)} courses).",
-                verbose=verbose,
-            )
-            for course in course_rows:
-                name = course["name"]
-                queries.append(f'"{name}" syllabus filetype:pdf site:.edu')
-                queries.append(f'"{name}" course syllabus pdf')
+        if args.reorganize_first:
+            moved, _ = reorganize_sylabi(catalog, args.output_dir)
+            if moved:
+                vprint(f"Reorganized {moved} loose PDF(s) into course folders.", verbose=verbose)
 
-        vprint(f"Total search queries: {len(queries)}", verbose=verbose)
-        session_id = catalog.start_crawl_session(queries=queries, seeds=seeds)
+        _print_coverage(catalog, max_per_course or DEFAULT_MAX_PER_COURSE)
 
-        with httpx.Client(
-            headers={"User-Agent": USER_AGENT},
-            timeout=30.0,
-            follow_redirects=True,
-        ) as client:
-            if not args.skip_search and queries:
-                with PhaseTimer(
-                    f"DuckDuckGo search ({len(queries)} queries)", verbose=verbose
-                ):
-                    found = discover_via_duckduckgo(
-                        queries,
-                        max_results_per_query=args.max_results_per_query,
-                        client=client,
-                        max_follow_pages=args.max_seed_pages,
-                        verbose=verbose,
-                    )
-                print(f"  Search found {len(found)} candidate PDF URLs")
-                candidates |= found
-
-            if not args.skip_seeds and seeds:
-                with PhaseTimer(f"Seed page crawl ({len(seeds)} seeds)", verbose=verbose):
-                    found, fetched_pages = discover_from_seed_pages(
-                        client,
-                        seeds,
-                        max_pages=args.max_seed_pages,
-                        verbose=verbose,
-                    )
-                print(
-                    f"  Seeds: {len(fetched_pages)} pages fetched, "
-                    f"{len(found)} candidate PDFs"
-                )
-                candidates |= found
-
-        _record_pages(catalog, fetched_pages)
-        for c in candidates:
-            domain = urlparse(c.url).netloc.lower()
-            if domain:
-                catalog.touch_domain(domain, pdfs_found_delta=0)
-
-        print(f"\nTotal unique candidates: {len(candidates)}")
-        if not candidates:
-            catalog.finish_crawl_session(session_id, notes="no_candidates")
-            print("No URLs found. Try --queries-file / --seeds-file.")
-            return 1
-
-        vprint(
-            f"\nDownloading {len(candidates)} candidates "
-            f"(up to {max_per_course or '∞'} per course)...",
-            verbose=verbose,
+        session_id = catalog.start_crawl_session(
+            queries=["fill-gaps"] if args.fill_gaps else [],
+            seeds=[],
         )
+
         downloader = SyllabusDownloader(
             catalog,
             args.output_dir,
@@ -193,39 +142,89 @@ def main() -> int:
             max_per_course=max_per_course,
             verbose=verbose,
         )
-        ok = skipped = failed = cap_skips = 0
-        download_iter = sorted(candidates, key=lambda c: c.url)
+
         try:
-            if verbose:
-                iterator = download_iter
-            else:
-                iterator = tqdm(download_iter, desc="Downloading")
-            for candidate in iterator:
-                if args.max_downloads is not None and ok >= args.max_downloads:
-                    break
-                result = downloader.download_candidate(candidate)
-                if result.status == "ok":
-                    ok += 1
-                elif result.status == "skipped":
-                    skipped += 1
-                    if result.reason and str(result.reason).startswith("course_cap"):
-                        cap_skips += 1
-                else:
-                    failed += 1
+            with httpx.Client(
+                headers={"User-Agent": USER_AGENT},
+                timeout=30.0,
+                follow_redirects=True,
+            ) as client:
+                if args.broad_discovery:
+                    queries = list(DEFAULT_SEARCH_QUERIES) + _load_lines(args.queries_file)
+                    seeds = list(DEFAULT_SEED_URLS) + _load_lines(args.seeds_file)
+                    candidates: set[PdfCandidate] = set()
+                    fetched_pages: list[str] = []
+
+                    if not args.no_course_queries:
+                        for course in catalog.list_courses():
+                            name = course["name"]
+                            queries.append(f'"{name}" syllabus filetype:pdf site:.edu')
+
+                    if not args.skip_search and queries:
+                        with PhaseTimer(
+                            f"Broad search ({len(queries)} queries)", verbose=verbose
+                        ):
+                            candidates |= discover_via_duckduckgo(
+                                queries,
+                                max_results_per_query=args.max_results_per_query,
+                                client=client,
+                                max_follow_pages=args.max_seed_pages,
+                                verbose=verbose,
+                            )
+
+                    if not args.skip_seeds and seeds:
+                        with PhaseTimer("Seed crawl", verbose=verbose):
+                            found, fetched_pages = discover_from_seed_pages(
+                                client,
+                                seeds,
+                                max_pages=args.max_seed_pages,
+                                verbose=verbose,
+                            )
+                            candidates |= found
+                        _record_pages(catalog, fetched_pages)
+
+                    vprint(f"\nBroad discovery: {len(candidates)} candidates", verbose=verbose)
+                    for candidate in sorted(candidates, key=lambda c: c.url):
+                        if args.max_downloads is not None and ok >= args.max_downloads:
+                            break
+                        result = downloader.download_candidate(candidate)
+                        if result.status == "ok":
+                            ok += 1
+                        elif result.status == "skipped":
+                            skipped += 1
+                            if result.reason and str(result.reason).startswith("course_cap"):
+                                cap_skips += 1
+                        else:
+                            failed += 1
+
+                if args.fill_gaps and max_per_course:
+                    gap_stats = fill_curriculum_gaps(
+                        catalog,
+                        downloader,
+                        client,
+                        max_per_course=max_per_course,
+                        max_results_per_query=args.max_results_per_query,
+                        verbose=verbose,
+                    )
+                    ok += gap_stats["saved"]
+                    skipped += gap_stats["skipped"]
+                    failed += gap_stats["failed"]
+
         finally:
             downloader.close()
             catalog.finish_crawl_session(
                 session_id,
-                notes=f"ok={ok} skipped={skipped} cap={cap_skips} failed={failed}",
+                notes=f"ok={ok} skipped={skipped} failed={failed}",
             )
             stats = catalog.stats()
+            _print_coverage(catalog, max_per_course or DEFAULT_MAX_PER_COURSE)
 
     print()
     print("Done.")
-    print(f"  Saved:   {ok}")
-    print(f"  Skipped: {skipped} ({cap_skips} already at per-course limit)")
-    print(f"  Failed:  {failed}")
-    print(f"  Catalog: {stats['syllabi_ok']} syllabi, {stats['courses']} courses, {stats['domains']} domains")
+    print(f"  Saved this run: {ok}")
+    print(f"  Skipped:        {skipped}")
+    print(f"  Failed:         {failed}")
+    print(f"  Catalog OK:     {stats['syllabi_ok']} syllabi across {stats['courses']} courses")
     return 0
 
 

@@ -3,13 +3,18 @@
 courses:
   - slug: calculus-1
     name: Calculus 1
-    codes: [MATH 141, MATH141, CALC 1, CALC I]
-    keywords: [calculus 1, calculus i, calc 1, first calculus]
+    codes: [MATH 141, MATH141, CALC 1, CALC I, MATH 110]
+    keywords: [calculus 1, calculus i, calculus-i, calc1, calc 1, first calculus, ap-calculus-ab]
 
   - slug: calculus-2
     name: Calculus 2
     codes: [MATH 142, MATH142, CALC 2, CALC II]
-    keywords: [calculus 2, calculus ii, calc 2]
+    keywords: [calculus 2, calculus ii, calculus-ii, calc2, calc 2, ap-calculus-bc]
+
+  - slug: calculus-3
+    name: Calculus 3
+    codes: [MATH 243, MATH243]
+    keywords: [calculus 3, calculus iii, calculus-iii, calc3, multivariable calculus]
 
   - slug: biochemistry
     name: Biochemistry
@@ -83,8 +88,18 @@ courses:
 
   - slug: accounting-1
     name: Financial Accounting
-    codes: [ACCT 201]
-    keywords: [financial accounting, accounting 1]
+    codes: [ACCT 201, BUSI 2301]
+    keywords: [financial accounting, accounting 1, busi2301]
+
+  - slug: corporate-finance
+    name: Corporate Finance
+    codes: [FIN 301]
+    keywords: [corporate finance, finance 301, fin301]
+
+  - slug: management
+    name: Principles of Management
+    codes: [MGMT 301, MGT 301]
+    keywords: [principles of management, mgt301, mgmt301]
 
   - slug: intro-psychology
     name: Introduction to Psychology
