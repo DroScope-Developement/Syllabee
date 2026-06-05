@@ -1,0 +1,4127 @@
+{
+  "generatedAt": "2026-06-05T01:09:43.881815+00:00",
+  "stats": {
+    "majors": 10,
+    "courses": 74,
+    "syllabi": 143
+  },
+  "majors": [
+    {
+      "slug": "software-engineering",
+      "name": "Software Engineering",
+      "description": "Application design, development, and delivery for software careers.",
+      "requiredCourses": [
+        "intro-programming",
+        "data-structures",
+        "algorithms",
+        "discrete-math",
+        "calculus-1",
+        "calculus-2",
+        "linear-algebra",
+        "operating-systems",
+        "databases",
+        "software-engineering",
+        "technical-writing",
+        "ethics-computing",
+        "capstone-se"
+      ],
+      "curriculum": {
+        "slug": "software-engineering-bs",
+        "name": "Software Engineering (B.S.)",
+        "years": 4,
+        "courseCount": 21,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "calculus-1",
+                  "intro-programming"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "technical-writing",
+                  "calculus-2",
+                  "discrete-math",
+                  "ethics-computing"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-structures",
+                  "linear-algebra",
+                  "physics-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "computer-architecture",
+                  "algorithms",
+                  "probability-statistics"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "operating-systems",
+                  "databases",
+                  "software-engineering"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "computer-networks",
+                  "web-development"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "cybersecurity",
+                  "machine-learning"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-se"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "software-engineering-bs",
+          "name": "Software Engineering (B.S.)",
+          "years": 4,
+          "courseCount": 21,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "calculus-1",
+                    "intro-programming"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "technical-writing",
+                    "calculus-2",
+                    "discrete-math",
+                    "ethics-computing"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-structures",
+                    "linear-algebra",
+                    "physics-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "computer-architecture",
+                    "algorithms",
+                    "probability-statistics"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "operating-systems",
+                    "databases",
+                    "software-engineering"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "computer-networks",
+                    "web-development"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "cybersecurity",
+                    "machine-learning"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-se"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "computer-science",
+      "name": "Computer Science",
+      "description": "Theory and practice of computing; foundation for research and industry.",
+      "requiredCourses": [
+        "intro-programming",
+        "data-structures",
+        "algorithms",
+        "discrete-math",
+        "calculus-1",
+        "calculus-2",
+        "calculus-3",
+        "computer-architecture",
+        "operating-systems",
+        "databases",
+        "linear-algebra",
+        "probability-statistics",
+        "capstone-cs"
+      ],
+      "curriculum": {
+        "slug": "computer-science-bs",
+        "name": "Computer Science (B.S.)",
+        "years": 4,
+        "courseCount": 17,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "calculus-1",
+                  "intro-programming"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "calculus-2",
+                  "discrete-math"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-structures",
+                  "linear-algebra"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "computer-architecture",
+                  "algorithms"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "operating-systems",
+                  "probability-statistics",
+                  "calculus-3"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "databases",
+                  "computer-networks"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "machine-learning",
+                  "ethics-computing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-cs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "computer-science-bs",
+          "name": "Computer Science (B.S.)",
+          "years": 4,
+          "courseCount": 17,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "calculus-1",
+                    "intro-programming"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "calculus-2",
+                    "discrete-math"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-structures",
+                    "linear-algebra"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "computer-architecture",
+                    "algorithms"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "operating-systems",
+                    "probability-statistics",
+                    "calculus-3"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "databases",
+                    "computer-networks"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "machine-learning",
+                    "ethics-computing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-cs"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "computer-engineering",
+      "name": "Computer Engineering",
+      "description": "Integrated hardware and software systems engineering.",
+      "requiredCourses": [
+        "intro-programming",
+        "data-structures",
+        "algorithms",
+        "discrete-math",
+        "calculus-1",
+        "calculus-2",
+        "physics-1",
+        "physics-2",
+        "digital-logic",
+        "computer-architecture",
+        "embedded-systems",
+        "circuits-1",
+        "operating-systems"
+      ],
+      "curriculum": {
+        "slug": "computer-engineering-bs",
+        "name": "Computer Engineering (B.S.)",
+        "years": 4,
+        "courseCount": 19,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "calculus-1",
+                  "intro-programming",
+                  "physics-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "calculus-2",
+                  "discrete-math",
+                  "physics-2"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-structures",
+                  "digital-logic",
+                  "circuits-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "computer-architecture",
+                  "algorithms"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "embedded-systems",
+                  "operating-systems",
+                  "linear-algebra"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "computer-networks",
+                  "probability-statistics"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "cybersecurity",
+                  "thermodynamics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-cs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "computer-engineering-bs",
+          "name": "Computer Engineering (B.S.)",
+          "years": 4,
+          "courseCount": 19,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "calculus-1",
+                    "intro-programming",
+                    "physics-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "calculus-2",
+                    "discrete-math",
+                    "physics-2"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-structures",
+                    "digital-logic",
+                    "circuits-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "computer-architecture",
+                    "algorithms"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "embedded-systems",
+                    "operating-systems",
+                    "linear-algebra"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "computer-networks",
+                    "probability-statistics"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "cybersecurity",
+                    "thermodynamics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-cs"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "data-science",
+      "name": "Data Science",
+      "description": "Statistics, computing, and machine learning for data-driven roles.",
+      "requiredCourses": [
+        "intro-programming",
+        "data-structures",
+        "calculus-1",
+        "calculus-2",
+        "linear-algebra",
+        "probability-statistics",
+        "databases",
+        "machine-learning",
+        "data-mining",
+        "microeconomics"
+      ],
+      "curriculum": {
+        "slug": "data-science-bs",
+        "name": "Data Science (B.S.)",
+        "years": 4,
+        "courseCount": 17,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "calculus-1",
+                  "intro-programming"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "calculus-2",
+                  "microeconomics"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-structures",
+                  "linear-algebra",
+                  "probability-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "discrete-math",
+                  "databases"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "machine-learning",
+                  "algorithms"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "data-mining",
+                  "business-statistics"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "econometrics",
+                  "computer-networks"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-cs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "data-science-bs",
+          "name": "Data Science (B.S.)",
+          "years": 4,
+          "courseCount": 17,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "calculus-1",
+                    "intro-programming"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "calculus-2",
+                    "microeconomics"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-structures",
+                    "linear-algebra",
+                    "probability-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "discrete-math",
+                    "databases"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "machine-learning",
+                    "algorithms"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "data-mining",
+                    "business-statistics"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "econometrics",
+                    "computer-networks"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-cs"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "information-technology",
+      "name": "Information Technology",
+      "description": "Enterprise systems, networking, and IT operations.",
+      "requiredCourses": [
+        "intro-programming",
+        "databases",
+        "computer-networks",
+        "cybersecurity",
+        "systems-administration",
+        "web-development",
+        "technical-writing"
+      ],
+      "curriculum": {
+        "slug": "information-technology-bs",
+        "name": "Information Technology (B.S.)",
+        "years": 4,
+        "courseCount": 16,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "intro-programming",
+                  "business-communications"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "technical-writing",
+                  "web-development"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-structures",
+                  "computer-networks"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "databases",
+                  "systems-administration"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "cybersecurity",
+                  "operating-systems"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "probability-statistics",
+                  "software-engineering"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "machine-learning",
+                  "ethics-computing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-se"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "information-technology-bs",
+          "name": "Information Technology (B.S.)",
+          "years": 4,
+          "courseCount": 16,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "intro-programming",
+                    "business-communications"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "technical-writing",
+                    "web-development"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-structures",
+                    "computer-networks"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "databases",
+                    "systems-administration"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "cybersecurity",
+                    "operating-systems"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "probability-statistics",
+                    "software-engineering"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "machine-learning",
+                    "ethics-computing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-se"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "business-administration",
+      "name": "Business Administration",
+      "description": "Broad business foundation for management and entrepreneurship.",
+      "requiredCourses": [
+        "microeconomics",
+        "macroeconomics",
+        "accounting-1",
+        "accounting-2",
+        "business-law",
+        "marketing",
+        "corporate-finance",
+        "management",
+        "business-statistics",
+        "business-communications"
+      ],
+      "curriculum": {
+        "slug": "business-administration-bs",
+        "name": "Business Administration (B.S.)",
+        "years": 4,
+        "courseCount": 19,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "microeconomics",
+                  "accounting-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "macroeconomics",
+                  "accounting-2",
+                  "business-communications"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "business-statistics",
+                  "business-law",
+                  "marketing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "corporate-finance",
+                  "management",
+                  "calculus-1"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "intro-programming",
+                  "probability-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "international-economics",
+                  "technical-writing"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "data-mining",
+                  "ethics-computing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-se"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "business-administration-bs",
+          "name": "Business Administration (B.S.)",
+          "years": 4,
+          "courseCount": 19,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "microeconomics",
+                    "accounting-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "macroeconomics",
+                    "accounting-2",
+                    "business-communications"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "business-statistics",
+                    "business-law",
+                    "marketing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "corporate-finance",
+                    "management",
+                    "calculus-1"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "intro-programming",
+                    "probability-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "international-economics",
+                    "technical-writing"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "data-mining",
+                    "ethics-computing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-se"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nursing",
+      "name": "Nursing",
+      "description": "B.S.N. pathway toward registered nursing practice.",
+      "requiredCourses": [
+        "anatomy-physiology-1",
+        "anatomy-physiology-2",
+        "microbiology",
+        "biochemistry",
+        "pharmacology-nursing",
+        "pathophysiology",
+        "nursing-fundamentals",
+        "health-assessment",
+        "med-surg-nursing",
+        "community-health-nursing"
+      ],
+      "curriculum": {
+        "slug": "nursing-bsn",
+        "name": "Nursing (B.S.N.)",
+        "years": 4,
+        "courseCount": 20,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "general-biology-1",
+                  "microeconomics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "general-biology-2",
+                  "microbiology",
+                  "intro-psychology"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "anatomy-physiology-1",
+                  "organic-chemistry-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "anatomy-physiology-2",
+                  "biochemistry",
+                  "nursing-fundamentals"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "pathophysiology",
+                  "pharmacology-nursing",
+                  "health-assessment"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "med-surg-nursing",
+                  "probability-statistics"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "community-health-nursing",
+                  "ethics-computing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "technical-writing",
+                  "developmental-psychology"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "nursing-bsn",
+          "name": "Nursing (B.S.N.)",
+          "years": 4,
+          "courseCount": 20,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "general-biology-1",
+                    "microeconomics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "general-biology-2",
+                    "microbiology",
+                    "intro-psychology"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "anatomy-physiology-1",
+                    "organic-chemistry-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "anatomy-physiology-2",
+                    "biochemistry",
+                    "nursing-fundamentals"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "pathophysiology",
+                    "pharmacology-nursing",
+                    "health-assessment"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "med-surg-nursing",
+                    "probability-statistics"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "community-health-nursing",
+                    "ethics-computing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "technical-writing",
+                    "developmental-psychology"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "psychology",
+      "name": "Psychology",
+      "description": "Scientific study of behavior and mental processes.",
+      "requiredCourses": [
+        "intro-psychology",
+        "research-methods-psych",
+        "abnormal-psychology",
+        "developmental-psychology",
+        "cognitive-psychology",
+        "social-psychology",
+        "probability-statistics"
+      ],
+      "curriculum": {
+        "slug": "psychology-ba",
+        "name": "Psychology (B.A.)",
+        "years": 4,
+        "courseCount": 16,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "intro-psychology",
+                  "microeconomics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "developmental-psychology",
+                  "general-biology-1"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "research-methods-psych",
+                  "probability-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "social-psychology",
+                  "cognitive-psychology"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "abnormal-psychology",
+                  "business-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "cell-biology",
+                  "technical-writing"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "machine-learning",
+                  "ethics-computing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-cs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "psychology-ba",
+          "name": "Psychology (B.A.)",
+          "years": 4,
+          "courseCount": 16,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "intro-psychology",
+                    "microeconomics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "developmental-psychology",
+                    "general-biology-1"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "research-methods-psych",
+                    "probability-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "social-psychology",
+                    "cognitive-psychology"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "abnormal-psychology",
+                    "business-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "cell-biology",
+                    "technical-writing"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "machine-learning",
+                    "ethics-computing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-cs"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "biology",
+      "name": "Biology",
+      "description": "Life sciences foundation for research, health, and biotechnology.",
+      "requiredCourses": [
+        "general-biology-1",
+        "general-biology-2",
+        "genetics",
+        "cell-biology",
+        "ecology",
+        "organic-chemistry-1",
+        "organic-chemistry-2",
+        "biochemistry",
+        "calculus-1"
+      ],
+      "curriculum": {
+        "slug": "biology-bs",
+        "name": "Biology (B.S.)",
+        "years": 4,
+        "courseCount": 17,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "english-composition",
+                  "general-biology-1",
+                  "calculus-1"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "general-biology-2",
+                  "calculus-2"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "organic-chemistry-1",
+                  "genetics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "organic-chemistry-2",
+                  "cell-biology"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "biochemistry",
+                  "ecology",
+                  "probability-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "microbiology",
+                  "anatomy-physiology-1"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "machine-learning",
+                  "technical-writing"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-cs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "biology-bs",
+          "name": "Biology (B.S.)",
+          "years": 4,
+          "courseCount": 17,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "english-composition",
+                    "general-biology-1",
+                    "calculus-1"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "general-biology-2",
+                    "calculus-2"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "organic-chemistry-1",
+                    "genetics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "organic-chemistry-2",
+                    "cell-biology"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "biochemistry",
+                    "ecology",
+                    "probability-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "microbiology",
+                    "anatomy-physiology-1"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "machine-learning",
+                    "technical-writing"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-cs"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mechanical-engineering",
+      "name": "Mechanical Engineering",
+      "description": "Design and analysis of mechanical and thermal systems.",
+      "requiredCourses": [
+        "calculus-1",
+        "calculus-2",
+        "calculus-3",
+        "physics-1",
+        "physics-2",
+        "statics",
+        "dynamics",
+        "thermodynamics",
+        "materials-science",
+        "fluid-mechanics",
+        "machine-design",
+        "manufacturing-processes",
+        "capstone-me"
+      ],
+      "curriculum": {
+        "slug": "mechanical-engineering-bs",
+        "name": "Mechanical Engineering (B.S.)",
+        "years": 4,
+        "courseCount": 19,
+        "plan": [
+          {
+            "year": 1,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "calculus-1",
+                  "physics-1",
+                  "intro-programming"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "calculus-2",
+                  "physics-2",
+                  "technical-writing"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 2,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "calculus-3",
+                  "statics",
+                  "materials-science"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "dynamics",
+                  "differential-equations",
+                  "linear-algebra"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 3,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "thermodynamics",
+                  "fluid-mechanics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "machine-design",
+                  "circuits-1"
+                ]
+              }
+            ]
+          },
+          {
+            "year": 4,
+            "terms": [
+              {
+                "name": "Fall",
+                "courses": [
+                  "manufacturing-processes",
+                  "probability-statistics"
+                ]
+              },
+              {
+                "name": "Spring",
+                "courses": [
+                  "capstone-me"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "curricula": [
+        {
+          "slug": "mechanical-engineering-bs",
+          "name": "Mechanical Engineering (B.S.)",
+          "years": 4,
+          "courseCount": 19,
+          "plan": [
+            {
+              "year": 1,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "calculus-1",
+                    "physics-1",
+                    "intro-programming"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "calculus-2",
+                    "physics-2",
+                    "technical-writing"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 2,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "calculus-3",
+                    "statics",
+                    "materials-science"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "dynamics",
+                    "differential-equations",
+                    "linear-algebra"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 3,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "thermodynamics",
+                    "fluid-mechanics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "machine-design",
+                    "circuits-1"
+                  ]
+                }
+              ]
+            },
+            {
+              "year": 4,
+              "terms": [
+                {
+                  "name": "Fall",
+                  "courses": [
+                    "manufacturing-processes",
+                    "probability-statistics"
+                  ]
+                },
+                {
+                  "name": "Spring",
+                  "courses": [
+                    "capstone-me"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "courses": {
+    "intro-programming": {
+      "slug": "intro-programming",
+      "name": "Introduction to Programming",
+      "code": "CS 101",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Carnatic Melodic Sec 2024-25",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/intro-programming/Carnatic_Melodic_Sec_2024-25.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Introduction to Programming/Carnatic_Melodic_Sec_2024-25.pdf"
+        }
+      ]
+    },
+    "data-structures": {
+      "slug": "data-structures",
+      "name": "Data Structures",
+      "code": "CS 201",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Algorithms andData Structures",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/data-structures/Algorithms-and-Data-Structures-Course-Syllabus-CodePro.pdf",
+          "source": "https://codepro.co.il/wp-content/uploads/2024/01/Algorithms-and-Data-Structures-Course-Syllabus-CodePro.pdf"
+        },
+        {
+          "title": "Course Syllabus Spring 2019",
+          "institution": "MIT",
+          "term": "Spring 2019",
+          "file": "/syllabi/data-structures/eecs340_454_s19_syllabus.pdf",
+          "source": "http://compbio.case.edu/koyuturk/teaching/eecs340_454_s19_syllabus.pdf"
+        }
+      ]
+    },
+    "algorithms": {
+      "slug": "algorithms",
+      "name": "Algorithms",
+      "code": "CS 301",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Algorithms andData Structures",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/algorithms/Algorithms-and-Data-Structures-Course-Syllabus-CodePro.pdf",
+          "source": "https://codepro.co.il/wp-content/uploads/2024/01/Algorithms-and-Data-Structures-Course-Syllabus-CodePro.pdf"
+        },
+        {
+          "title": "Syllabus_Algorithms",
+          "institution": null,
+          "term": "2017",
+          "file": "/syllabi/algorithms/Syllabus_Algorithms.pdf",
+          "source": "https://economia.uniroma2.it/public/gobalGov/files/Syllabus_Algorithms.pdf"
+        },
+        {
+          "title": "Introduction to Computing",
+          "institution": "MIT",
+          "term": null,
+          "file": "/syllabi/algorithms/MIT_CS_-301.pdf",
+          "source": "https://www.uou.ac.in/sites/default/files/syllabus/MIT(CS)-301.pdf"
+        },
+        {
+          "title": "Microsoft Word - syllabus_cpe593",
+          "institution": "MIT",
+          "term": null,
+          "file": "/syllabi/algorithms/syllabus_cpe593.pdf",
+          "source": "https://www.winlab.rutgers.edu/~yychen/syllabus_cpe593.pdf"
+        },
+        {
+          "title": "Program and",
+          "institution": "MIT",
+          "term": "2009",
+          "file": "/syllabi/algorithms/Syllabus_Algorithms_941.pdf",
+          "source": "https://web.mit.edu/~irahwan/www/docs/Syllabus_Algorithms.pdf"
+        },
+        {
+          "title": "Algorithm Engineering Syllabus",
+          "institution": "S2 (.edu)",
+          "term": "2016",
+          "file": "/syllabi/algorithms/Syllabus.pdf",
+          "source": "https://s2.smu.edu/~matula/Algorithms/Syllabus.pdf"
+        },
+        {
+          "title": "Microsoft Word - The Politics of Algorithms_Syllabus.docx",
+          "institution": "Stanford University",
+          "term": "Spring 2017",
+          "file": "/syllabi/algorithms/The-Politics-of-Algorithms_Syllabus.pdf",
+          "source": "https://www.angelechristin.com/wp-content/uploads/2014/06/The-Politics-of-Algorithms_Syllabus.pdf"
+        },
+        {
+          "title": "syllabus.dvi",
+          "institution": "Userpages (.edu)",
+          "term": null,
+          "file": "/syllabi/algorithms/syllabus_b766264b.pdf",
+          "source": "https://userpages.cs.umbc.edu/motteler/teaching/courses/algorithms/syllabus.pdf"
+        },
+        {
+          "title": "EE-381V-Advanced-Algorithms-Syllabus-Nikolova 2",
+          "institution": "Users (.edu)",
+          "term": null,
+          "file": "/syllabi/algorithms/syllabus.pdf",
+          "source": "https://users.ece.utexas.edu/~nikolova/Teaching/S15-Advanced-Algorithms/syllabus.pdf"
+        }
+      ]
+    },
+    "computer-architecture": {
+      "slug": "computer-architecture",
+      "name": "Computer Architecture",
+      "code": "CS 250",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "operating-systems": {
+      "slug": "operating-systems",
+      "name": "Operating Systems",
+      "code": "CS 350",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "ART226",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/operating-systems/ART226.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Operating Systems/ART226.pdf"
+        }
+      ]
+    },
+    "databases": {
+      "slug": "databases",
+      "name": "Database Systems",
+      "code": "CS 340",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "software-engineering": {
+      "slug": "software-engineering",
+      "name": "Software Engineering",
+      "code": "CS 360",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "machine-learning": {
+      "slug": "machine-learning",
+      "name": "Machine Learning",
+      "code": "CS 410",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "data-science"
+      ],
+      "sharedIn": [
+        "biology",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "psychology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "data-mining": {
+      "slug": "data-mining",
+      "name": "Data Mining",
+      "code": "CS 415",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "data-science"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "data-science"
+      ],
+      "syllabi": []
+    },
+    "computer-networks": {
+      "slug": "computer-networks",
+      "name": "Computer Networks",
+      "code": "CS 325",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "information-technology"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "cybersecurity": {
+      "slug": "cybersecurity",
+      "name": "Cybersecurity",
+      "code": "CS 365",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "information-technology"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "web-development": {
+      "slug": "web-development",
+      "name": "Web Development",
+      "code": "CS 290",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "information-technology"
+      ],
+      "sharedIn": [
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "systems-administration": {
+      "slug": "systems-administration",
+      "name": "Systems Administration",
+      "code": "IT 340",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "information-technology"
+      ],
+      "sharedIn": [
+        "information-technology"
+      ],
+      "syllabi": []
+    },
+    "ethics-computing": {
+      "slug": "ethics-computing",
+      "name": "Ethics in Computing",
+      "code": "CS 380",
+      "category": "general",
+      "description": null,
+      "requiredBy": [
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "computer-science",
+        "information-technology",
+        "nursing",
+        "psychology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "capstone-se": {
+      "slug": "capstone-se",
+      "name": "Software Engineering Capstone",
+      "code": "CS 495",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "information-technology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "capstone-cs": {
+      "slug": "capstone-cs",
+      "name": "Computer Science Capstone",
+      "code": "CS 490",
+      "category": "cs",
+      "description": null,
+      "requiredBy": [
+        "computer-science"
+      ],
+      "sharedIn": [
+        "biology",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "psychology"
+      ],
+      "syllabi": []
+    },
+    "digital-logic": {
+      "slug": "digital-logic",
+      "name": "Digital Logic Design",
+      "code": "CE 210",
+      "category": "ce",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering"
+      ],
+      "syllabi": []
+    },
+    "embedded-systems": {
+      "slug": "embedded-systems",
+      "name": "Embedded Systems",
+      "code": "CE 320",
+      "category": "ce",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering"
+      ],
+      "syllabi": []
+    },
+    "circuits-1": {
+      "slug": "circuits-1",
+      "name": "Circuits 1",
+      "code": "EE 201",
+      "category": "ce",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "mechanical-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "EE201: ELECTRICAL CIRCUITS AND NETWORK",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/circuits-1/EE201.pdf",
+          "source": "https://www.bvmengineering.ac.in/syllabi/UG/EE/EE201.pdf"
+        },
+        {
+          "title": "Engineering Physics A",
+          "institution": null,
+          "term": "2020",
+          "file": "/syllabi/circuits-1/Engineering-Physics-A.pdf",
+          "source": "https://eees.in/wp-content/uploads/2020/06/Engineering-Physics-A.pdf"
+        },
+        {
+          "title": "School: Science, Technology, Engineering, and Math",
+          "institution": "Amu (.edu)",
+          "term": null,
+          "file": "/syllabi/circuits-1/ELEN201.pdf",
+          "source": "https://www.amu.apus.edu/docs/shared/course-syllabus/ELEN201.pdf"
+        },
+        {
+          "title": "ECE2301 Syllabus",
+          "institution": "Digitalmeasures (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/circuits-1/ECE2301-Syllabus-Fall2025-1.pdf",
+          "source": "https://digitalmeasures.utep.edu/ai/herivescon/schteach/ECE2301-Syllabus-Fall2025-1.pdf"
+        },
+        {
+          "title": "EE 201: Fundamentals of computer systems and engineering",
+          "institution": "Ece (.edu)",
+          "term": "Spring 2024",
+          "file": "/syllabi/circuits-1/ee201-syllabus-sp24.pdf",
+          "source": "http://www.ece.tufts.edu/ee/201/ee201-syllabus-sp24.pdf"
+        },
+        {
+          "title": "Microsoft Word - EE201_syllabus_103_vf.doc",
+          "institution": "Faculty (.edu)",
+          "term": "2010",
+          "file": "/syllabi/circuits-1/103_EE201_Syllabus.pdf",
+          "source": "https://faculty.kfupm.edu.sa/EE/ohammi/files/103_EE201_Syllabus.pdf"
+        },
+        {
+          "title": "SYLLABUS FOR",
+          "institution": "Tedu (.edu)",
+          "term": "2026",
+          "file": "/syllabi/circuits-1/EE201_01_S2526_SYLLABUS_260209.pdf",
+          "source": "https://www.tedu.edu.tr/sites/default/files/2026-03/EE201_01_S2526_SYLLABUS_260209.pdf"
+        },
+        {
+          "title": "SYLLABUS FOR",
+          "institution": "Tedu (.edu)",
+          "term": "2023",
+          "file": "/syllabi/circuits-1/syllabus_ee201_01.pdf",
+          "source": "https://www.tedu.edu.tr/sites/default/files/2023-10/syllabus_ee201_01.pdf"
+        },
+        {
+          "title": "ece 584.syla",
+          "institution": "Www Personal (.edu)",
+          "term": "2005",
+          "file": "/syllabi/circuits-1/Intro_circuits_1.pdf",
+          "source": "http://www-personal.umd.umich.edu/~sawad/videos/ford_classes/syllabus/Intro_circuits_1.pdf"
+        }
+      ]
+    },
+    "discrete-math": {
+      "slug": "discrete-math",
+      "name": "Discrete Mathematics",
+      "code": "MATH 205",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "calculus-1": {
+      "slug": "calculus-1",
+      "name": "Calculus 1",
+      "code": "MATH 141",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "biology",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "biology",
+        "business-administration",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "2024 Fall Math141 Syllabus",
+          "institution": null,
+          "term": "Fall 2024",
+          "file": "/syllabi/calculus-1/2024_fall_math141_syllabus.pdf",
+          "source": "https://github.com/cgmcwhorter/usc/blob/main/fall24/math141/syllabus/main_syllabus/2024_fall_math141_syllabus.pdf"
+        },
+        {
+          "title": "Updated: 2023.08.11 MR  1",
+          "institution": "Buffalo (.edu)",
+          "term": "2023",
+          "file": "/syllabi/calculus-1/MTH141-syllabus.pdf",
+          "source": "https://www.buffalo.edu/content/cas/math/ug/ug-courses/syllabi/_jcr_content/par/download_10/file.res/MTH141-syllabus.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": "Faculty (.edu)",
+          "term": "Fall 2019",
+          "file": "/syllabi/calculus-1/Syllabus.pdf",
+          "source": "https://faculty.bard.edu/smendezdiez/F19/math141/Syllabus.pdf"
+        },
+        {
+          "title": "MATH 141B: MATHEMATICAL LOGIC II",
+          "institution": "Harvard University",
+          "term": "Spring 2019",
+          "file": "/syllabi/calculus-1/141b-syllabus.pdf",
+          "source": "https://people.math.harvard.edu/~wboney/spring19/141b-syllabus.pdf"
+        },
+        {
+          "title": "Math 141- Calculus I (Spring 2019)",
+          "institution": "People (.edu)",
+          "term": "Spring 2019",
+          "file": "/syllabi/calculus-1/Syllabus_6e9175db.pdf",
+          "source": "https://people.math.sc.edu/mlevet/S19/Math141/Syllabus.pdf"
+        }
+      ]
+    },
+    "calculus-2": {
+      "slug": "calculus-2",
+      "name": "Calculus 2",
+      "code": "MATH 142",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "biology",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Calculus 2",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/calculus-2/Calc2_flier.pdf",
+          "source": "https://liavas.net/courses/calc2/files/Calc2_flier.pdf"
+        },
+        {
+          "title": "Calculus 2 syllabus",
+          "institution": null,
+          "term": "Fall 2024",
+          "file": "/syllabi/calculus-2/Calc2_syllabus.pdf",
+          "source": "https://liavas.net/courses/calc2/files/Calc2_syllabus.pdf"
+        },
+        {
+          "title": "MAC 2312: Calculus II, Fall 2024",
+          "institution": "Syllabus (.edu)",
+          "term": "Fall 2024",
+          "file": "/syllabi/calculus-2/Online-MAC2312-Chui-2.pdf",
+          "source": "https://syllabus.math.ufl.edu/wp-content/uploads/sites/133/Online-MAC2312-Chui-2.pdf"
+        },
+        {
+          "title": "MA 1022B Fall 2024",
+          "institution": "Wpi (.edu)",
+          "term": "Fall 2024",
+          "file": "/syllabi/calculus-2/Syllabus_MATH1022_Gu.pdf",
+          "source": "https://www.wpi.edu/sites/default/files/2025-05/Syllabus_MATH1022_Gu.pdf"
+        }
+      ]
+    },
+    "calculus-3": {
+      "slug": "calculus-3",
+      "name": "Calculus 3",
+      "code": "MATH 243",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "computer-science",
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "computer-science",
+        "mechanical-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Math 243: Differential Equations (3 credits)",
+          "institution": null,
+          "term": "Fall 2025",
+          "file": "/syllabi/calculus-3/syllabus.pdf",
+          "source": "https://bclins.github.io/fall25/math243/syllabus.pdf"
+        },
+        {
+          "title": "MITOCW | MIT18_01SCF10Rec_00_300k",
+          "institution": "MIT",
+          "term": "2010",
+          "file": "/syllabi/calculus-3/2711bd9631f5faf7d54ab1d6af92de81_2y4tCiWbVRI.pdf",
+          "source": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/2711bd9631f5faf7d54ab1d6af92de81_2y4tCiWbVRI.pdf"
+        },
+        {
+          "title": "Multivariable Calculus",
+          "institution": "MIT",
+          "term": "Fall 2010",
+          "file": "/syllabi/calculus-3/.pdf",
+          "source": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/syllabus/"
+        },
+        {
+          "title": "CALCULUS III",
+          "institution": "Math (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/calculus-3/Syllabus_Fall2025.pdf",
+          "source": "https://www.math.columbia.edu/~gyujinoh/Fall2025/Syllabus_Fall2025.pdf"
+        }
+      ]
+    },
+    "linear-algebra": {
+      "slug": "linear-algebra",
+      "name": "Linear Algebra",
+      "code": "MATH 220",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "computer-science",
+        "data-science",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "DistanceCalculus_RogerWilliamsUniv_Math331_LinearAlgebra-2019",
+          "institution": null,
+          "term": "2019",
+          "file": "/syllabi/linear-algebra/DistanceCalculus_RogerWilliamsUniv_Math331_LinearAlgebra-2019.pdf",
+          "source": "https://www.distancecalculus.com/syllabi/DistanceCalculus_RogerWilliamsUniv_Math331_LinearAlgebra-2019.pdf"
+        },
+        {
+          "title": "Linear algebra and calculas (S1)",
+          "institution": null,
+          "term": "2020",
+          "file": "/syllabi/linear-algebra/Linear-algebra-and-calculas.pdf",
+          "source": "https://eees.in/wp-content/uploads/2020/06/Linear-algebra-and-calculas.pdf"
+        }
+      ]
+    },
+    "probability-statistics": {
+      "slug": "probability-statistics",
+      "name": "Probability and Statistics",
+      "code": "MATH 318",
+      "category": "math",
+      "description": null,
+      "requiredBy": [
+        "computer-science",
+        "data-science",
+        "psychology"
+      ],
+      "sharedIn": [
+        "biology",
+        "business-administration",
+        "computer-engineering",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "mechanical-engineering",
+        "nursing",
+        "psychology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "differential-equations": {
+      "slug": "differential-equations",
+      "name": "Differential Equations",
+      "code": "MATH 244",
+      "category": "math",
+      "description": null,
+      "requiredBy": [],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Ap Calculus Bc Sample Syllabus 1",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/differential-equations/ap-calculus-bc-sample-syllabus-1.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Differential Equations/ap-calculus-bc-sample-syllabus-1.pdf"
+        },
+        {
+          "title": "Math 243: Differential Equations (3 credits)",
+          "institution": null,
+          "term": "Fall 2025",
+          "file": "/syllabi/differential-equations/syllabus.pdf",
+          "source": "https://bclins.github.io/fall25/math243/syllabus.pdf"
+        }
+      ]
+    },
+    "physics-1": {
+      "slug": "physics-1",
+      "name": "Physics 1",
+      "code": "PHYS 101",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "mechanical-engineering",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "physics-2": {
+      "slug": "physics-2",
+      "name": "Physics 2",
+      "code": "PHYS 102",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "computer-engineering",
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "biochemistry": {
+      "slug": "biochemistry",
+      "name": "Biochemistry",
+      "code": "CHEM 301",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology",
+        "nursing"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing"
+      ],
+      "syllabi": [
+        {
+          "title": "Microsoft Word - CHEM301_F2021_Syllabus.docx",
+          "institution": null,
+          "term": "Fall 2021",
+          "file": "/syllabi/biochemistry/CHEM301_F2021_Syllabus.pdf",
+          "source": "https://old.meldrumlab.org/files/CHEM301_F2021_Syllabus.pdf"
+        },
+        {
+          "title": "Microsoft Word - M.Sc._Medical_Biochemistry_syllabus_for_our_college _1_",
+          "institution": null,
+          "term": "2019",
+          "file": "/syllabi/biochemistry/M.Sc_.-Medical-Biochemistry-Syllabus-Examination-2019.pdf",
+          "source": "https://dypatilunikop.org/wp-content/uploads/2019/06/M.Sc_.-Medical-Biochemistry-Syllabus-Examination-2019.pdf"
+        },
+        {
+          "title": "Biochemistry Syllabus Paper Distribution 08022024153505",
+          "institution": "Abvmuup (.edu)",
+          "term": null,
+          "file": "/syllabi/biochemistry/biochemistry_syllabus_Paper_distribution_08022024153505.PDF",
+          "source": "https://abvmuup.edu.in/downloads/coursesyllabus/biochemistry_syllabus_Paper_distribution_08022024153505.PDF"
+        },
+        {
+          "title": "General Biochemistry I Syllabus",
+          "institution": "Binf (.edu)",
+          "term": "Spring 2024",
+          "file": "/syllabi/biochemistry/GeneralBiochemistry_Syllabus_Spring2024.pdf",
+          "source": "http://binf.gmu.edu/Syllabi/Spring2024/GeneralBiochemistry_Syllabus_Spring2024.pdf"
+        },
+        {
+          "title": "General Biochemistry I Syllabus",
+          "institution": "Binf (.edu)",
+          "term": "Fall 2021",
+          "file": "/syllabi/biochemistry/Fa21GeneralBiochemistryISyllabus.pdf",
+          "source": "http://binf.gmu.edu/Syllabi/Fall2021/Fa21GeneralBiochemistryISyllabus.pdf"
+        },
+        {
+          "title": "Biochem 501 Syllabus Fall2023",
+          "institution": "Biochem (.edu)",
+          "term": "Fall 2023",
+          "file": "/syllabi/biochemistry/BIOCHEM_501_Syllabus_Fall2023.pdf",
+          "source": "https://biochem.wisc.edu/wp-content/uploads/sites/1394/2023/09/BIOCHEM_501_Syllabus_Fall2023.pdf"
+        },
+        {
+          "title": "Biochem 507 Syllabus Fall2022",
+          "institution": "Biochem (.edu)",
+          "term": "2023",
+          "file": "/syllabi/biochemistry/BIOCHEM_507_Syllabus_Fall2022.pdf",
+          "source": "https://biochem.wisc.edu/wp-content/uploads/sites/1394/2023/08/BIOCHEM_507_Syllabus_Fall2022.pdf"
+        },
+        {
+          "title": "Microsoft Word - CHEM301Syllabus(F21).doc",
+          "institution": "Chem (.edu)",
+          "term": "Fall 2021",
+          "file": "/syllabi/biochemistry/CHEM301Syllabus_F21_.pdf",
+          "source": "http://chem.winthrop.edu/faculty/hartel/link_to_webpages/courses/chem301/chem301home_files/CHEM301Syllabus(F21).pdf"
+        },
+        {
+          "title": "Biochemistry Laboratory",
+          "institution": "MIT",
+          "term": "Spring 2009",
+          "file": "/syllabi/biochemistry/.pdf_b0af8844.pdf",
+          "source": "https://ocw.mit.edu/courses/5-36-biochemistry-laboratory-spring-2009/pages/syllabus/"
+        },
+        {
+          "title": "Biochemistry and Pharmacology of Synaptic Transmission",
+          "institution": "MIT",
+          "term": "Fall 2007",
+          "file": "/syllabi/biochemistry/.pdf",
+          "source": "https://ocw.mit.edu/courses/9-15-biochemistry-and-pharmacology-of-synaptic-transmission-fall-2007/pages/syllabus/"
+        }
+      ]
+    },
+    "general-biology-1": {
+      "slug": "general-biology-1",
+      "name": "General Biology 1",
+      "code": "BIOL 101",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing",
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "Introductory Biology",
+          "institution": "MIT",
+          "term": "Fall 2018",
+          "file": "/syllabi/general-biology-1/.pdf_9993b06a.pdf",
+          "source": "https://ocw.mit.edu/courses/7-016-introductory-biology-fall-2018/pages/syllabus/"
+        }
+      ]
+    },
+    "general-biology-2": {
+      "slug": "general-biology-2",
+      "name": "General Biology 2",
+      "code": "BIOL 102",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "genetics": {
+      "slug": "genetics",
+      "name": "Genetics",
+      "code": "BIOL 301",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology"
+      ],
+      "syllabi": [
+        {
+          "title": "Bsc2010 Syllabus Spring 2025 1",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/genetics/BSC2010-syllabus-Spring-2025-1.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Genetics/BSC2010-syllabus-Spring-2025-1.pdf"
+        }
+      ]
+    },
+    "cell-biology": {
+      "slug": "cell-biology",
+      "name": "Cell Biology",
+      "code": "BIOL 310",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology",
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "Microsoft Word - Biology-CourseSyllabus.docx",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/cell-biology/Biology-CourseSyllabus.pdf",
+          "source": "https://svhs.co/pdf/Biology-CourseSyllabus.pdf"
+        },
+        {
+          "title": "This syllabus is a general representation of the course as previously offered and is subject to change.",
+          "institution": null,
+          "term": "2019",
+          "file": "/syllabi/cell-biology/Syllabus_BIOL310_2019.pdf",
+          "source": "https://www.biology.ubc.ca/files/2019/11/Syllabus_BIOL310_2019.pdf"
+        },
+        {
+          "title": "UNIT 1: Diversity in Living World",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/cell-biology/NEET-Biology-Syllabus.pdf",
+          "source": "https://www.adda247.com/jobs/wp-content/uploads/sites/2/2024/03/28160636/NEET-Biology-Syllabus.pdf"
+        },
+        {
+          "title": "Cell & Molecular Biology, BIOL 3450 SYLLABUS Spring 2016",
+          "institution": "Biosciences (.edu)",
+          "term": "Spring 2016",
+          "file": "/syllabi/cell-biology/biol_3450_syllabus_spring16v7.pdf",
+          "source": "https://biosciences.gatech.edu/sites/default/files/documents/biol_3450_syllabus_spring16v7.pdf"
+        },
+        {
+          "title": "BI322 Cell Bio",
+          "institution": "Bpb Us E1 (.edu)",
+          "term": "2022",
+          "file": "/syllabi/cell-biology/BI322-Online-Syllabus.pdf",
+          "source": "https://bpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/a/5158/files/2022/06/BI322-Online-Syllabus.pdf"
+        },
+        {
+          "title": "Microsoft Word - Bio 2600 Syllabus W'19—WSU.docx",
+          "institution": "Clas (.edu)",
+          "term": "2019",
+          "file": "/syllabi/cell-biology/bio_2600_w2019.pdf",
+          "source": "https://clas.wayne.edu/biology/syllabi/bio_2600_w2019.pdf"
+        },
+        {
+          "title": "College of San Mateo",
+          "institution": "Collegeofsanmateo (.edu)",
+          "term": null,
+          "file": "/syllabi/cell-biology/BIOL310.pdf",
+          "source": "https://collegeofsanmateo.edu/articulation/courseoutlines/biol/BIOL310.pdf"
+        },
+        {
+          "title": "Biomaterials-Tissue Interactions",
+          "institution": "MIT",
+          "term": "Fall 2009",
+          "file": "/syllabi/cell-biology/.pdf",
+          "source": "https://ocw.mit.edu/courses/20-441j-biomaterials-tissue-interactions-fall-2009/pages/syllabus/"
+        }
+      ]
+    },
+    "ecology": {
+      "slug": "ecology",
+      "name": "Ecology",
+      "code": "BIOL 320",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology"
+      ],
+      "syllabi": []
+    },
+    "organic-chemistry-1": {
+      "slug": "organic-chemistry-1",
+      "name": "Organic Chemistry 1",
+      "code": "CHEM 221",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "organic-chemistry-2": {
+      "slug": "organic-chemistry-2",
+      "name": "Organic Chemistry 2",
+      "code": "CHEM 222",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "biology"
+      ],
+      "sharedIn": [
+        "biology"
+      ],
+      "syllabi": []
+    },
+    "anatomy-physiology-1": {
+      "slug": "anatomy-physiology-1",
+      "name": "Anatomy and Physiology 1",
+      "code": "NURS 210",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing"
+      ],
+      "syllabi": [
+        {
+          "title": "Course Development Worksheet",
+          "institution": null,
+          "term": "Spring 2022",
+          "file": "/syllabi/anatomy-physiology-1/WarnerPacific_NURS-210-Syllabus.pdf",
+          "source": "https://www.aacnnursing.org/Portals/0/PDFs/ELNEC/WarnerPacific_NURS-210-Syllabus.pdf"
+        },
+        {
+          "title": "bio201.html",
+          "institution": null,
+          "term": "2022",
+          "file": "/syllabi/anatomy-physiology-1/BIO201_Anatomy_Physiology_I_V6.pdf",
+          "source": "https://straighterline-web.s3.amazonaws.com/docs/course-syllabus/BIO201+Anatomy+&+Physiology+I+V6.pdf"
+        },
+        {
+          "title": "Course Syllabus",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/anatomy-physiology-1/VA-Anatomy-and-Physiology-1-Syllabus.pdf",
+          "source": "https://www.pearson.com/content/dam/global-store/en-us/resources/VA-Anatomy-and-Physiology-1-Syllabus.pdf"
+        },
+        {
+          "title": "STUDENT WARNING:",
+          "institution": "Apu (.edu)",
+          "term": null,
+          "file": "/syllabi/anatomy-physiology-1/BIOL181.pdf",
+          "source": "https://www.apu.apus.edu/docs/shared/course-syllabus/BIOL181.pdf"
+        },
+        {
+          "title": "BIOL 0055 - General Human Anatomy and Physiology",
+          "institution": "Catalog (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/anatomy-physiology-1/biol-0055.pdf",
+          "source": "https://catalog.sierracollege.edu/course-outlines/biol-0055/biol-0055.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": "Depts (.edu)",
+          "term": null,
+          "file": "/syllabi/anatomy-physiology-1/ANATPHYS1A-Syllabus.pdf",
+          "source": "https://www.depts.ttu.edu/k12/support/pdf/ANATPHYS1A-Syllabus.pdf"
+        },
+        {
+          "title": "Jersey College",
+          "institution": "Jerseycollege (.edu)",
+          "term": "2022",
+          "file": "/syllabi/anatomy-physiology-1/NUS210_-_Healthcare_Foundations_Syllabus.pdf",
+          "source": "https://www.jerseycollege.edu/application/files/1616/6819/5285/NUS210_-_Healthcare_Foundations_Syllabus.pdf"
+        },
+        {
+          "title": "Piedmont Technical College Nursing Course Syllabus",
+          "institution": "Ptc (.edu)",
+          "term": null,
+          "file": "/syllabi/anatomy-physiology-1/NUR210.pdf",
+          "source": "https://www.ptc.edu/syllabus/NUR210.pdf"
+        },
+        {
+          "title": "Biology 2401E Human Anatomy and",
+          "institution": "Tamut (.edu)",
+          "term": null,
+          "file": "/syllabi/anatomy-physiology-1/80747.pdf",
+          "source": "https://www.tamut.edu/faculty/syllabi/201880/80747.pdf"
+        }
+      ]
+    },
+    "anatomy-physiology-2": {
+      "slug": "anatomy-physiology-2",
+      "name": "Anatomy and Physiology 2",
+      "code": "NURS 211",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": [
+        {
+          "title": "Instructions",
+          "institution": null,
+          "term": "2019",
+          "file": "/syllabi/anatomy-physiology-2/NURS202-20190301.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS202-20190301.pdf"
+        },
+        {
+          "title": "Instructions",
+          "institution": null,
+          "term": "2013",
+          "file": "/syllabi/anatomy-physiology-2/NURS406-20180126.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS406-20180126.pdf"
+        },
+        {
+          "title": "OFFICIAL UNDERGRADUATE COURSE OUTLINE (page 1)",
+          "institution": null,
+          "term": "2010",
+          "file": "/syllabi/anatomy-physiology-2/NURS301-20100226.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS301-20100226.pdf"
+        },
+        {
+          "title": "OFFICIAL UNDERGRADUATE COURSE OUTLINE (page 1)",
+          "institution": null,
+          "term": "2004",
+          "file": "/syllabi/anatomy-physiology-2/NURS204-20110128.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS204-20110128.pdf"
+        },
+        {
+          "title": "PAC FORM #2 (Page 1)",
+          "institution": null,
+          "term": "2004",
+          "file": "/syllabi/anatomy-physiology-2/NURS304-20031126.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS304-20031126.pdf"
+        },
+        {
+          "title": "UPAC FORM #2 (Page 1)",
+          "institution": null,
+          "term": "2006",
+          "file": "/syllabi/anatomy-physiology-2/NURS303-20051125.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS303-20051125.pdf"
+        },
+        {
+          "title": "Microsoft Word - Syllabus N211 Fall 17.doc",
+          "institution": "Maui (.edu)",
+          "term": "Fall 2017",
+          "file": "/syllabi/anatomy-physiology-2/NURS-211-Syllabus-Fall-2017.pdf",
+          "source": "https://maui.hawaii.edu/wp-content/uploads/sites/13/2019/01/NURS-211-Syllabus-Fall-2017.pdf"
+        }
+      ]
+    },
+    "microbiology": {
+      "slug": "microbiology",
+      "name": "Microbiology",
+      "code": "BIOL 240",
+      "category": "science",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "biology",
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "pharmacology-nursing": {
+      "slug": "pharmacology-nursing",
+      "name": "Pharmacology for Nursing",
+      "code": "NURS 320",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "pathophysiology": {
+      "slug": "pathophysiology",
+      "name": "Pathophysiology",
+      "code": "NURS 330",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "nursing-fundamentals": {
+      "slug": "nursing-fundamentals",
+      "name": "Nursing Fundamentals",
+      "code": "NURS 201",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": [
+        {
+          "title": "OFFICIAL UNDERGRADUATE COURSE OUTLINE (page 1)",
+          "institution": null,
+          "term": "2010",
+          "file": "/syllabi/nursing-fundamentals/NURS201-20100226.pdf",
+          "source": "https://www.ufv.ca/calendar/CourseOutlines/PDFs/NURS/NURS201-20100226.pdf"
+        }
+      ]
+    },
+    "health-assessment": {
+      "slug": "health-assessment",
+      "name": "Health Assessment",
+      "code": "NURS 220",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "med-surg-nursing": {
+      "slug": "med-surg-nursing",
+      "name": "Medical-Surgical Nursing",
+      "code": "NURS 410",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": []
+    },
+    "community-health-nursing": {
+      "slug": "community-health-nursing",
+      "name": "Community Health Nursing",
+      "code": "NURS 420",
+      "category": "nursing",
+      "description": null,
+      "requiredBy": [
+        "nursing"
+      ],
+      "sharedIn": [
+        "nursing"
+      ],
+      "syllabi": [
+        {
+          "title": "COMMUNITY HEALTH NURSING-I",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/community-health-nursing/website_syllabus_Community_Health_Nursing_I.pdf",
+          "source": "https://www.muhs.ac.in/upload/syllabus/Community_Health_Nursing_I.pdf"
+        },
+        {
+          "title": "Indian Nursing Council",
+          "institution": null,
+          "term": "2015",
+          "file": "/syllabi/community-health-nursing/gnm-syllabus.pdf",
+          "source": "https://iminursing.in/gnm-syllabus.pdf"
+        },
+        {
+          "title": "Syllabus",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/community-health-nursing/BSc-Nursing-Syllabus.pdf",
+          "source": "https://www.karmasandhan.com/wp-content/uploads/BSc-Nursing-Syllabus.pdf"
+        },
+        {
+          "title": "School of Health Sciences",
+          "institution": "Amu (.edu)",
+          "term": "2021",
+          "file": "/syllabi/community-health-nursing/NURS421.pdf",
+          "source": "https://www.amu.apus.edu/docs/shared/course-syllabus/NURS421.pdf"
+        },
+        {
+          "title": "SYLLABUS",
+          "institution": "Ayatnursing (.edu)",
+          "term": "2022",
+          "file": "/syllabi/community-health-nursing/Post-Basic-Nursing-syllabus.pdf",
+          "source": "https://ayatnursing.edu.bd/wp-content/uploads/2022/09/Post-Basic-Nursing-syllabus.pdf"
+        },
+        {
+          "title": "GRAYSON COLLEGE",
+          "institution": "Grayson (.edu)",
+          "term": "Spring 2020",
+          "file": "/syllabi/community-health-nursing/NURS-3432-Community-Health-Syllabus-Spring-2020.pdf",
+          "source": "https://www.grayson.edu/pathways/rn-to-bsn/NURS-3432-Community-Health-Syllabus-Spring-2020.pdf"
+        },
+        {
+          "title": "GRAYSON COLLEGE",
+          "institution": "Grayson (.edu)",
+          "term": "Fall 2020",
+          "file": "/syllabi/community-health-nursing/NURS-4160-Community-and-Public-Health-Clinical-Syllabus-Fall-2020---Copy.pdf",
+          "source": "https://www.grayson.edu/pathways/rn-to-bsn/NURS-4160-Community-and-Public-Health-Clinical-Syllabus-Fall-2020---Copy.pdf"
+        },
+        {
+          "title": "SYLLABUS AND REGULATIONS",
+          "institution": "Pondiuni (.edu)",
+          "term": "2020",
+          "file": "/syllabi/community-health-nursing/Syllabus_Affiliated_Medical_B.Sc_.Nursing2018-19.pdf",
+          "source": "https://www.pondiuni.edu.in/wp-content/uploads/2020/12/Syllabus_Affiliated_Medical_B.Sc_.Nursing2018-19.pdf"
+        },
+        {
+          "title": "Texas A&M University-Texarkana Course Syllabus",
+          "institution": "Tamut (.edu)",
+          "term": "Spring 2025",
+          "file": "/syllabi/community-health-nursing/20229.pdf",
+          "source": "https://www.tamut.edu/faculty/syllabi/202520/20229.pdf"
+        }
+      ]
+    },
+    "statics": {
+      "slug": "statics",
+      "name": "Engineering Statics",
+      "code": "ME 220",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "dynamics": {
+      "slug": "dynamics",
+      "name": "Engineering Dynamics",
+      "code": "ME 221",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "Eng 329 Syllabus Spring 2022",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/dynamics/ENG-329-syllabus_spring-2022.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Engineering Dynamics/ENG-329-syllabus_spring-2022.pdf"
+        }
+      ]
+    },
+    "thermodynamics": {
+      "slug": "thermodynamics",
+      "name": "Thermodynamics",
+      "code": "ME 300",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "computer-engineering",
+        "mechanical-engineering"
+      ],
+      "syllabi": [
+        {
+          "title": "ASEN 3113 – Thermodynamics and Heat Transfer",
+          "institution": "Colorado (.edu)",
+          "term": "Spring 2023",
+          "file": "/syllabi/thermodynamics/asen3113_thermodynamicsandheattransfer_syllabus_spring2023_1172023_finalupdated.pdf",
+          "source": "https://www.colorado.edu/aerospace/sites/default/files/attached-files/asen3113_thermodynamicsandheattransfer_syllabus_spring2023_1172023_finalupdated.pdf"
+        },
+        {
+          "title": "EML 3100-Thermodynamics I",
+          "institution": "Fau (.edu)",
+          "term": "2048",
+          "file": "/syllabi/thermodynamics/egn3343thermodynamics.pdf",
+          "source": "https://www.fau.edu/engineering/ome/pdf/me-syllabi/egn3343thermodynamics.pdf"
+        },
+        {
+          "title": "EML 3100-Thermodynamics I",
+          "institution": "Fau (.edu)",
+          "term": "2048",
+          "file": "/syllabi/thermodynamics/egn3343eng-thermodynamics.pdf",
+          "source": "https://www.fau.edu/engineering/ome/pdf/oe-syllabi/egn3343eng-thermodynamics.pdf"
+        }
+      ]
+    },
+    "materials-science": {
+      "slug": "materials-science",
+      "name": "Materials Science",
+      "code": "ME 310",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "fluid-mechanics": {
+      "slug": "fluid-mechanics",
+      "name": "Fluid Mechanics",
+      "code": "ME 320",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "machine-design": {
+      "slug": "machine-design",
+      "name": "Machine Design",
+      "code": "ME 410",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "manufacturing-processes": {
+      "slug": "manufacturing-processes",
+      "name": "Manufacturing Processes",
+      "code": "ME 420",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "capstone-me": {
+      "slug": "capstone-me",
+      "name": "Mechanical Engineering Capstone",
+      "code": "ME 495",
+      "category": "engineering",
+      "description": null,
+      "requiredBy": [
+        "mechanical-engineering"
+      ],
+      "sharedIn": [
+        "mechanical-engineering"
+      ],
+      "syllabi": []
+    },
+    "microeconomics": {
+      "slug": "microeconomics",
+      "name": "Microeconomics",
+      "code": "ECON 101",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration",
+        "data-science"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "data-science",
+        "nursing",
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "Course Syllabus - Microeconomics V5",
+          "institution": null,
+          "term": "2021",
+          "file": "/syllabi/microeconomics/Course_Syllabus_-_Microeconomics_V5__1_.pdf",
+          "source": "https://tel-courses.org/uploads/media_images/Course_Syllabus_-_Microeconomics_V5_(1).pdf"
+        },
+        {
+          "title": "PRINCIPLES OF MICROECONOMICS SYLLABUS",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/microeconomics/microeconomics-syllabus-cowen-tabarrok.pdf",
+          "source": "https://mru.org/sites/default/files/microeconomics-syllabus-cowen-tabarrok.pdf"
+        },
+        {
+          "title": "SAMPLE SYLLABUS #1 AP® Microeconomics",
+          "institution": null,
+          "term": "2020",
+          "file": "/syllabi/microeconomics/ap-microeconomics-sample-syllabus-1.pdf",
+          "source": "https://apcentral.collegeboard.org/media/pdf/ap-microeconomics-sample-syllabus-1.pdf"
+        }
+      ]
+    },
+    "macroeconomics": {
+      "slug": "macroeconomics",
+      "name": "Macroeconomics",
+      "code": "ECON 102",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": []
+    },
+    "accounting-1": {
+      "slug": "accounting-1",
+      "name": "Financial Accounting",
+      "code": "ACCT 201",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": [
+        {
+          "title": "Approved: Initials/date",
+          "institution": "Lit (.edu)",
+          "term": null,
+          "file": "/syllabi/accounting-1/busi2301_2a1_spring_2025.pdf",
+          "source": "https://lit.edu/course-syllabus/10660/busi2301_2a1_spring_2025.pdf"
+        }
+      ]
+    },
+    "accounting-2": {
+      "slug": "accounting-2",
+      "name": "Managerial Accounting",
+      "code": "ACCT 202",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": [
+        {
+          "title": "Elements of BK Acc Sec 2024-25",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/accounting-2/Elements_of_BK_Acc_Sec_2024-25.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Managerial Accounting/Elements_of_BK_Acc_Sec_2024-25.pdf"
+        }
+      ]
+    },
+    "business-law": {
+      "slug": "business-law",
+      "name": "Business Law",
+      "code": "BUS 310",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": [
+        {
+          "title": "Business Law Syllabus",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/business-law/Syllabus_Business_Law.pdf",
+          "source": "https://s3.amazonaws.com/content.accelerate-ed.com/Secondary/docs/BusinessLaw-GPA/Syllabus_Business_Law.pdf"
+        },
+        {
+          "title": "Spring 2024 Isb Business Law Syllabus",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/business-law/Spring_2024_ISB_Business_Law_Syllabus.pdf",
+          "source": "https://static1.squarespace.com/static/6491b729ff0b1623ac0eb730/t/6683edf9e7c1903ad3414c1b/1719922169660/Spring+2024+ISB+Business+Law+Syllabus.pdf"
+        },
+        {
+          "title": "SYLLABUS FOR",
+          "institution": "Business (.edu)",
+          "term": "Spring 2018",
+          "file": "/syllabi/business-law/bus-110-03-griffin.pdf",
+          "source": "https://business.csuci.edu/course-syllabi/business/documents/110/bus-110-03-griffin.pdf"
+        },
+        {
+          "title": "Welcome to Business 310:  Business Discourse for the 21st Century Professional Course Syllabus | Fall 2024",
+          "institution": "Business (.edu)",
+          "term": "Fall 2024",
+          "file": "/syllabi/business-law/bus-310-03-ryan-murphy.pdf",
+          "source": "https://business.csuci.edu/course-syllabi/business/bus-fall-2024/bus-310-03-ryan-murphy.pdf"
+        },
+        {
+          "title": "Welcome to Business 310:  Business Discourse for the 21st Century Professional Course Syllabus | Spring 2024",
+          "institution": "Business (.edu)",
+          "term": "Spring 2024",
+          "file": "/syllabi/business-law/bus-310-01-ryan-murphy.pdf",
+          "source": "https://business.csuci.edu/course-syllabi/business/bus-spring-2024/bus-310-01-ryan-murphy.pdf"
+        },
+        {
+          "title": "Microsoft Word - syllabusBUS310_2015.doc",
+          "institution": "Faculty (.edu)",
+          "term": "2015",
+          "file": "/syllabi/business-law/syllabusBUS310_2015.pdf",
+          "source": "https://faculty.washington.edu/cameliab/teaching/BBus310/syllabusBUS310_2015.pdf"
+        },
+        {
+          "title": "Innovative Businesses and Breakthrough Technologies - The Legal Issues",
+          "institution": "MIT",
+          "term": "Fall 2004",
+          "file": "/syllabi/business-law/.pdf",
+          "source": "https://ocw.mit.edu/courses/15-616-innovative-businesses-and-breakthrough-technologies-the-legal-issues-fall-2004/pages/syllabus/"
+        },
+        {
+          "title": "Business Law Syllabus",
+          "institution": "My (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/business-law/Business_Law_Syllabus.pdf",
+          "source": "https://my.blc.edu/ICS/icsfs/Business_Law_Syllabus.pdf?target=230adcfa-f78f-4468-a752-5a6ceab713e6"
+        }
+      ]
+    },
+    "marketing": {
+      "slug": "marketing",
+      "name": "Marketing",
+      "code": "MKT 301",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": [
+        {
+          "title": "Elements of Business Sec 2024-25",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/marketing/Elements_of_Business_Sec_2024-25.pdf",
+          "source": "file:///Users/local/Desktop/Projects/SyllaBee/sylabi/Marketing/Elements_of_Business_Sec_2024-25.pdf"
+        }
+      ]
+    },
+    "corporate-finance": {
+      "slug": "corporate-finance",
+      "name": "Corporate Finance",
+      "code": "FIN 301",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": []
+    },
+    "management": {
+      "slug": "management",
+      "name": "Principles of Management",
+      "code": "MGMT 301",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": []
+    },
+    "business-statistics": {
+      "slug": "business-statistics",
+      "name": "Business Statistics",
+      "code": "BUS 230",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "data-science",
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "DEPARTMENT OF STATISTICS",
+          "institution": null,
+          "term": "Summer 2016",
+          "file": "/syllabi/business-statistics/Syllabus-STAT-101-2016-Summer.pdf",
+          "source": "https://yuchaojiang.github.io/assets/pdfs/Syllabus-STAT-101-2016-Summer.pdf"
+        },
+        {
+          "title": "Iowa Lakes Community College",
+          "institution": null,
+          "term": "Spring 2019",
+          "file": "/syllabi/business-statistics/statssyllabus.pdf",
+          "source": "https://www.davidmburrow.com/statssyllabus.pdf"
+        },
+        {
+          "title": "MAT150 Business Statistics V4.html",
+          "institution": null,
+          "term": "2022",
+          "file": "/syllabi/business-statistics/MAT150_Business_Statistics_V4.pdf",
+          "source": "https://straighterline-web.s3.amazonaws.com/docs/course-syllabus/MAT150+Business+Statistics+V4.pdf"
+        },
+        {
+          "title": "S. S. JAIN SUBODH P.G. (AUTONOMOUS) COLLEGE",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/business-statistics/BCom_ABST_Hons_new.pdf",
+          "source": "https://subodhpgcollege.com/pdf/syllabus/BCom_ABST_Hons_new.pdf"
+        },
+        {
+          "title": "Statistics for Business - I",
+          "institution": null,
+          "term": "2015",
+          "file": "/syllabi/business-statistics/CourseSyllabus_GradingPolicy.pdf",
+          "source": "https://courses.edx.org/assets/courseware/v1/7fda7fd9ed259708538a630a4a0a1d40/asset-v1:IIMBx+QM101.1x+1T2016+type@asset+block/CourseSyllabus_GradingPolicy.pdf"
+        },
+        {
+          "title": "Ug Statistics Syllabus",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/business-statistics/UG_Statistics_Syllabus.pdf",
+          "source": "https://christuniversity.in/uploadimages/UG+Statistics+Syllabus.pdf"
+        },
+        {
+          "title": "sem2.doc",
+          "institution": null,
+          "term": "2023",
+          "file": "/syllabi/business-statistics/sem223.pdf",
+          "source": "https://makautexam.net/aicte_details/Syllabus4/BBAENT/sem223.pdf"
+        },
+        {
+          "title": "OSC 2030 Business Statistics",
+          "institution": "Class Tools (.edu)",
+          "term": "Spring 2026",
+          "file": "/syllabi/business-statistics/SimpleSyllabus_Spring-2026-OSC-2030-019-Business-Statistics.pdf",
+          "source": "https://class-tools.app.utah.edu/syllabus/1264/12580/SimpleSyllabus_Spring-2026-OSC-2030-019-Business-Statistics.pdf"
+        },
+        {
+          "title": "Last updated:  8/15/25",
+          "institution": "Stat (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/business-statistics/syllabus-STAT1030-Fall2025.pdf",
+          "source": "https://stat.uiowa.edu/sites/stat.uiowa.edu/files/2025-10/syllabus-STAT1030-Fall2025.pdf"
+        },
+        {
+          "title": "BUSI-2305-021I2",
+          "institution": "Syllabi (.edu)",
+          "term": "Spring 2025",
+          "file": "/syllabi/business-statistics/VOdl7dpnHZ6gl0hsbXs26JdbEcbfxOvqNInmpz1V.pdf",
+          "source": "https://syllabi.com.edu/storage/syllabi/VOdl7dpnHZ6gl0hsbXs26JdbEcbfxOvqNInmpz1V.pdf"
+        }
+      ]
+    },
+    "business-communications": {
+      "slug": "business-communications",
+      "name": "Business Communications",
+      "code": "BUS 210",
+      "category": "business",
+      "description": null,
+      "requiredBy": [
+        "business-administration"
+      ],
+      "sharedIn": [
+        "business-administration",
+        "information-technology"
+      ],
+      "syllabi": [
+        {
+          "title": "Microsoft Word - bus210_syllabus_f05.doc",
+          "institution": null,
+          "term": "Fall 2005",
+          "file": "/syllabi/business-communications/bus210_syllabus_f05.pdf",
+          "source": "http://portfolio.brucesabin.com/teaching/syllabi/bus210_syllabus_f05.pdf"
+        },
+        {
+          "title": "bus105.html",
+          "institution": null,
+          "term": null,
+          "file": "/syllabi/business-communications/BUS105_Business_Communication_V6.pdf",
+          "source": "https://straighterline-web.s3.amazonaws.com/docs/course-syllabus/BUS105+Business+Communication+V6.pdf"
+        },
+        {
+          "title": "FIN 3300-1",
+          "institution": "Apps (.edu)",
+          "term": "Fall 2025",
+          "file": "/syllabi/business-communications/COB_CommonSyllabusFall-2025BCOM-3304.pdf",
+          "source": "https://apps.tamusa.edu/course-information/syllabi/Fall2025/COB_CommonSyllabusFall-2025BCOM-3304.pdf"
+        },
+        {
+          "title": "College of San Mateo",
+          "institution": "Collegeofsanmateo (.edu)",
+          "term": null,
+          "file": "/syllabi/business-communications/BUS401.pdf",
+          "source": "https://collegeofsanmateo.edu/articulation/courseoutlines/bus/BUS401.pdf"
+        },
+        {
+          "title": "Positive Business Communications",
+          "institution": "Positiveorgs (.edu)",
+          "term": "Fall 2017",
+          "file": "/syllabi/business-communications/BCOM-430-530-Positive-Business-Communications-Syllabus.pdf",
+          "source": "https://positiveorgs.bus.umich.edu/wp-content/uploads/BCOM-430-530-Positive-Business-Communications-Syllabus.pdf"
+        },
+        {
+          "title": "Course Information",
+          "institution": "Ptc (.edu)",
+          "term": "2021",
+          "file": "/syllabi/business-communications/BUS210.pdf",
+          "source": "https://www.ptc.edu/syllabus/BUS210.pdf"
+        },
+        {
+          "title": "Syllabus for Business Communications",
+          "institution": "Redwoods (.edu)",
+          "term": "Spring 2023",
+          "file": "/syllabi/business-communications/2023S-BUS-52-V5166-Wilshusen.pdf",
+          "source": "https://www.redwoods.edu/fs/syllabi/bus/2023S-BUS-52-V5166-Wilshusen.pdf"
+        },
+        {
+          "title": "Syllabus for Business Communications",
+          "institution": "Redwoods (.edu)",
+          "term": "Spring 2024",
+          "file": "/syllabi/business-communications/2024S-BUS-52-V7638-Wilshusen.pdf",
+          "source": "https://www.redwoods.edu/fs/syllabi/bus/2024S-BUS-52-V7638-Wilshusen.pdf"
+        },
+        {
+          "title": "Business and Economic Statistics",
+          "institution": "Southseattle (.edu)",
+          "term": "2016",
+          "file": "/syllabi/business-communications/bus210_d3903104.pdf",
+          "source": "https://southseattle.edu/sites/default/files/resources.southseattle.edu/southnet/course-outlines/documents/bus/bus210.pdf"
+        },
+        {
+          "title": "Texas A&M University–Texarkana",
+          "institution": "Tamut (.edu)",
+          "term": "Fall 2023",
+          "file": "/syllabi/business-communications/80331.pdf",
+          "source": "https://www.tamut.edu/faculty/syllabi/202380/80331.pdf"
+        }
+      ]
+    },
+    "econometrics": {
+      "slug": "econometrics",
+      "name": "Econometrics",
+      "code": "ECON 350",
+      "category": "business",
+      "description": null,
+      "requiredBy": [],
+      "sharedIn": [
+        "data-science"
+      ],
+      "syllabi": []
+    },
+    "international-economics": {
+      "slug": "international-economics",
+      "name": "International Economics",
+      "code": "ECON 340",
+      "category": "business",
+      "description": null,
+      "requiredBy": [],
+      "sharedIn": [
+        "business-administration"
+      ],
+      "syllabi": []
+    },
+    "public-finance": {
+      "slug": "public-finance",
+      "name": "Public Finance",
+      "code": "ECON 360",
+      "category": "business",
+      "description": null,
+      "requiredBy": [],
+      "sharedIn": [],
+      "syllabi": []
+    },
+    "intro-psychology": {
+      "slug": "intro-psychology",
+      "name": "Introduction to Psychology",
+      "code": "PSY 101",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "nursing",
+        "psychology"
+      ],
+      "syllabi": []
+    },
+    "research-methods-psych": {
+      "slug": "research-methods-psych",
+      "name": "Research Methods in Psychology",
+      "code": "PSY 250",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "psychology"
+      ],
+      "syllabi": []
+    },
+    "abnormal-psychology": {
+      "slug": "abnormal-psychology",
+      "name": "Abnormal Psychology",
+      "code": "PSY 340",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "San Carlos Apache College is operating under the accreditation of Tohono O’odham Community College",
+          "institution": null,
+          "term": "Spring 2018",
+          "file": "/syllabi/abnormal-psychology/Psy-214-2-Syllabus.pdf",
+          "source": "https://www.apachecollege.org/wp-content/uploads/2019/01/Psy-214-2-Syllabus.pdf"
+        },
+        {
+          "title": "Visual Syllabus_Abnormal_Website.pdf",
+          "institution": null,
+          "term": "Fall 2022",
+          "file": "/syllabi/abnormal-psychology/Visual_Syllabus_Abnormal_F22_Website.pdf",
+          "source": "https://static1.squarespace.com/static/59eba493010027a219f4c309/t/6355f8587a31ee2a7a92e8bf/1666578520466/Visual+Syllabus_Abnormal_F22_Website.pdf"
+        },
+        {
+          "title": "Microsoft Word - PSYC_3082_2.0_s1_Syllabus",
+          "institution": "Cemoodle (.edu)",
+          "term": "2016",
+          "file": "/syllabi/abnormal-psychology/PSYC_3082_2.0_s1_Syllabus.pdf",
+          "source": "https://cemoodle.online.lsu.edu/syllabus/PSYC_3082_2.0_s1_Syllabus.pdf"
+        },
+        {
+          "title": "Microsoft Word - PSY480OnlineSyllabus.doc",
+          "institution": "Csudh (.edu)",
+          "term": "2015",
+          "file": "/syllabi/abnormal-psychology/psy-480-syllabus.pdf",
+          "source": "https://www.csudh.edu/Assets/csudh-sites/ccpe/docs/sport-psychology/psy-480-syllabus.pdf"
+        },
+        {
+          "title": "BLOOMSBURG UNIVERSITY",
+          "institution": "Facstaff (.edu)",
+          "term": "Spring 2020",
+          "file": "/syllabi/abnormal-psychology/syllabus.pdf",
+          "source": "http://facstaff.bloomu.edu/jleitzel/classes/introabnormal/syllabus.pdf"
+        },
+        {
+          "title": "Abnormal Psych - Sample Syllabus",
+          "institution": "Nyu (.edu)",
+          "term": "2016",
+          "file": "/syllabi/abnormal-psychology/Syl_London_PSYCH-UA9035L01_Loewenthal.pdf",
+          "source": "https://www.nyu.edu/content/dam/nyu/globalPrgms/documents/london/academics/Syllabi/SampleSyllabi/Syl_London_PSYCH-UA9035L01_Loewenthal.pdf"
+        },
+        {
+          "title": "CLP 3144 Abnormal Psychology",
+          "institution": "Psych (.edu)",
+          "term": "2020",
+          "file": "/syllabi/abnormal-psychology/CLP3144_SummerBSyllabusUpdated.pdf",
+          "source": "https://psych.ufl.edu/wp-content/uploads/sites/75/CLP3144_SummerBSyllabusUpdated.pdf"
+        },
+        {
+          "title": "1/19/24, 1:32 PM PSYCH 38 Abnormal Psychology Syllabus: PSYCH-38-E7414 Abnormal Psychology",
+          "institution": "Redwoods (.edu)",
+          "term": "Spring 2024",
+          "file": "/syllabi/abnormal-psychology/2024S-PSYCH-38-E7414-Hedlund.pdf",
+          "source": "https://www.redwoods.edu/fs/syllabi/psych/2024S-PSYCH-38-E7414-Hedlund.pdf"
+        },
+        {
+          "title": "Revised Copy:",
+          "institution": "Southplainscollege (.edu)",
+          "term": "Spring 2025",
+          "file": "/syllabi/abnormal-psychology/HARRIS_PSYC_2320_151_SP25.pdf",
+          "source": "https://www.southplainscollege.edu/faculty/behavioral_science_syllabi/bs-sp25/HARRIS_PSYC_2320_151_SP25.pdf"
+        },
+        {
+          "title": "ST. PETERSBURG COLLEGE",
+          "institution": "Web (.edu)",
+          "term": null,
+          "file": "/syllabi/abnormal-psychology/CLP2140Syllabus.pdf",
+          "source": "https://web.spcollege.edu/instructors/uploads/4b83775b21/CLP2140Syllabus.pdf"
+        }
+      ]
+    },
+    "developmental-psychology": {
+      "slug": "developmental-psychology",
+      "name": "Developmental Psychology",
+      "code": "PSY 320",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "nursing",
+        "psychology"
+      ],
+      "syllabi": []
+    },
+    "cognitive-psychology": {
+      "slug": "cognitive-psychology",
+      "name": "Cognitive Psychology",
+      "code": "PSY 330",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "psychology"
+      ],
+      "syllabi": [
+        {
+          "title": "PS 305 Introduction to Cognitive Psychology 24-25.docx",
+          "institution": null,
+          "term": "2024",
+          "file": "/syllabi/cognitive-psychology/PS_305_Introduction_to_Cognitive_Psychology_Standard_Syllabus_24-25.pdf",
+          "source": "https://www.course-catalog.com/pccc/public/assets/uploads/PS_305_Introduction_to_Cognitive_Psychology_Standard_Syllabus_24-25.pdf"
+        },
+        {
+          "title": "Page 1 of 5",
+          "institution": null,
+          "term": "2019",
+          "file": "/syllabi/cognitive-psychology/Psyc101-901-Syllabus-2019F-EZ.pdf",
+          "source": "https://psych.ubc.ca/wp-content/uploads/sites/2/2019/12/Psyc101-901-Syllabus-2019F-EZ.pdf"
+        },
+        {
+          "title": "2100 Cognitive Psych Syllabus 2025",
+          "institution": "Class Tools (.edu)",
+          "term": "Spring 2025",
+          "file": "/syllabi/cognitive-psychology/2100_Cognitive_Psych_Syllabus_2025.pdf",
+          "source": "https://class-tools.app.utah.edu/syllabus/1254/17400/2100+Cognitive+Psych+Syllabus+2025.pdf"
+        },
+        {
+          "title": "Foundations of",
+          "institution": "Gvsu (.edu)",
+          "term": "Winter 202",
+          "file": "/syllabi/cognitive-psychology/psy330syllabus_n.swalve_w25.pdf",
+          "source": "https://www.gvsu.edu/cms4/asset/92386C7F-BF75-96ED-67D9FAA81701D122/psy330syllabus_n.swalve_w25.pdf"
+        },
+        {
+          "title": "Week 1",
+          "institution": "Mediaweb (.edu)",
+          "term": "2019",
+          "file": "/syllabi/cognitive-psychology/PSY330_Syllabus.pdf",
+          "source": "https://mediaweb.saintleo.edu/courses/psy330/_V2/PSY330_Syllabus.pdf"
+        },
+        {
+          "title": "Microsoft Word - 0_Thinking_Syllabus.docx",
+          "institution": "Pages (.edu)",
+          "term": "2013",
+          "file": "/syllabi/cognitive-psychology/330-IsbellJ-W13.pdf",
+          "source": "https://pages.uoregon.edu/psychit/Syllabi_Archive/2010s/2013/Winter_2013/330-IsbellJ-W13.pdf"
+        },
+        {
+          "title": "Psych 120A Summer A 2014 Syllabus",
+          "institution": "Pages (.edu)",
+          "term": "2014",
+          "file": "/syllabi/cognitive-psychology/Psych120ASummerA2014Syllabus.pdf",
+          "source": "https://pages.pomona.edu/~lwj04747/syllabus/Psych120ASummerA2014Syllabus.pdf"
+        },
+        {
+          "title": "PY 452: Cognitive Psychology",
+          "institution": "Static (.edu)",
+          "term": "Summer 2018",
+          "file": "/syllabi/cognitive-psychology/PSYC-130-130.pdf",
+          "source": "https://static.scs.georgetown.edu/upload/files/syllabi/term_201820/course_PSYC-130/section_130/PSYC-130-130.pdf"
+        },
+        {
+          "title": "PSY 541: Advanced Cognitive Psychology",
+          "institution": "Tamut (.edu)",
+          "term": "2025",
+          "file": "/syllabi/cognitive-psychology/20503.pdf",
+          "source": "https://www.tamut.edu/faculty/syllabi/202520/20503.pdf"
+        },
+        {
+          "title": "TED University                               Spring 2020-2021",
+          "institution": "Tedu (.edu)",
+          "term": "Spring 2020",
+          "file": "/syllabi/cognitive-psychology/psy_330_syllabus_spring_2021.pdf",
+          "source": "https://www.tedu.edu.tr/sites/default/files/psy_330_syllabus_spring_2021.pdf"
+        }
+      ]
+    },
+    "social-psychology": {
+      "slug": "social-psychology",
+      "name": "Social Psychology",
+      "code": "PSY 310",
+      "category": "psychology",
+      "description": null,
+      "requiredBy": [
+        "psychology"
+      ],
+      "sharedIn": [
+        "psychology"
+      ],
+      "syllabi": []
+    },
+    "technical-writing": {
+      "slug": "technical-writing",
+      "name": "Technical Writing",
+      "code": "ENG 210",
+      "category": "general",
+      "description": null,
+      "requiredBy": [
+        "information-technology",
+        "software-engineering"
+      ],
+      "sharedIn": [
+        "biology",
+        "business-administration",
+        "information-technology",
+        "mechanical-engineering",
+        "nursing",
+        "psychology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    },
+    "english-composition": {
+      "slug": "english-composition",
+      "name": "English Composition",
+      "code": "ENG 101",
+      "category": "general",
+      "description": null,
+      "requiredBy": [],
+      "sharedIn": [
+        "biology",
+        "business-administration",
+        "computer-science",
+        "data-science",
+        "information-technology",
+        "nursing",
+        "psychology",
+        "software-engineering"
+      ],
+      "syllabi": []
+    }
+  }
+}

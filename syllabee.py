@@ -123,6 +123,66 @@ def cmd_gaps(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reclassify(args: argparse.Namespace) -> int:
+    from crawler.classify import resolve_syllabus_links
+    from crawler.config import DEFAULT_COURSES_PATH, DEFAULT_TAXONOMY_PATH
+    from crawler.taxonomy import load_merged_taxonomy
+
+    taxonomy = load_merged_taxonomy(
+        taxonomy_path=DEFAULT_TAXONOMY_PATH, courses_path=DEFAULT_COURSES_PATH
+    )
+
+    processed = 0
+    relinked = 0
+    cleared = 0
+    slug_to_id: dict[str, int] = {}
+
+    with Catalog(Path(args.db)) as catalog:
+        rows = catalog.all_ok_syllabi()
+        for s in rows:
+            file_path = s["file_path"] or ""
+            filename = Path(file_path).name if file_path else ""
+            # The folder a PDF was filed under is the course the crawler
+            # assigned (e.g. "Calculus 2/..."); used as a fallback signal.
+            folder = Path(file_path).parent.name if file_path else ""
+            if folder in (".", "_unclassified"):
+                folder = ""
+            links = resolve_syllabus_links(
+                folder=folder,
+                title=s["title"],
+                filename=filename,
+                url=s["source_url"],
+                taxonomy=taxonomy,
+            )
+
+            db_links: list[tuple[int, float, str | None]] = []
+            for link in links:
+                cid = slug_to_id.get(link.slug)
+                if cid is None:
+                    row = catalog.get_course_by_slug(link.slug)
+                    if not row:
+                        continue
+                    cid = int(row["id"])
+                    slug_to_id[link.slug] = cid
+                db_links.append((cid, link.confidence, link.reason))
+
+            catalog.set_syllabus_course_links(s["id"], db_links, replace=True)
+            primary = db_links[0][0] if db_links else None
+            catalog.set_syllabus_primary_course(s["id"], primary)
+
+            processed += 1
+            if db_links:
+                relinked += len(db_links)
+            else:
+                cleared += 1
+
+    print(
+        f"Reclassified {processed} syllabi: {relinked} course link(s), "
+        f"{cleared} now unmatched."
+    )
+    return 0
+
+
 def cmd_reorganize(args: argparse.Namespace) -> int:
     with Catalog(Path(args.db)) as catalog:
         moved, updated = reorganize_sylabi(catalog, Path(args.output_dir))
@@ -223,6 +283,11 @@ def main() -> int:
     p_reorg = sub.add_parser("reorganize", help="Move loose PDFs into course folders")
     p_reorg.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     p_reorg.set_defaults(func=cmd_reorganize)
+
+    sub.add_parser(
+        "reclassify",
+        help="Recompute syllabus->course links from stored metadata (fixes false matches)",
+    ).set_defaults(func=cmd_reclassify)
 
     args = parser.parse_args()
     return args.func(args)

@@ -581,6 +581,58 @@ class Catalog:
             )
         self._conn.commit()
 
+    def all_ok_syllabi(self) -> list[sqlite3.Row]:
+        return list(
+            self._conn.execute(
+                """
+                SELECT id, source_url, file_path, title, institution, term_label
+                FROM syllabi
+                WHERE status = 'ok'
+                ORDER BY id
+                """
+            ).fetchall()
+        )
+
+    def set_syllabus_primary_course(
+        self, syllabus_id: int, course_id: int | None
+    ) -> None:
+        self._conn.execute(
+            "UPDATE syllabi SET course_id = ?, updated_at = datetime('now') WHERE id = ?",
+            (course_id, syllabus_id),
+        )
+        self._conn.commit()
+
+    def set_syllabus_course_links(
+        self,
+        syllabus_id: int,
+        links: list[tuple[int, float, str | None]],
+        *,
+        replace: bool = False,
+    ) -> None:
+        """Link a syllabus to courses with per-course confidence/reason.
+
+        Each item in ``links`` is ``(course_id, confidence, match_reason)``.
+        When ``replace`` is true, all existing links for the syllabus are
+        cleared first (used by the reclassify pass).
+        """
+        if replace:
+            self._conn.execute(
+                "DELETE FROM syllabus_courses WHERE syllabus_id = ?",
+                (syllabus_id,),
+            )
+        for course_id, confidence, match_reason in links:
+            self._conn.execute(
+                """
+                INSERT INTO syllabus_courses (syllabus_id, course_id, confidence, match_reason)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(syllabus_id, course_id) DO UPDATE SET
+                    confidence = excluded.confidence,
+                    match_reason = excluded.match_reason
+                """,
+                (syllabus_id, course_id, confidence, match_reason),
+            )
+        self._conn.commit()
+
     def list_syllabi(self, *, course_slug: str | None = None) -> list[sqlite3.Row]:
         if course_slug:
             return list(

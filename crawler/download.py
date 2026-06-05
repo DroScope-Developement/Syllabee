@@ -286,12 +286,21 @@ class SyllabusDownloader:
         )
 
         if course_ids:
-            self.catalog.link_syllabus_courses(
-                syllabus_id,
-                course_ids,
-                confidence=classification.confidence,
-                match_reason=classification.match_reason,
-            )
+            conf_by_slug = {
+                link.slug: (link.confidence, link.reason)
+                for link in classification.course_links
+            }
+            links: list[tuple[int, float, str | None]] = []
+            for cid in course_ids:
+                row = self.catalog.get_course_by_id(cid)
+                slug = row["slug"] if row else None
+                conf, reason = conf_by_slug.get(
+                    slug, (classification.confidence, classification.match_reason)
+                )
+                if cid == target_id and slug not in conf_by_slug:
+                    conf, reason = 1.0, "target"
+                links.append((cid, conf, reason))
+            self.catalog.set_syllabus_course_links(syllabus_id, links)
 
         self.catalog.touch_domain(domain, pdfs_downloaded_delta=1)
         if target_id is not None:
