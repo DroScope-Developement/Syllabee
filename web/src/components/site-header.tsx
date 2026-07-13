@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { GraduationCap } from "lucide-react"
 
 import { catalog } from "@/lib/catalog"
 
@@ -8,9 +7,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 text-background shadow-sm">
-            <GraduationCap className="size-5" />
-          </span>
+          <img
+            src="/logo.png"
+            alt=""
+            aria-hidden="true"
+            className="size-9 rounded-lg object-cover shadow-sm"
+          />
           <div className="leading-tight">
             <span className="block text-lg font-semibold tracking-tight">
               SyllaBee
